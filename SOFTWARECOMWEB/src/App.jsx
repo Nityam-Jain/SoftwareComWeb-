@@ -1,25 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Layout from "./components/layout"; 
-import HomePage from "./components/page";     
-import AboutPage from "./components/AboutPage";     
-import ContactPage from "./components/ContactPage";     
-import Featurespage from "./components/FeaturesPage";     
-import Footer from "./components/Footer";     
-import Header from "./components/Header";     
-import PricePage from "./components/PricingPage";     
-import "./index.css";                  
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/layout";
+import HomePage from "./components/HeroPage";
+import ProjectsPage from "./components/ProjectsPage";
+import ContactPage from "./components/ContactPage";
+import FeaturesPage from "./components/FeaturesPage";
+import Blogs from "./components/Blog";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./index.css";
 
 function App() {
   return (
     <Layout>
-      <Header/>
-      <HomePage />
-      <AboutPage />
-      <ContactPage/>
-      <Featurespage />
-      <PricePage />
-      <Footer/>
+      {/* <Header /> */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/features" element={<FeaturesPage />} />
+        <Route path="/Blogs" element={<Blogs/>} />
+      </Routes>
+      {/* <Footer /> */}
     </Layout>
   );
 }

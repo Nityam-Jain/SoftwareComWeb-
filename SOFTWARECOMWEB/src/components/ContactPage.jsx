@@ -1,181 +1,185 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Mail, MessageSquare, Phone, MapPin } from "lucide-react";
-
+import { Mail, MapPin, MessageSquare } from "lucide-react";
+import atIcon from "../assets/Aticon.png"; // bottom-left @ icon
+import envelopeIcon from "../assets/envicon.png"; // top-right envelope image
+import location from "../assets/location.png"
+import message from "../assets/message.png"
 export default function ContactPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="min-h-screen flex flex-col bg-[#f5fafe]">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="container py-20 md:py-32">
-          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-balance">
-              Get in Touch
+        {/* Top Section - Contact Info */}
+        <section className="bg-white rounded-b-3xl shadow-sm border-t-4 border-[#7554e0] pb-8 pt-12 md:pt-20 lg:pt-28">
+          <div className="max-w-3xl mx-auto text-center space-y-1">
+            <span className="inline-block bg-[#efe6fb] text-[#7554e0] px-4 py-1 rounded-lg mb-3 text-xs font-semibold tracking-wider">
+              Contact us
+            </span>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+              Get In{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#623abc] via-[#cc64bc] to-[#f57e8a] font-bold">
+                Touch
+              </span>
             </h1>
-            <p className="text-lg text-muted-foreground text-pretty">
-              Have a question or want to learn more? We'd love to hear from you.
+            <p className="text-base md:text-sm mt-6 text-gray-600">
+              We will contact again after receiving your request within 24h
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-3 max-w-6xl mx-auto">
-            {/* Contact Info Cards */}
-            <div className="space-y-6">
-              {/* Email */}
-              <div className="p-6 border rounded-lg shadow-sm bg-white">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Email Us</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Our team typically responds within 24 hours
-                </p>
-                <a
-                  href="mailto:hello@example.com"
-                  className="text-primary hover:underline"
-                >
-                  hello@example.com
-                </a>
-              </div>
-
-              {/* Live Chat */}
-              <div className="p-6 border rounded-lg shadow-sm bg-white">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <MessageSquare className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Live Chat</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Chat with our support team in real-time
-                </p>
-                <button className="w-full border rounded-lg px-4 py-2 text-sm hover:bg-primary/10 transition">
-                  Start Chat
-                </button>
-              </div>
-
-              {/* Phone */}
-              <div className="p-6 border rounded-lg shadow-sm bg-white">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Call Us</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Mon-Fri from 9am to 6pm EST
-                </p>
-                <a href="tel:+1234567890" className="text-primary hover:underline">
-                  +1 (234) 567-890
-                </a>
-              </div>
-
-              {/* Address */}
-              <div className="p-6 border rounded-lg shadow-sm bg-white">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Visit Us</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Come say hello at our office
-                </p>
-                <address className="not-italic text-sm text-muted-foreground">
-                  123 Business Street
-                  <br />
-                  San Francisco, CA 94102
-                  <br />
-                  United States
-                </address>
-              </div>
+          {/* Contact Info Boxes */}
+          <div className="mx-auto max-w-4xl mt-10 flex flex-col md:flex-row md:items-center md:justify-center gap-6">
+            <div className="flex-1 flex flex-row items-center gap-2 px-4 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+              <img
+                src={envelopeIcon}
+                alt="Contact"
+                className="w-20 h-20 object-contain mb-1 drop-shadow-md"
+              />
+              <span className="text-[#9355dc] text-xl font-semibold">
+                contact@Iteck.com
+              </span>
             </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-2 p-6 border rounded-lg shadow-sm bg-white">
-              <h2 className="text-2xl font-semibold mb-2">Send us a message</h2>
-              <p className="text-sm text-muted-foreground mb-6">
-                Fill out the form below and we'll get back to you as soon as possible
-              </p>
-              <form className="space-y-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label htmlFor="firstName" className="block text-sm font-medium">
-                      First Name
-                    </label>
-                    <input
-                      id="firstName"
-                      placeholder="John"
-                      className="w-full border rounded-lg px-3 py-2 text-sm"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="lastName" className="block text-sm font-medium">
-                      Last Name
-                    </label>
-                    <input
-                      id="lastName"
-                      placeholder="Doe"
-                      className="w-full border rounded-lg px-3 py-2 text-sm"
-                    />
-                  </div>
-                </div>
+            <div className="flex-1 flex flex-row items-center gap-2 px-4 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+              <img
+                src={location}
+                alt="location"
+                className="w-20 h-20 object-contain mb-1 drop-shadow-md"
+              />
+              <span className="text-[#9355dc] text-xl font-semibold">
+                58 Howard St, Toronto
+              </span>
+            </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full border rounded-lg px-3 py-2 text-sm"
-                  />
-                </div>
+            <div className="flex-1 flex flex-row items-center gap-2 px-4 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+              <img
+                src={message}
+                alt="message" 
+                className="w-20 h-20 object-contain mb-1 drop-shadow-md"
+              />
+              <span className="text-[#9355dc] text-xl font-semibold">
+                (+23) 5535 68 68
+              </span>
+            </div>
+          </div>
+        </section>
 
-                <div className="space-y-2">
-                  <label htmlFor="company" className="block text-sm font-medium">
-                    Company (Optional)
-                  </label>
-                  <input
-                    id="company"
-                    placeholder="Acme Inc."
-                    className="w-full border rounded-lg px-3 py-2 text-sm"
-                  />
-                </div>
+        {/* Contact Form Section */}
+        <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
+          {/* Floating Decorative Image */}
+          <div className="absolute bottom-10 left-25 z-20 ">
+            <img
+              src={atIcon}
+              alt="At symbol"
+              className="w-28 md:w-36 opacity-95 hover:scale-105 transition-transform duration-500"
+            />
+          </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="block text-sm font-medium">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    placeholder="How can we help?"
-                    className="w-full border rounded-lg px-3 py-2 text-sm"
-                  />
-                </div>
+          {/* Floating Envelope (Top Right) */}
+          <div className="absolute top-26 right-20 md:right-12 z-20 animate-float">
+            <div className="relative">
+              <img
+                src={envelopeIcon}
+                alt="Envelope"
+                className="w-32 md:w-36 opacity-100 drop-shadow-lg"
+              />
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    placeholder="Tell us more about your inquiry..."
-                    rows={6}
-                    className="w-full border rounded-lg px-3 py-2 text-sm"
-                  />
-                </div>
+            </div>
+          </div>
 
+
+          {/* Form Container */}
+          <div className="relative bg-blue-50 rounded-[30px] shadow-xl max-w-6xl w-full p-10 md:p-12 z-10">
+            <p className="text-center text-red-500 text-sm mb-6">
+              The field is required mark as <span className="font-semibold">*</span>
+            </p>
+
+            <form className="flex flex-col items-center space-y-6">
+              {/* Grid for input fields but fixed width */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-[700px] max-w-full">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="rounded-full border bg-white border-gray-300 px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address *"
+                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                  required
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number (optional)"
+                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                />
+                <input
+                  type="text"
+                  placeholder="Your Website (optional)"
+                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                />
+              </div>
+
+              {/* Single input below grid */}
+              <input
+                type="text"
+                placeholder="Select Service"
+                className="rounded-full border border-gray-300 bg-white px-5 py-3 w-[700px] max-w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+              />
+
+              {/* Textarea */}
+              <textarea
+                rows="5"
+                placeholder="How can we help you?"
+                className="rounded-3xl border border-gray-300 px-5 py-3 w-[700px] max-w-full text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
+                required
+              ></textarea>
+
+
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+                <input type="checkbox" className="accent-[#8b5cf6]" />
+                <p>
+                  By submitting, I’m agreed to the{" "}
+                  <a
+                    href="#"
+                    className="underline text-black hover:text-[#8b5cf6]"
+                  >
+                    Terms & Conditions
+                  </a>
+                </p>
+              </div>
+
+              <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white rounded-lg py-3 text-sm font-medium hover:opacity-90 transition"
+                  className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-medium rounded-full py-3 px-8 transition duration-300"
                 >
-                  Send Message
+                  Send Your Request
                 </button>
-              </form>
-            </div>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        {/* Responsive Full-Width Google Map */}
+        <section className="w-full">
+          <div className="w-full h-[320px] md:h-[500px] lg:h-[500px]">
+            <iframe
+              title="Flatbush Brooklyn NY Map"
+              src="https://www.google.com/maps?q=Flatbush+Brooklyn,+NY,+USA&output=embed"
+              allowFullScreen=""
+              loading="lazy"
+              className="w-full h-full border-0 rounded-none"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </section>
       </main>
 
       <Footer />
     </div>
-  ); 
+  );
 }
