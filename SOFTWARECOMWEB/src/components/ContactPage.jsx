@@ -8,7 +8,7 @@ import location from "../assets/location.png"
 import message from "../assets/message.png"
 export default function ContactPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f5fafe]">
+    <div className="bg-gray-50 min-h-screen">
       <Header />
 
       <main className="flex-1">
@@ -31,39 +31,43 @@ export default function ContactPage() {
 
           {/* Contact Info Boxes */}
           <div className="mx-auto max-w-4xl mt-10 flex flex-col md:flex-row md:items-center md:justify-center gap-6">
-            <div className="flex-1 flex flex-row items-center gap-2 px-4 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#f4f7ff]shadow-md hover:shadow-lg transition-shadow duration-300 w-fit">
               <img
                 src={envelopeIcon}
                 alt="Contact"
-                className="w-20 h-20 object-contain mb-1 drop-shadow-md"
+                className="h-10 w-10 object-contain drop-shadow-md"
               />
-              <span className="text-[#9355dc] text-xl font-semibold">
-                contact@Iteck.com
-              </span>
+              <p className="text-base md:text-lg font-semibold text-gray-900">
+                contact@lteck.com
+              </p>
             </div>
 
-            <div className="flex-1 flex flex-row items-center gap-2 px-4 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+
+
+            <div className="flex-1 flex flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
               <img
                 src={location}
                 alt="location"
-                className="w-20 h-20 object-contain mb-1 drop-shadow-md"
+                className="h-10 w-auto object-contain drop-shadow-md"
               />
-              <span className="text-[#9355dc] text-xl font-semibold">
+              <span className="text-[#9355dc] text-xl font-semibold whitespace-nowrap">
                 58 Howard St, Toronto
               </span>
+
             </div>
 
-            <div className="flex-1 flex flex-row items-center gap-2 px-4 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div className="flex-1 flex flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
               <img
                 src={message}
-                alt="message" 
-                className="w-20 h-20 object-contain mb-1 drop-shadow-md"
+                alt="message"
+                className="h-10 w-auto object-contain drop-shadow-md animate-float "
               />
               <span className="text-[#9355dc] text-xl font-semibold">
                 (+23) 5535 68 68
               </span>
             </div>
           </div>
+
         </section>
 
         {/* Contact Form Section */}
