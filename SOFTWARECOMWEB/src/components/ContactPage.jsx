@@ -2,19 +2,20 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Mail, MapPin, MessageSquare } from "lucide-react";
-import atIcon from "../assets/Aticon.png"; // bottom-left @ icon
-import envelopeIcon from "../assets/envicon.png"; // top-right envelope image
-import location from "../assets/location.png"
-import message from "../assets/message.png"
+import atIcon from "../assets/Aticon.png";
+import envelopeIcon from "../assets/envicon.png";
+import location from "../assets/location.png";
+import message from "../assets/message.png";
+
 export default function ContactPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1">
-        {/* Top Section - Contact Info */}
-        <section className="bg-white rounded-b-3xl shadow-sm border-t-4 border-[#7554e0] pb-8 pt-12 md:pt-20 lg:pt-28">
-          <div className="max-w-3xl mx-auto text-center space-y-1">
+        {/* ===== TOP SECTION ===== */}
+        <section className="bg-white rounded-b-3xl shadow-sm pb-8 pt-12 md:pt-20 lg:pt-28">
+          <div className="max-w-3xl mx-auto text-center space-y-1 px-4">
             <span className="inline-block bg-[#efe6fb] text-[#7554e0] px-4 py-1 rounded-lg mb-3 text-xs font-semibold tracking-wider">
               Contact us
             </span>
@@ -30,79 +31,71 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Info Boxes */}
-          <div className="mx-auto max-w-4xl mt-10 flex flex-col md:flex-row md:items-center md:justify-center gap-6">
-            <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#f4f7ff]shadow-md hover:shadow-lg transition-shadow duration-300 w-fit">
+          <div className="mx-auto max-w-5xl mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 px-4">
+            <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto justify-center">
               <img
                 src={envelopeIcon}
                 alt="Contact"
                 className="h-10 w-10 object-contain drop-shadow-md"
               />
-              <p className="text-base md:text-lg font-semibold text-gray-900">
-                contact@lteck.com
+              <p className="text-base md:text-lg font-semibold text-gray-900 text-center sm:text-left">
+                binarylogixofficial@gmail.com
               </p>
             </div>
 
-
-
-            <div className="flex-1 flex flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div className="flex items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto justify-center">
               <img
                 src={location}
                 alt="location"
                 className="h-10 w-auto object-contain drop-shadow-md"
               />
-              <span className="text-[#9355dc] text-xl font-semibold whitespace-nowrap">
-                58 Howard St, Toronto
+              <span className="text-[#9355dc] text-base sm:text-xl font-semibold text-center sm:text-left">
+                11-Himanshu Apartment,<br />Indrapuri, Bhopal 462022
               </span>
-
             </div>
 
-            <div className="flex-1 flex flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div className="flex items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto justify-center">
               <img
                 src={message}
                 alt="message"
-                className="h-10 w-auto object-contain drop-shadow-md animate-float "
+                className="h-10 w-auto object-contain drop-shadow-md animate-float"
               />
-              <span className="text-[#9355dc] text-xl font-semibold">
-                (+23) 5535 68 68
+              <span className="text-[#9355dc] text-base sm:text-xl font-semibold text-center sm:text-left">
+                +91 9617189757
               </span>
             </div>
           </div>
-
         </section>
 
-        {/* Contact Form Section */}
+        {/* ===== FORM SECTION ===== */}
         <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
-          {/* Floating Decorative Image */}
-          <div className="absolute bottom-10 left-25 z-20 ">
+          {/* Floating @ Icon (bottom left) */}
+          <div className="absolute bottom-5 left-5 md:bottom-10 md:left-10 z-20">
             <img
               src={atIcon}
               alt="At symbol"
-              className="w-28 md:w-36 opacity-95 hover:scale-105 transition-transform duration-500"
+              className="w-20 md:w-28 opacity-95 hover:scale-105 transition-transform duration-500"
             />
           </div>
 
-          {/* Floating Envelope (Top Right) */}
-          <div className="absolute top-26 right-20 md:right-12 z-20 animate-float">
-            <div className="relative">
-              <img
-                src={envelopeIcon}
-                alt="Envelope"
-                className="w-32 md:w-36 opacity-100 drop-shadow-lg"
-              />
-
-            </div>
+          {/* Floating Envelope (top right) */}
+          <div className="absolute top-6 right-6 md:top-10 md:right-12 z-20 animate-float">
+            <img
+              src={envelopeIcon}
+              alt="Envelope"
+              className="w-24 md:w-36 opacity-100 drop-shadow-lg"
+            />
           </div>
 
-
           {/* Form Container */}
-          <div className="relative bg-blue-50 rounded-[30px] shadow-xl max-w-6xl w-full p-10 md:p-12 z-10">
+          <div className="relative bg-blue-50 rounded-[30px] shadow-xl max-w-6xl w-full p-6 sm:p-8 md:p-12 z-10">
             <p className="text-center text-red-500 text-sm mb-6">
               The field is required mark as <span className="font-semibold">*</span>
             </p>
 
             <form className="flex flex-col items-center space-y-6">
-              {/* Grid for input fields but fixed width */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-[700px] max-w-full">
+              {/* Grid Inputs */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[700px]">
                 <input
                   type="text"
                   placeholder="Name"
@@ -127,23 +120,20 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Single input below grid */}
               <input
                 type="text"
                 placeholder="Select Service"
-                className="rounded-full border border-gray-300 bg-white px-5 py-3 w-[700px] max-w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
               />
 
-              {/* Textarea */}
               <textarea
                 rows="5"
                 placeholder="How can we help you?"
-                className="rounded-3xl border border-gray-300 px-5 py-3 w-[700px] max-w-full text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
+                className="rounded-3xl border border-gray-300 px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
                 required
               ></textarea>
 
-
-              <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-600 text-center sm:text-left">
                 <input type="checkbox" className="accent-[#8b5cf6]" />
                 <p>
                   By submitting, I’m agreed to the{" "}
@@ -168,17 +158,20 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Responsive Full-Width Google Map */}
+        {/* ===== GOOGLE MAP ===== */}
         <section className="w-full">
-          <div className="w-full h-[320px] md:h-[500px] lg:h-[500px]">
+          <div className="w-full h-[280px] sm:h-[350px] md:h-[450px] lg:h-[500px]">
             <iframe
-              title="Flatbush Brooklyn NY Map"
-              src="https://www.google.com/maps?q=Flatbush+Brooklyn,+NY,+USA&output=embed"
+              src="https://www.google.com/maps?q=Binarylogix+Technologies+LLP,+Himanshu+Apartment,+Indrapuri+A+Sector,+Bhopal,+Madhya+Pradesh+462041&output=embed"
+              width="100%"
+              height="600"
+              style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
-              className="w-full h-full border-0 rounded-none"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+              title="Binarylogix Technologies LLP Location"
+            />
+
           </div>
         </section>
       </main>

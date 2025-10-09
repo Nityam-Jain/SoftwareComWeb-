@@ -9,6 +9,7 @@ import Blogs from "./components/Blog";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./index.css";
+import ITCompanyPerfected from "./pages/NoteroLanding";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/features" element={<FeaturesPage />} />
+        {/* <Route path="/features" element={<FeaturesPage />} /> */}
         <Route path="/Blogs" element={<Blogs/>} />
+        <Route path="/NoteroLanding" element={<ITCompanyPerfected/>} />
       </Routes>
       {/* <Footer /> */}
     </Layout>

@@ -20,6 +20,7 @@ const socialIcons = [
   { name: "Google", icon: <Globe size={18} /> },
   { name: "LinkedIn", icon: <Linkedin size={18} /> },
 ];
+
 const posts = [
   {
     id: 1,
@@ -120,26 +121,14 @@ const blogListData = [
     image:
       "https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt41dc5f14d8586e1e/675fd155828566e310714e06/genai_Anggalih_Prasetya_shutterstock.jpg",
   },
-
   {
     id: 6,
     title: "Wireframe For UI/UX",
     desc: "If there’s one way that wireless technology has changed the way we work, it’s that will everyone [...].",
     category: "TIPS AND TRICKS",
     date: "15 Days ago",
-    image:
-      "http://iteck_vuenuxt.themescamp.com/assets/img/blog/3.jpeg",
+    image: "http://iteck_vuenuxt.themescamp.com/assets/img/blog/3.jpeg",
   },
-
-  // {
-  //   id: 7,
-  //   title: "How AI is Changing Digital Marketing",
-  //   desc: "Artificial Intelligence is revolutionizing digital marketing — from predictive analytics to smart ad targeting.",
-  //   category: "AI",
-  //   date: "15 Days ago",
-  //   image:
-  //     "https://images.unsplash.com/photo-1677444204458-23c28cc8b47d?auto=format&fit=crop&w=800&q=80",
-  // },
 ];
 
 const FeaturedPost = ({ posts }) => {
@@ -158,18 +147,18 @@ const FeaturedPost = ({ posts }) => {
         <img
           src={posts[current].image}
           alt={posts[current].title}
-          className="w-full h-[480px] object-cover transition-all duration-700"
+          className="w-full h-[260px] sm:h-[350px] md:h-[480px] object-cover transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-8">
-          <div className="text-sm text-gray-300 mb-2 flex items-center gap-2">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
+          <div className="text-xs sm:text-sm text-gray-300 mb-2 flex items-center gap-2 flex-wrap">
             <span className="uppercase tracking-wide">{posts[current].category}</span>
             <span>•</span>
             <span>Posted on {posts[current].date}</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-snug">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 leading-snug">
             {posts[current].title}
           </h2>
-          <p className="text-gray-200 text-sm md:text-base max-w-2xl">
+          <p className="text-gray-200 text-xs sm:text-sm md:text-base max-w-2xl">
             {posts[current].desc}
           </p>
         </div>
@@ -178,8 +167,9 @@ const FeaturedPost = ({ posts }) => {
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === current ? "bg-white" : "bg-gray-400"
-                }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === current ? "bg-white" : "bg-gray-400"
+              }`}
             ></button>
           ))}
         </div>
@@ -201,17 +191,17 @@ const Blog = () => {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Header />
 
-      <section className="container mx-auto mt-8 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+      <section className="container mx-auto mt-8 text-center px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2">
           Our{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#623abc] via-[#cc64bc] to-[#f57e8a]">
             Journal
           </span>
         </h1>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 text-sm sm:text-base mt-2">
           Get the latest articles from our journal, writing, discuss and share
         </p>
       </section>
@@ -219,7 +209,7 @@ const Blog = () => {
       <FeaturedPost posts={posts} />
 
       {/* Blog List + Sidebar */}
-      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 px-4">
         {/* Left Column */}
         <div className="lg:col-span-2 flex flex-col space-y-8">
           {blogListData.map((post) => (
@@ -227,17 +217,14 @@ const Blog = () => {
               key={post.id}
               className="flex flex-col sm:flex-row bg-white rounded-xl p-4 space-x-0 sm:space-x-5 border-b border-gray-200 pb-6 hover:shadow-md transition-all duration-300"
             >
-              {/* Post Image */}
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full sm:w-60 h-40 object-cover rounded-xl mb-3 sm:mb-0"
+                className="w-full sm:w-60 h-40 sm:h-44 object-cover rounded-xl mb-3 sm:mb-0"
               />
-
-              {/* Post Content */}
               <div className="flex flex-col justify-between flex-1">
                 <div>
-                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-1">
+                  <div className="flex flex-wrap items-center space-x-2 text-sm text-gray-500 mb-1">
                     <span className="text-[#6c4bdb] font-semibold uppercase tracking-wide text-xs">
                       {post.category}
                     </span>
@@ -247,16 +234,17 @@ const Blog = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1 hover:text-[#6c4bdb] cursor-pointer">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 hover:text-[#6c4bdb] cursor-pointer">
                     {post.title}
                   </h3>
 
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    {post.desc.length > 90 ? `${post.desc.slice(0, 90)} [...]` : post.desc}
+                    {post.desc.length > 90
+                      ? `${post.desc.slice(0, 90)} [...]`
+                      : post.desc}
                   </p>
                 </div>
 
-                {/* Bottom Meta Info */}
                 <div className="flex items-center text-xs text-gray-500 mt-3 space-x-5">
                   <div className="flex items-center space-x-1">
                     <div className="w-5 h-5 flex items-center justify-center bg-[#6c4bdb]/10 text-[#6c4bdb] rounded-full text-[10px]">
@@ -264,20 +252,11 @@ const Blog = () => {
                     </div>
                     <span>By Admin</span>
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <i className="far fa-comment"></i>
-                    <span>{post.comments}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <i className="far fa-eye"></i>
-                    <span>{post.views}</span>
-                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
 
         {/* Right Sidebar */}
         <aside className="space-y-10">
@@ -387,7 +366,7 @@ const Blog = () => {
             <h4 className="text-lg font-semibold mb-3 uppercase tracking-wider">
               Our Instagram
             </h4>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-6 lg:grid-cols-3">
               {[
                 "https://images.unsplash.com/photo-1611606063065-7c06b48d91a7?auto=format&fit=crop&w=400&q=80",
                 "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=400&q=80",
@@ -400,7 +379,7 @@ const Blog = () => {
                   key={i}
                   src={img}
                   alt="instagram"
-                  className="w-20 h-20 object-cover rounded-lg hover:opacity-80 transition"
+                  className="w-full h-20 object-cover rounded-lg hover:opacity-80 transition"
                 />
               ))}
             </div>
