@@ -8,6 +8,31 @@ import paypalIcon from "../../assets/popularimg5.png";
 export default function IntegrationSection() {
   return (
     <section className="w-full bg-white py-16 relative overflow-hidden">
+      {/* ✅ Inline style for gradient & floating animations */}
+      <style>{`
+        .bg-gradient-animate {
+          background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
+          background-size: 400% 400%;
+          animation: gradientShift 15s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        /* ✅ Floating Animation for Icons */
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+        }
+
+        .float-slow { animation: float 4s ease-in-out infinite; }
+        .float-medium { animation: float 5s ease-in-out infinite; }
+        .float-fast { animation: float 6s ease-in-out infinite; }
+      `}</style>
+
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-16 w-5 h-5 rounded-full bg-purple-300 opacity-60"></div>
@@ -18,8 +43,7 @@ export default function IntegrationSection() {
 
         {/* Wavy SVG */}
         <svg
-          className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
-          width="900"
+          className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-[600px] sm:w-[800px] md:w-[900px]"
           height="90"
           viewBox="0 0 900 90"
           fill="none"
@@ -36,38 +60,40 @@ export default function IntegrationSection() {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
-        <span className="inline-block text-xs sm:text-sm mb-3 px-3 bg-purple-100 text-purple-700 rounded-md">
-          One-Time Payment
-        </span>
-
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3">
-          Integration With{" "}
-          <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">
-            Popular Apps
+        <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold mb-3">
+          Trusted by Our{" "}
+          <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
+            Leading Clients
           </span>
         </h2>
 
         <p className="mt-2 mb-10 text-gray-700 text-sm sm:text-base md:text-lg">
-          Notero integrates with popular apps. Helps you easily connect and collaborate.
+          Our solutions empower businesses to achieve growth, efficiency, and
+          excellence. We collaborate closely with clients to deliver measurable
+          results and lasting impact.
         </p>
 
-        {/* Icons container */}
-        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-10 md:gap-14 py-8 relative z-20">
-          <div className="flex flex-col items-center">
-            <img src={dropboxIcon} alt="Dropbox" className="w-20 sm:w-24 md:w-32 h-auto" />
-          </div>
-          <div className="flex flex-col items-center">
-            <img src={googleIcon} alt="Google Calendar" className="w-20 sm:w-24 md:w-32 h-auto" />
-          </div>
-          <div className="flex flex-col items-center">
-            <img src={zeplinIcon} alt="Zeplin" className="w-20 sm:w-24 md:w-32 h-auto" />
-          </div>
-          <div className="flex flex-col items-center">
-            <img src={slackIcon} alt="Slack" className="w-20 sm:w-24 md:w-32 h-auto" />
-          </div>
-          <div className="flex flex-col items-center">
-            <img src={paypalIcon} alt="PayPal" className="w-20 sm:w-24 md:w-32 h-auto" />
-          </div>
+        {/* ✅ Icons container - responsive & animated */}
+        <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-8 py-8 relative z-20">
+          {/* Each icon - full width on mobile */}
+          {[dropboxIcon, googleIcon, zeplinIcon, slackIcon, paypalIcon].map((icon, idx) => (
+            <div
+              key={idx}
+              className="flex justify-center items-center w-full sm:w-auto"
+            >
+              <img
+                src={icon}
+                alt={`Client ${idx + 1}`}
+                className={`w-24 sm:w-20 md:w-24 lg:w-32 h-auto ${
+                  idx % 3 === 0
+                    ? "float-slow"
+                    : idx % 3 === 1
+                    ? "float-medium"
+                    : "float-fast"
+                }`}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

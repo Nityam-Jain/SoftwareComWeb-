@@ -5,14 +5,15 @@ import AppLanding from "./ui/AppLandingPage"
 import Features from "./ui/Features"
 import Creative from "./ui/Creatives"
 import Notes from "./ui/Notes"
-// import About from "./ui/About"
+import About from "./ui/About"
 import Popular from "./ui/Popularapps"
 import MobileSlider from "./ui/mobileslider"
 import Customers from "./ui/customers"
+import Stats from "./ui/stats"
 // import Price from "./ui/price"
 import Support from "./ui/Support"
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+// import { Button } from "./ui/button";
+// import { Card, CardContent } from "./ui/card";
 import {
   Smartphone,
   Zap,
@@ -32,7 +33,9 @@ function HomePage() {
 
       <AppLanding />
 
-      <Features />
+      <Popular />
+
+      {/* <Features /> */}
 
       <Creative />
 
@@ -41,13 +44,14 @@ function HomePage() {
       {/* <About /> */}
 
 
-      {/* <Popular /> */}
 
-      <MobileSlider />
+      {/* <MobileSlider /> */}
 
       <Customers />
 
       {/* <Price /> */}
+
+      <Stats />
 
       <Support />
 

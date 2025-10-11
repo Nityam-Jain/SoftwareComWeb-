@@ -1,107 +1,108 @@
 import React, { useState } from "react";
-// import githubIcon from "../assets/github.png";
-// import twitterIcon from "../assets/twitter.png";
-// import telegramIcon from "../assets/telegram.png";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-const faqLeft = [
-  "How Benefit That I Got When Choose Basic Plan?",
-  "How Do I Organize My Notes?",
-  "How Long For A Standard Project",
-  "How About Data Security & NDA Agreement",
-];
-
-const faqRight = [
+const faqs = [
   {
-    question: "How Does Notero Store My Data?",
-    answer:
-      "Through the collaboration with customers in discussing needs and demand, we’re able to attain mutual understanding, gain customer trust to offer appropriate advice"
+    title: "What makes Binarylogix different from other IT service providers?",
+    content:
+      "At Binarylogix, we combine creativity, strategy, and technology to deliver measurable results. Our team focuses on understanding your business goals first — then builds tailored digital solutions that drive growth, efficiency, and lasting value.",
   },
-  { question: "Does Notero Support Storing Data On ICloud?" },
-  { question: "How Do I Change My Email Or Password?" },
-  { question: "Can My Premium License Be Used For All Devices?" },
-  { question: "Can I Lock My Note App?" }
+  {
+    title: "How long does it take to develop a website or mobile app?",
+    content:
+      "Timelines vary depending on project complexity, but most web projects take 3–6 weeks and mobile apps around 6–10 weeks. We ensure transparent communication at every stage — from planning and prototyping to final deployment.",
+  },
+  {
+    title: "Do you provide complete digital marketing solutions?",
+    content:
+      "Yes, we offer 360° digital marketing services — including SEO, Google Ads, social media marketing, and content strategy. Our goal is to help your brand connect with the right audience and achieve measurable growth online.",
+  },
+  {
+    title: "Can you help improve my website’s Google ranking?",
+    content:
+      "Absolutely. Our SEO experts perform in-depth audits, optimize on-page and technical SEO, and create keyword-rich content strategies. We focus on long-term ranking stability and sustainable organic traffic growth.",
+  },
+  {
+    title: "How do you approach social media marketing?",
+    content:
+      "We craft platform-specific content strategies to boost engagement, visibility, and trust. Our campaigns focus on storytelling and brand personality — turning followers into loyal customers across Instagram, LinkedIn, and Facebook.",
+  },
+  // {
+  //   title: "What kind of businesses do you work with?",
+  //   content:
+  //     "We collaborate with startups, small businesses, and enterprises across industries — from tech and retail to education and real estate. Whether it’s a single-page website or a full digital transformation, we adapt to your scale and vision.",
+  // },
+  // {
+  //   title: "Do you provide maintenance and post-launch support?",
+  //   content:
+  //     "Yes. Every project comes with reliable maintenance and ongoing support. We monitor performance, fix issues, and provide continuous improvements to keep your digital assets optimized and secure.",
+  // },
+  // {
+  //   title: "Can you handle branding, design, and content creation too?",
+  //   content:
+  //     "Definitely. Our creative team specializes in logo design, UI/UX, video editing, and content production — ensuring your brand looks cohesive and communicates powerfully across all platforms.",
+  // },
 ];
 
-export default function FAQSupportSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+
+export default function FAQSection() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
-    <section className="bg-white pt-16 pb-6">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Top */}
-        <span className="inline-block text-xs mb-4 px-3 bg-purple-100 text-purple-700 rounded-md">Frequently Asked Question</span>
-        <h2 className="text-4xl font-extrabold mb-8">
-          Need A{" "}
-          <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">Support?</span>
-        </h2>
-        {/* Accordion layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-          {/* Left column */}
-          <div>
-            {faqLeft.map((q, i) => (
-              <div
-                key={i}
-                className="border-b border-gray-200 py-5 cursor-pointer flex items-center justify-between"
-              >
-                <div className="font-bold text-gray-800">{q}</div>
-                <span className="text-xl text-gray-400">&#9662;</span>
-              </div>
-            ))}
-          </div>
-          {/* Right column */}
-          <div>
-            {faqRight.map((item, i) => (
-              <div key={i} className="border-b border-gray-200">
-                <button
-                  className={`w-full text-left py-5 flex items-center justify-between ${openIndex === i ? "text-purple-700 font-bold" : "font-bold text-gray-800"} transition`}
-                  onClick={() => setOpenIndex(i)}
-                  aria-expanded={openIndex === i}
-                >
-                  {item.question}
-                  <span className={`text-xl ${openIndex === i ? "text-purple-600 rotate-180" : "text-gray-400"} transition-transform duration-200`}>&#9662;</span>
-                </button>
-                {/* Answer box */}
-                {item.answer && openIndex === i &&
-                  <div className="bg-purple-50 p-5 rounded-md text-sm text-gray-700 mb-3">
-                    {item.answer}
-                  </div>
-                }
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Bottom COMMUNTY/HUB SECTION */}
-        <div className="mt-20">
-          <span className="inline-block text-xs mb-3 px-3 bg-purple-100 text-purple-700 rounded-md">Notero Community</span>
-          <h2 className="mb-10 text-3xl font-extrabold text-center">
-            Join Into <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">Our Hub</span>
+    <section className="w-full bg-white py-16">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          {/* <span className="inline-block text-xs mb-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-md">
+            OUR SERVICES
+          </span> */}
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
+            Frequently Asked Questions
           </h2>
-          <div className="flex flex-col md:flex-row justify-center gap-7">
-            {/* Github CARD */}
-            <div className="flex flex-col items-center bg-white border border-gray-200 px-8 py-6 rounded-xl shadow hover:shadow-lg transition max-w-xs mx-auto">
-              <div className="w-11 h-11 mb-2 rounded-full flex items-center justify-center bg-purple-100">
-                {/* <img src={githubIcon} alt="Github" className="w-6 h-6" /> */}
+
+          <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+            Explore how Binarylogix empowers businesses through technology,
+            creativity, and strategy — delivering solutions that drive results.
+          </p>
+        </div>
+
+        {/* FAQ List */}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="border border-gray-200 rounded-xl shadow-sm overflow-hidden transition-all duration-300"
+            >
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition"
+              >
+                <span className="font-semibold text-gray-800">
+                  {faq.title}
+                </span>
+                {activeIndex === index ? (
+                  <ChevronUp className="text-blue-600" />
+                ) : (
+                  <ChevronDown className="text-gray-500" />
+                )}
+              </button>
+
+              <div
+                className={`transition-all duration-500 ease-in-out ${activeIndex === index
+                    ? "max-h-40 opacity-100 p-5 pt-0"
+                    : "max-h-0 opacity-0"
+                  }`}
+              >
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {faq.content}
+                </p>
               </div>
-              <div className="font-bold text-lg">Github</div>
-              <div className="text-xs text-gray-500 text-center mt-1">Open Source &amp; Commit Code</div>
             </div>
-            {/* Twitter CARD */}
-            <div className="flex flex-col items-center bg-white border border-gray-200 px-8 py-6 rounded-xl shadow hover:shadow-lg transition max-w-xs mx-auto">
-              <div className="w-11 h-11 mb-2 rounded-full flex items-center justify-center bg-purple-100">
-                {/* <img src={twitterIcon} alt="Twitter" className="w-6 h-6" /> */}
-              </div>
-              <div className="font-bold text-lg">Twitter</div>
-              <div className="text-xs text-gray-500 text-center mt-1">Latest News &amp; Update</div>
-            </div>
-            {/* Telegram CARD */}
-            <div className="flex flex-col items-center bg-white border border-gray-200 px-8 py-6 rounded-xl shadow hover:shadow-lg transition max-w-xs mx-auto">
-              <div className="w-11 h-11 mb-2 rounded-full flex items-center justify-center bg-purple-100">
-                {/* <img src={telegramIcon} alt="Telegram" className="w-6 h-6" /> */}
-              </div>
-              <div className="font-bold text-lg">Telegram</div>
-              <div className="text-xs text-gray-500 text-center mt-1">Channel for Community</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

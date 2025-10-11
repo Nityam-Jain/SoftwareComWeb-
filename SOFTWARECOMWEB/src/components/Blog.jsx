@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Digimark from "../assets/digimark.png"
+import Website from "../assets/websiteimg.png"
+import Seo from "../assets/seoimg.png"
+import seoImg from "../assets/seoimg.png";
+import marketingImg from "../assets/digimark.png";
+import webdesignImg from "../assets/websiteimg.png";
 import {
   Search,
   Mail,
@@ -21,114 +27,89 @@ const socialIcons = [
   { name: "LinkedIn", icon: <Linkedin size={18} /> },
 ];
 
+
 const posts = [
   {
     id: 1,
-    title: "Solutions For Big Data Issue, Expert Perspective",
-    desc: "If there's one way that wireless technology has changed the way we work, it's that everyone is now connected [...]",
-    category: "NEWS",
+    title: "Boost Your Online Presence with Smart SEO Strategies",
+    desc: "Learn how advanced SEO practices can help your business rank higher on Google, attract quality traffic, and build long-term online visibility.",
+    category: "SEO",
     date: "3 Days ago",
-    image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+    image: seoImg,
   },
   {
     id: 2,
-    title: "How To Become A Python Develop Expert",
-    desc: "If there's one way that wireless technology has changed the way we work, it's that everyone [...]",
-    category: "NEWS",
-    date: "12 Days ago",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    title: "Effective Digital Marketing Techniques for Business Growth",
+    desc: "Explore data-driven digital marketing methods that enhance brand awareness, boost conversions, and strengthen your customer engagement.",
+    category: "MARKETING",
+    date: "7 Days ago",
+    image: marketingImg,
   },
   {
     id: 3,
-    title: "VR Game, Opportunity & Challenge",
-    desc: "If there's one way that wireless technology has changed the way we work, it's that everyone [...]",
-    category: "NEWS",
-    date: "12 Days ago",
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    title: "Modern Web Designing Trends for 2025",
+    desc: "Discover the latest web design principles and UI/UX trends that make your website visually stunning, fast, and user-friendly.",
+    category: "WEB DESIGNING",
+    date: "10 Days ago",
+    image: webdesignImg,
   },
 ];
 
 const popularPosts = [
   {
     id: 1,
-    title: "Crypto Trend 2023",
-    desc: "If there's one way that wireless technology has changed the way we work, it's that everyone is now connected [...]",
+    title: "Boost Your Business with Digital Marketing Strategies",
+    desc: "Learn how digital marketing can transform your brand’s visibility and help you connect with the right audience for higher engagement and conversions.",
     image:
-      "https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=400&q=80", // digital marketing
   },
   {
     id: 2,
-    title: "AI With Fingerprint",
-    desc: "If there's one way that wireless technology has changed the way we work, it's that everyone is now connected [...]",
+    title: "Master SEO: Rank Higher and Drive Organic Traffic",
+    desc: "SEO is the key to online growth. Discover proven techniques to improve your website’s ranking, visibility, and authority on search engines.",
     image:
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://artattackk.com/blogs/wp-content/uploads/2024/04/welcome.gif", // SEO
   },
   {
     id: 3,
-    title: "NFT Game! New Opportunity",
-    desc: "If there's one way that wireless technology has changed the way we work, it's that everyone is now connected [...]",
+    title: "Building Modern Websites that Convert Visitors into Clients",
+    desc: "A great website is more than design—it’s strategy, performance, and user experience. Learn how to create responsive, fast, and conversion-driven websites.",
     image:
-      "https://images.unsplash.com/photo-1465101178521-c1a9136a3fd9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80", // web development
   },
 ];
+
 
 const blogListData = [
   {
     id: 1,
-    title: "Top 10 Web Development Trends in 2025",
-    desc: "Explore the latest frameworks, design approaches, and performance optimization techniques shaping the future of web development.",
-    category: "TECH",
+    title: "What is Digital Marketing ?",
+    desc: "In today’s interconnected world, businesses are constantly looking for innovative ways to reach their audiences. Digital marketing has emerged as a powerful and essential strategy…",
+    category: "Marketing",
     date: "1 Day ago",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    image: Digimark
+      
   },
   {
     id: 2,
-    title: "The Future of Cloud Computing in 2025",
-    desc: "Cloud technology is evolving rapidly — learn how edge computing and AI-driven infrastructure are redefining scalability.",
-    category: "CLOUD",
+    title: "Importance of a Website in a Business",
+    desc: " First Impressions MatterA website is often the first interaction a customer has with your business. A professional, well-designed website creates a positive first impression,…",
+    category: "Development",
     date: "5 Days ago",
-    image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    image: Website,
+      
   },
   {
-    id: 3,
-    title: "Mastering React Hooks for Efficient Development",
-    desc: "React Hooks have transformed the way we write components. Learn how to use useEffect and useMemo effectively in production apps.",
-    category: "REACT",
-    date: "8 Days ago",
-    image:
-      "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 4,
-    title: "Cybersecurity Best Practices for Modern Startups",
-    desc: "Security isn't optional. Here are practical ways to protect your app and data from modern cyber threats.",
-    category: "SECURITY",
-    date: "10 Days ago",
-    image:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 5,
-    title: "How AI is Changing Digital Marketing",
-    desc: "Artificial Intelligence is revolutionizing digital marketing — from predictive analytics to smart ad targeting.",
-    category: "AI",
-    date: "15 Days ago",
-    image:
-      "https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt41dc5f14d8586e1e/675fd155828566e310714e06/genai_Anggalih_Prasetya_shutterstock.jpg",
-  },
-  {
-    id: 6,
-    title: "Wireframe For UI/UX",
-    desc: "If there’s one way that wireless technology has changed the way we work, it’s that will everyone [...].",
-    category: "TIPS AND TRICKS",
-    date: "15 Days ago",
-    image: "http://iteck_vuenuxt.themescamp.com/assets/img/blog/3.jpeg",
-  },
+  id: 3,
+  title: "Mastering SEO Strategies for Business Growth",
+  desc: "Discover proven SEO techniques to boost your website visibility, improve Google rankings, and drive more organic traffic to your business effectively.",
+  category: "SEO",
+  date: "8 Days ago",
+  image: Seo
+    ,
+},
+
+
 ];
 
 const FeaturedPost = ({ posts }) => {
@@ -167,9 +148,8 @@ const FeaturedPost = ({ posts }) => {
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                index === current ? "bg-white" : "bg-gray-400"
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === current ? "bg-white" : "bg-gray-400"
+                }`}
             ></button>
           ))}
         </div>
@@ -181,13 +161,12 @@ const FeaturedPost = ({ posts }) => {
 const Blog = () => {
   const categories = [
     { name: "ALL", count: 265 },
-    { name: "NEWS", count: 38 },
-    { name: "TECHNOLOGY", count: 16 },
-    { name: "TIPS & TRICKS", count: 85 },
-    { name: "CAREER", count: 21 },
-    { name: "COMMUNITY", count: 874 },
-    { name: "VIDEOS", count: 54 },
-    { name: "OTHERS", count: 85 },
+    { name: "SEO", count: 38 },
+    { name: "MARKETING", count: 16 },
+    { name: "WEB DESIGNING", count: 85 },
+    { name: "APP DEVELOPMENT", count: 21 },
+    { name: "GRAPHIC DESIGNING", count: 874 },
+
   ];
 
   return (
@@ -197,7 +176,7 @@ const Blog = () => {
       <section className="container mx-auto mt-8 text-center px-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2">
           Our{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#623abc] via-[#cc64bc] to-[#f57e8a]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3488fa] to-black/70 ">
             Journal
           </span>
         </h1>
@@ -225,7 +204,7 @@ const Blog = () => {
               <div className="flex flex-col justify-between flex-1">
                 <div>
                   <div className="flex flex-wrap items-center space-x-2 text-sm text-gray-500 mb-1">
-                    <span className="text-[#6c4bdb] font-semibold uppercase tracking-wide text-xs">
+                    <span className="text-blue-600 font-semibold uppercase tracking-wide text-xs">
                       {post.category}
                     </span>
                     <span className="text-gray-400">•</span>
@@ -234,7 +213,7 @@ const Blog = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 hover:text-[#6c4bdb] cursor-pointer">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 hover:text-blue-600 cursor-pointer">
                     {post.title}
                   </h3>
 
@@ -247,10 +226,10 @@ const Blog = () => {
 
                 <div className="flex items-center text-xs text-gray-500 mt-3 space-x-5">
                   <div className="flex items-center space-x-1">
-                    <div className="w-5 h-5 flex items-center justify-center bg-[#6c4bdb]/10 text-[#6c4bdb] rounded-full text-[10px]">
+                    <div className="w-5 h-5 flex items-center justify-center bg-[#6c4bdb]/10 text-black rounded-full text-[10px]">
                       A
                     </div>
-                    <span>By Admin</span>
+                    <span> BinaryLogix </span>
                   </div>
                 </div>
               </div>
@@ -318,15 +297,15 @@ const Blog = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="bg-[#f4f7ff] rounded-2xl p-6 shadow-sm">
-            <h4 className="text-lg font-semibold mb-1 uppercase tracking-wider">
+          <div className="bg-[#f4f7ff] rounded-2xl p-8 shadow-md w-full max-w-md mx-auto">
+            <h4 className="text-lg font-semibold mb-2 uppercase tracking-wider text-center">
               Newsletter
             </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              Register now to get latest updates on promotions & coupons.
+            <p className="text-sm text-gray-600 mb-5 text-center">
+              Register now to get the latest updates on promotions & coupons.
             </p>
-            <div className="space-y-3">
-              <div className="relative">
+            <div className="flex flex-col items-center gap-3">
+              <div className="relative w-[85%]">
                 <Mail
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                   size={18}
@@ -337,14 +316,15 @@ const Blog = () => {
                   className="w-full pl-10 pr-3 py-2 rounded-xl border border-gray-300 focus:outline-none"
                 />
               </div>
-              <button className="w-full bg-[#6c4bdb] hover:bg-[#5a3ec5] text-white py-2 rounded-xl transition">
+              <button className="w-[50%] bg-gradient-to-r from-[#3488fa] to-black/70 text-white py-2 rounded-xl transition hover:opacity-90">
                 Subscribe
               </button>
             </div>
           </div>
 
+
           {/* Social */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold mb-3 uppercase tracking-wider">
               Social
             </h4>
@@ -359,10 +339,10 @@ const Blog = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Instagram */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold mb-3 uppercase tracking-wider">
               Our Instagram
             </h4>
@@ -383,25 +363,24 @@ const Blog = () => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Popular Tags */}
           <div>
             <h4 className="text-lg font-semibold mb-3 uppercase tracking-wider">
               Popular Tags
             </h4>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap mb-6 gap-2">
               {[
                 "WordPress",
-                "PHP",
-                "HTML/CSS",
+                "Graphic Designing",
                 "Figma",
                 "Technology",
                 "Marketing",
                 "Consultation",
                 "Seo",
-                "Envato",
-                "Psd",
+                "Website Development",
+                
               ].map((tag) => (
                 <span
                   key={tag}

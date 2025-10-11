@@ -1,137 +1,135 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import icon1 from "../../assets/customerimg.png";
 import icon2 from "../../assets/customerimg2.png";
 import icon3 from "../../assets/customerimg3.png";
+import icon4 from "../../assets/digimark.png";
+
+const testimonialsData = [
+  {
+    img: icon1,
+    text: "Binarylogix transformed our infrastructure with innovative cloud solutions, making operations faster and more secure.",
+    name: "JURGEN K.",
+    role: "CTO, Brator",
+  },
+  {
+    img: icon2,
+    text: "Their team developed a seamless web application that boosted user engagement by 45% in just 3 months.",
+    name: "FODEN P.",
+    role: "Director, Ecoland Resort",
+  },
+  {
+    img: icon3,
+    text: "Outstanding support and expertise in AI integration. Our systems are smarter and more efficient than ever.",
+    name: "KERRY T.",
+    role: "Lead Developer, Teckzone Inc",
+  },
+  {
+    img: icon4,
+    text: "Delivered an exceptional digital marketing solution that increased our leads by 70% within 2 months.",
+    name: "ALICE M.",
+    role: "Head of Digital, Digimark",
+  },
+];
 
 export default function TestimonialsSection() {
-    return (
-        <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-10 relative">
-                {/* Left Side */}
-                <div className="w-full lg:w-1/2 max-w-lg">
-                    <span className="inline-block text-xs sm:text-sm mb-3 px-3 bg-purple-100 text-purple-700 rounded-md">
-                        Testimonials
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">
-                        Loved From{" "}
-                        <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">
-                            Customers
-                        </span>
-                    </h2>
-                    <p className="text-gray-700 mb-8 sm:mb-10 mt-2 lg:mr-10 text-sm sm:text-base">
-                        Notero loved from thousands customer worldwide and get trusted from big companies.
-                    </p>
+  const [startIndex, setStartIndex] = useState(0);
 
-                    {/* Stats */}
-                    <div className="flex flex-col sm:flex-row gap-6 mb-10 sm:mb-12">
-                        {/* Stat 1 */}
-                        <div className="flex items-center gap-4">
-                            <img src={icon1} alt="Downloads" className="w-10 h-10" />
-                            <div>
-                                <div className="text-2xl sm:text-3xl font-bold text-purple-700">2,5M+</div>
-                                <div className="text-gray-600 text-xs sm:text-sm">
-                                    Downloaded<br />and Installation
-                                </div>
-                            </div>
-                        </div>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex((prev) => (prev + 1) % testimonialsData.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
-                        {/* Stat 2 */}
-                        <div className="flex items-center gap-4">
-                            <img src={icon2} alt="Star Rating" className="w-10 h-10" />
-                            <div>
-                                <div className="text-2xl sm:text-3xl font-bold text-blue-600">4.8/5</div>
-                                <div className="flex gap-1 mb-1">
-                                    {Array(5).fill().map((_, i) =>
-                                        <span key={i} className="text-yellow-400 text-lg">★</span>
-                                    )}
-                                </div>
-                                <div className="text-xs sm:text-sm text-gray-600">Based on 1,258 reviews</div>
-                            </div>
-                        </div>
-                    </div>
+  const visibleTestimonials = [];
+  for (let i = 0; i < 3; i++) {
+    visibleTestimonials.push(testimonialsData[(startIndex + i) % testimonialsData.length]);
+  }
 
-                    {/* Buttons */}
-                    <div className="flex flex-wrap gap-4 sm:gap-5 items-center mt-4">
-                        <a
-                            href="#"
-                            className="rounded-full bg-purple-700 text-white font-semibold px-6 sm:px-8 py-2 shadow-md hover:bg-purple-800 transition text-sm sm:text-base text-center"
-                        >
-                            See Reviews On App Store
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center gap-1 text-purple-700 font-semibold hover:underline transition text-sm sm:text-base"
-                        >
-                            <svg fill="none" viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={2} />
-                                <path d="M12 8v4l3 2" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            View Promotion
-                        </a>
-                    </div>
-                </div>
+  return (
+    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-20 flex flex-col md:flex-row items-stretch justify-between relative overflow-hidden">
+      {/* Left section */}
+      <div className="flex-1 flex flex-col justify-center z-10">
+        <span className="inline-block text-xs px-3 py-1 rounded bg-blue-50 text-blue-600 mb-4 sm:mb-6">
+          Testimonials
+        </span>
 
-                {/* Right Side: Testimonial Cards */}
-                <div className="w-full lg:w-1/2 flex flex-col gap-6 relative items-center">
-                    {/* Card 1 */}
-                    <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-start gap-4 mb-3 border border-gray-100">
-                        <img src={icon1} alt="App" className="w-12 h-12 rounded-lg bg-gray-50" />
-                        <div>
-                            <div className="flex gap-1 mb-2">
-                                {Array(5).fill().map((_, i) =>
-                                    <span key={i} className="text-yellow-400 text-md">★</span>
-                                )}
-                            </div>
-                            <p className="font-semibold text-gray-700 leading-snug text-sm sm:text-base">
-                                “You can even send emails to Evernote and gather all of the things you need in a single place.”
-                            </p>
-                            <div className="text-[0.85rem] sm:text-[0.9rem] text-gray-500 mt-2">
-                                <span className="font-bold">JURGEN K.</span> / Senior Marketing at
-                                <span className="text-indigo-500"> Br /ator</span>
-                            </div>
-                        </div>
-                    </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+          Loved by{" "}
+          <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
+            IT Clients
+          </span>
+        </h2>
 
-                    {/* Card 2 */}
-                    <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-start gap-4 mb-3 border border-gray-100 sm:ml-10">
-                        <img src={icon2} alt="App" className="w-12 h-12 rounded-lg bg-gray-50" />
-                        <div>
-                            <div className="flex gap-1 mb-2">
-                                {Array(5).fill().map((_, i) =>
-                                    <span key={i} className="text-yellow-400 text-md">★</span>
-                                )}
-                            </div>
-                            <p className="font-semibold text-gray-700 leading-snug text-sm sm:text-base">
-                                “Notero - 1st my choice for notes app. <span className="text-black font-bold">Awesome</span>”
-                            </p>
-                            <div className="text-[0.85rem] sm:text-[0.9rem] text-gray-500 mt-2">
-                                <span className="font-bold">FODEN P.</span> / Director at
-                                <span className="text-indigo-500"> Ecoland Resort</span>
-                            </div>
-                        </div>
-                    </div>
+        <p className="text-gray-600 text-sm sm:text-base md:text-base max-w-full sm:max-w-md mb-8 sm:mb-12">
+          Binarylogix has empowered businesses globally with cutting-edge software solutions, cloud services, and IT consulting trusted by enterprise-level companies.
+        </p>
 
-                    {/* Card 3 */}
-                    <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-start gap-4 border border-gray-100 sm:ml-20">
-                        <img src={icon3} alt="App" className="w-12 h-12 rounded-lg bg-gray-50" />
-                        <div>
-                            <div className="flex gap-1 mb-2">
-                                {Array(5).fill().map((_, i) =>
-                                    <span key={i} className="text-yellow-400 text-md">★</span>
-                                )}
-                            </div>
-                            <p className="font-semibold text-gray-700 leading-snug text-sm sm:text-base">
-                                ”This app is seriously good. It’s simple, clean and a real joy to use.”
-                            </p>
-                            <div className="text-[0.85rem] sm:text-[0.9rem] text-gray-500 mt-2">
-                                <span className="font-bold">KERRY T.</span> / Designer at
-                                <span className="text-indigo-500"> Teckzone Inc</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        {/* Stats */}
+        <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 items-start sm:items-center mb-10">
+          {/* <div className="flex flex-col items-start sm:items-center border-b sm:border-b-0 sm:border-r border-gray-200 pb-4 sm:pb-0 pr-0 sm:pr-12">
+            <img src={icon1} alt="" className="w-6 h-6 mb-1" />
+            <span className="text-2xl sm:text-3xl font-semibold text-gray-900">2,5M+</span>
+            <span className="text-gray-500 text-xs">Downloads & Installations</span>
+          </div> */}
+          {/* <div className="flex flex-col items-start sm:items-center pt-4 sm:pt-0 pl-0 sm:pl-12">
+            <img src={icon2} alt="" className="w-6 h-6 mb-1" />
+            <span className="text-2xl sm:text-3xl font-semibold text-gray-900">4.8/5</span>
+            <span className="text-yellow-400 flex items-center font-medium text-sm mb-0.5">
+              {Array(5).fill(0).map((_, i) => (<span key={i}>★</span>))}
+            </span>
+            <span className="text-gray-500 text-xs">Based on 1,258 reviews</span>
+          </div> */}
+        </div>
+      </div>
+
+      {/* Right section */}
+      <div className="flex-1 flex flex-col justify-center items-center space-y-6 sm:space-y-7 mt-10 md:mt-0 relative z-10 w-full">
+        {visibleTestimonials.map((item, idx) => (
+          <div
+            key={item.name + idx}
+            className={`
+              bg-white rounded-2xl shadow-lg px-5 sm:px-7 py-5 sm:py-6 w-full max-w-md
+              flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5
+              transition-all duration-700 ease-in-out
+              animate-float
+              ${idx === 0 ? 'translate-y-0 z-20' : idx === 1 ? 'translate-y-4 z-10' : 'translate-y-8 z-0 opacity-60 scale-95'}
+            `}
+            style={{
+              animationDelay: `${idx * 0.2}s`,
+            }}
+          >
+            <img src={item.img} alt={item.name} className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0" />
+            <div className="flex-1">
+              <div className="flex items-center mb-1">
+                {Array(5).fill(0).map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-base sm:text-lg">★</span>
+                ))}
+              </div>
+              <blockquote className="text-gray-700 text-sm sm:text-base font-medium leading-relaxed mb-2">
+                “{item.text}”
+              </blockquote>
+              <div className="font-semibold text-purple-600 text-xs sm:text-sm">{item.name}</div>
+              <div className="text-gray-400 text-xs sm:text-sm">{item.role}</div>
             </div>
-        </section>
-    );
+          </div>
+        ))}
+      </div>
+
+      {/* Animate float keyframes */}
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); box-shadow: 0 10px 32px 0 rgba(80,74,139,0.09);}
+            50% { transform: translateY(-14px); box-shadow: 0 20px 50px 0 rgba(80,74,139,0.15);}
+          }
+          .animate-float {
+            animation-name: float;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+          }
+        `}
+      </style>
+    </section>
+  );
 }
- 

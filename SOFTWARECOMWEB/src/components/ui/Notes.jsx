@@ -1,67 +1,125 @@
-import React from "react";
-import phoneImg from "../../assets/2mobile_image.png";
-import chromeImg from "../../assets/chrome_icon.png"
-export default function NotesSecuritySection() {
-    return (
-        <section className="w-full bg-white py-16">
-            <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center px-4 gap-8">
-                {/* Left: Content */}
-                <div className="w-full md:w-1/2 flex flex-col items-start md:pr-10">
-                    <span className="inline-block text-xs mb-3 px-2 bg-purple-100 text-purple-700 rounded-md">Better Note Management</span>
-                    <h2 className="text-4xl font-extrabold mb-2">
-                        Your Notes{" "}
-                        <span className="bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text text-transparent">
-                            Security
-                        </span>
-                    </h2>
-                    <p className="mt-2 mb-6 text-gray-700">
-                        Automatically syncs across all your devices. You can also access and write notes without internet connection.
-                    </p>
+import React, { useEffect, useRef, useState } from "react";
 
-                    {/* Features/Accordion cards */}
-                    <div className="w-full space-y-3 mb-5">
-                        {/* Expanded Card Example */}
-                        <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
-                            <span className="font-semibold text-purple-700 block mb-2">Create And Save Your Notes With Multi-Media</span>
-                            <p className="text-gray-600 leading-relaxed text-sm">
-                                Images, videos, PDFs and audio files are supported. Create math expressions and diagrams directly from the app. Take photos with the mobile app and save them to a note.
-                            </p>
-                        </div>
-                        {/* Other features */}
-                        <div className="font-semibold text-gray-900">Web Clipper Extension</div>
-                        <div className="font-semibold text-gray-900">Protect Your Note With Lock</div>
-                    </div>
+// Intersection observer hook
+const useInView = (options) => {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-                    {/* Chrome Web Store CTA */}
-                    <div className="flex items-center gap-3 mt-8">
-                        <div className="bg-gray-100 px-5 py-2 rounded-full flex items-center gap-2 shadow">
-                            <img
-                                src={chromeImg}
-                                alt="Chrome Web Store"
-                                className="w-7 h-7"
-                            />
-                            <span className="font-semibold">
-                                <span className="text-gray-700 text-sm">Available In The</span> <br />
-                                <span className="text-black text-base">Chrome Web Store</span>
-                            </span>
-
-                        </div>
-                    </div>
-                </div>
-
-                {/* Right: Phone Image */}
-                <div className="w-full md:w-1/2 flex justify-center relative min-h-[340px]">
-                    <img
-                        src={phoneImg}
-                        alt="Mobile security note"
-                        className="w-[380px] max-w-full drop-shadow-2xl rounded-xl"
-                    />
-                    {/* Decorative floating circles, optional */}
-                    <span className="absolute left-10 bottom-12 w-10 h-10 bg-purple-200 rounded-full blur-md opacity-70"></span>
-                    <span className="absolute right-14 top-20 w-6 h-6 bg-purple-400 rounded-full blur-md opacity-70"></span>
-                    <span className="absolute left-24 top-24 w-7 h-7 bg-pink-300 rounded-full blur-md opacity-70"></span>
-                </div>
-            </div>
-        </section>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      options
     );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [options]);
+
+  return [ref, isVisible];
+};
+
+export default function WhyChooseUsSection() {
+  const [ref, isVisible] = useInView({ threshold: 0.2 });
+
+  const features = [
+    {
+      title: "Tailored Strategies",
+      desc: "We create personalized digital marketing plans that align with your unique business goals and target audience, ensuring maximum impact and relevance.",
+    },
+    {
+      title: "Cutting-Edge Technology",
+      desc: "Leveraging the latest tools and trends, our team stays ahead of the curve to deliver innovative solutions that keep your brand competitive in a rapidly evolving digital landscape.",
+    },
+    {
+      title: "Results-Driven Approach",
+      desc: "Our focus is on achieving measurable outcomes. We use data-driven insights to optimize campaigns and track success, providing you with clear ROI and actionable results.",
+    },
+  ];
+
+  return (
+    <section
+      ref={ref}
+      className="w-full bg-gradient-to-r from-white via-blue-50 to-white py-20 relative overflow-hidden"
+    >
+      {/* Floating decorative shapes */}
+      <span className="absolute w-16 h-16 bg-blue-200 rounded-full blur-2xl animate-float1 opacity-60"></span>
+      <span className="absolute w-12 h-12 bg-blue-400 rounded-full blur-2xl animate-float2 opacity-50"></span>
+      <span className="absolute w-20 h-20 bg-cyan-300 rounded-full blur-2xl animate-float3 opacity-40"></span>
+
+      <div
+        className={`max-w-6xl mx-auto px-4 flex flex-col gap-12 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        <div className="text-center md:text-left">
+          <span className="inline-block text-xs mb-3 px-3 py-1 bg-blue-100 text-blue-700 rounded-full animate-fadeInUp">
+            Why Choose Us
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fadeInUp">
+            What Makes Us{" "}
+            <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
+              Different
+            </span>
+          </h2>
+          <p className="text-gray-700 text-lg md:text-xl animate-fadeInUp">
+            Discover why businesses trust Binarylogix to elevate their brand and drive measurable growth through technology and creativity.
+          </p>
+        </div>
+
+        {/* Features cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {features.map((feature, idx) => (
+            <div
+              key={idx}
+              className={`p-6 bg-gradient-to-tr from-white to-blue-50 border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card`}
+              style={{ animationDelay: `${idx * 0.2}s` }}
+            >
+              <h3 className="font-semibold text-blue-700 text-lg mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed text-sm">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Keyframe animations */}
+      <style jsx>{`
+        .animate-float1 {
+          top: 10%;
+          left: 5%;
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-float2 {
+          top: 30%;
+          right: 10%;
+          animation: float 8s ease-in-out infinite;
+        }
+        .animate-float3 {
+          top: 50%;
+          left: 40%;
+          animation: float 10s ease-in-out infinite;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        .animate-fadeInUp {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeInUp 0.8s forwards;
+        }
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-card {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeInUp 0.6s forwards;
+        }
+      `}</style>
+    </section>
+  );
 }

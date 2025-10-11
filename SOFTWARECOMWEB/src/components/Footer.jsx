@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo/iteck_logo.png";
+import logo from "../assets/logo/binarylogixlogo-remove.png";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
         {/* Download Section */}
         <div className="text-center mb-10 sm:mb-14 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight">
+          {/* <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight">
             Ready To{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#623abc] via-[#cc64bc] to-[#f57e8a]">
               Download
@@ -17,7 +17,7 @@ export default function Footer() {
 
           <p className="text-xs sm:text-sm md:text-base text-gray-700 mt-3">
             Discover your new favorite spaces, from Sao Paulo to Seoul. Download from App Store or Google Play.
-          </p>
+          </p> */}
 
           <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* <a
@@ -62,12 +62,12 @@ export default function Footer() {
           {/* Navigation Links */}
           <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 font-medium text-gray-700 text-xs sm:text-sm md:text-base">
             <Link to="/" className="text-purple-700 font-semibold">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/product">Product</Link>
-            <Link to="/portfolio">Portfolio</Link>
+            <Link to="/about">About Us</Link>
+            {/* <Link to="/product">Product</Link> */}
             <Link to="/services">Services</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/blog">Blog</Link>
+            <Link to="/projects">Portfolio</Link>
+            {/* <Link to="/shop">Shop</Link> */}
+            <Link to="/blogs">Blog</Link>
             <Link to="/contact">Contact</Link>
           </nav>
 
@@ -95,14 +95,14 @@ export default function Footer() {
 
         {/* Bottom Copy Section */}
         <div className="border-t border-gray-300 mt-7 pt-5 text-center text-[10px] sm:text-xs md:text-sm text-gray-600 select-none leading-relaxed">
-          © 2022 Copyrights by{" "}
+          © 2025 Copyrights by{" "}
           <a
             href="https://iteckco.com"
             target="_blank"
             rel="noreferrer"
             className="font-semibold text-gray-900 hover:underline"
           >
-            Iteck Co.
+           BinaryLogix
           </a>{" "}
           All Rights Reserved. Designed by{" "}
           <a

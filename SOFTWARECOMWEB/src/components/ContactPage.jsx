@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Mail, MapPin, MessageSquare } from "lucide-react";
 import atIcon from "../assets/Aticon.png";
 import envelopeIcon from "../assets/envicon.png";
 import location from "../assets/location.png";
@@ -16,12 +15,12 @@ export default function ContactPage() {
         {/* ===== TOP SECTION ===== */}
         <section className="bg-white rounded-b-3xl shadow-sm pb-8 pt-12 md:pt-20 lg:pt-28">
           <div className="max-w-3xl mx-auto text-center space-y-1 px-4">
-            <span className="inline-block bg-[#efe6fb] text-[#7554e0] px-4 py-1 rounded-lg mb-3 text-xs font-semibold tracking-wider">
+            <span className="inline-block bg-[#efe6fb] text-[#3488fa] px-4 py-1 rounded-lg mb-3 text-xs font-semibold tracking-wider">
               Contact us
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
               Get In{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#623abc] via-[#cc64bc] to-[#f57e8a] font-bold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3488fa] to-black/70 font-bold">
                 Touch
               </span>
             </h1>
@@ -31,38 +30,47 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Info Boxes */}
-          <div className="mx-auto max-w-5xl mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 px-4">
-            <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto justify-center">
+          <div className="mx-auto max-w-5xl mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 sm:gap-8 px-4 sm:px-6">
+            {/* Email Box */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-[30%] text-center sm:text-left">
               <img
                 src={envelopeIcon}
-                alt="Contact"
-                className="h-10 w-10 object-contain drop-shadow-md"
+                alt="Email"
+                className="h-12 w-12 object-contain drop-shadow-md"
               />
-              <p className="text-base md:text-lg font-semibold text-gray-900 text-center sm:text-left">
-                binarylogixofficial@gmail.com
-              </p>
+              <div>
+                <p className="text-base md:text-lg font-semibold text-[#9355dc] break-all">
+                  binarylogixofficial@gmail.com
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto justify-center">
+            {/* Location Box */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-[30%] text-center sm:text-left">
               <img
                 src={location}
-                alt="location"
-                className="h-10 w-auto object-contain drop-shadow-md"
+                alt="Location"
+                className="h-12 w-12 object-contain drop-shadow-md"
               />
-              <span className="text-[#9355dc] text-base sm:text-xl font-semibold text-center sm:text-left">
-                11-Himanshu Apartment,<br />Indrapuri, Bhopal 462022
-              </span>
+              <div>
+                <p className="text-base md:text-lg font-semibold text-[#9355dc] leading-snug">
+                  11-Himanshu Apartment, Indrapuri, Bhopal 462022
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto justify-center">
+            {/* Phone Box */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-[30%] text-center sm:text-left">
               <img
                 src={message}
-                alt="message"
-                className="h-10 w-auto object-contain drop-shadow-md animate-float"
+                alt="Phone"
+                className="h-12 w-12 object-contain drop-shadow-md animate-float"
               />
-              <span className="text-[#9355dc] text-base sm:text-xl font-semibold text-center sm:text-left">
-                +91 9617189757
-              </span>
+              <div>
+                <p className="text-base md:text-lg font-semibold text-[#9355dc]">
+                  +91 9617189757
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -70,7 +78,7 @@ export default function ContactPage() {
         {/* ===== FORM SECTION ===== */}
         <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
           {/* Floating @ Icon (bottom left) */}
-          <div className="absolute bottom-5 left-5 md:bottom-10 md:left-10 z-20">
+          <div className="absolute bottom-5 left-5 md:bottom-10 md:left-40 z-20">
             <img
               src={atIcon}
               alt="At symbol"
@@ -79,18 +87,19 @@ export default function ContactPage() {
           </div>
 
           {/* Floating Envelope (top right) */}
-          <div className="absolute top-6 right-6 md:top-10 md:right-12 z-20 animate-float">
+          <div className="absolute top-6 right-2 md:top-30 md:right-10 z-20 animate-float">
             <img
               src={envelopeIcon}
               alt="Envelope"
-              className="w-24 md:w-36 opacity-100 drop-shadow-lg"
+              className="w-24 md:w-66 opacity-100 drop-shadow-lg"
             />
           </div>
 
           {/* Form Container */}
-          <div className="relative bg-blue-50 rounded-[30px] shadow-xl max-w-6xl w-full p-6 sm:p-8 md:p-12 z-10">
+          <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-5xl w-full p-6 sm:p-8 md:p-12 z-10 border-t-10 border-[#3487fa]">
             <p className="text-center text-red-500 text-sm mb-6">
-              The field is required mark as <span className="font-semibold">*</span>
+              The field is required mark as{" "}
+              <span className="font-semibold">*</span>
             </p>
 
             <form className="flex flex-col items-center space-y-6">
@@ -149,12 +158,27 @@ export default function ContactPage() {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-medium rounded-full py-3 px-8 transition duration-300"
+                  className=" bg-gradient-to-r from-[#3488fa] to-black/70  text-white font-medium rounded-full py-3 px-8 transition duration-300"
                 >
                   Send Your Request
                 </button>
               </div>
             </form>
+
+            {/* Inline style for gradient animation */}
+            <style>{`
+              .bg-gradient-animate {
+                background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
+                background-size: 400% 400%;
+                animation: gradientShift 15s ease-in-out infinite;
+              }
+
+              @keyframes gradientShift {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+              }
+            `}</style>
           </div>
         </section>
 
@@ -164,14 +188,14 @@ export default function ContactPage() {
             <iframe
               src="https://www.google.com/maps?q=Binarylogix+Technologies+LLP,+Himanshu+Apartment,+Indrapuri+A+Sector,+Bhopal,+Madhya+Pradesh+462041&output=embed"
               width="100%"
-              height="600"
+              height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Binarylogix Technologies LLP Location"
+              className="sm:scale-90 xs:scale-75 md:scale-95 transition-transform duration-300"
             />
-
           </div>
         </section>
       </main>

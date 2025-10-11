@@ -14,11 +14,10 @@ import project9 from "../assets/project9.jpg";
 const categories = [
   "All",
   "IT Consultation",
-  "Data Security",
   "Website Development",
   "UI/UX Design",
-  "Cloud Service",
-  "Game Development",
+  "Graphic Design",
+  "App Development"
 ];
 
 const projects = [
@@ -112,12 +111,12 @@ export default function ProjectsPage() {
 
       {/* Header Section */}
       <div className="text-center mb-12 px-4 sm:px-6 md:px-8">
-        <span className="inline-block bg-[#efe6fb] text-[#7554e0] px-4 py-1 rounded-sm mt-8 mb-4 text-xs font-semibold tracking-wider">
+        <span className="inline-block bg-[#efe6fb] text-blue-600 px-4 py-1 rounded-sm mt-8 mb-4 text-xs font-semibold tracking-wider">
           portfolio
         </span>
         <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
           Our{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#623abc] via-[#cc64bc] to-[#f57e8a]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3488fa] to-black/70">
             Projects
           </span>
         </h1>
@@ -134,7 +133,7 @@ export default function ProjectsPage() {
             onClick={() => setActiveCategory(category)}
             className={`text-sm md:text-base font-semibold px-3 sm:px-4 py-2 transition ${
               activeCategory === category
-                ? "text-[#7554e0]"
+                ? "text-blue-600"
                 : "text-gray-800"
             }`}
           >
