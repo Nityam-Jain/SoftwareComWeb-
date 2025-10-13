@@ -7,28 +7,30 @@ import icon4 from "../../assets/digimark.png";
 const testimonialsData = [
   {
     img: icon1,
-    text: "Binarylogix transformed our infrastructure with innovative cloud solutions, making operations faster and more secure.",
-    name: "JURGEN K.",
-    role: "CTO, Brator",
+    text: "BinaryLogix consistently delivers quality work with great communication, strong technical skills, and on-time project completion."
+
+,
+    name: "OSHIN JAIN.",
+    role: "Owner, Vardhan Interiors",
   },
   {
     img: icon2,
-    text: "Their team developed a seamless web application that boosted user engagement by 45% in just 3 months.",
+    text: "Outstanding service by BinaryLogix — efficient, knowledgeable, and always delivering projects on time with top quality.",
     name: "FODEN P.",
     role: "Director, Ecoland Resort",
   },
   {
     img: icon3,
-    text: "Outstanding support and expertise in AI integration. Our systems are smarter and more efficient than ever.",
+    text: "Great experience with BinaryLogix. They deliver innovative solutions, on time and with complete professionalism.",
     name: "KERRY T.",
     role: "Lead Developer, Teckzone Inc",
   },
   {
     img: icon4,
-    text: "Delivered an exceptional digital marketing solution that increased our leads by 70% within 2 months.",
-    name: "ALICE M.",
-    role: "Head of Digital, Digimark",
-  },
+    text: "Highly satisfied with BinaryLogix’s service. They are professional, skilled, and consistently exceed expectations on every project.",
+    name: "Jayant Ahirwar.",
+    role: "Owner, JJ International Group ",
+  }, 
 ];
 
 export default function TestimonialsSection() {

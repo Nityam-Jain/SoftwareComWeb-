@@ -15,9 +15,9 @@ function ServiceSection() {
         
          <Stats />
 
-          <Notes />
+          {/* <Notes />
 
-       <Testimonials />
+       <Testimonials /> */}
 
       <Footer />
     </div>

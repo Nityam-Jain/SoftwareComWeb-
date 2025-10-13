@@ -1,14 +1,14 @@
 import React from "react";
-import dropboxIcon from "../../assets/popularimg1.png";
-import googleIcon from "../../assets/popularimg2.png";
-import zeplinIcon from "../../assets/popularimg3.png";
-import slackIcon from "../../assets/popularimg4.png";
-import paypalIcon from "../../assets/popularimg5.png";
+import Icon1 from "../../assets/vardhanicon.jpeg";
+import Icon2 from "../../assets/SHicon.jpeg";
+import Icon3 from "../../assets/ruchiicon.jpeg";
+import Icon4 from "../../assets/robusticon.jpeg";
+import Icon5 from "../../assets/howtocleanicon.jpeg";
 
 export default function IntegrationSection() {
   return (
     <section className="w-full bg-white py-16 relative overflow-hidden">
-      {/* ✅ Inline style for gradient & floating animations */}
+      {/* ✅ Inline style for gradient & slider animation */}
       <style>{`
         .bg-gradient-animate {
           background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
@@ -22,15 +22,21 @@ export default function IntegrationSection() {
           100% { background-position: 0% 50%; }
         }
 
-        /* ✅ Floating Animation for Icons */
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
+        /* ✅ Smooth infinite horizontal scroll */
+        @keyframes slide {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
 
-        .float-slow { animation: float 4s ease-in-out infinite; }
-        .float-medium { animation: float 5s ease-in-out infinite; }
-        .float-fast { animation: float 6s ease-in-out infinite; }
+        .slider {
+          display: flex;
+          width: max-content;
+          animation: slide 10s linear infinite;
+        }
+
+        .slider:hover {
+          animation-play-state: paused; /* Pause on hover */
+        }
       `}</style>
 
       {/* Background accents */}
@@ -60,40 +66,38 @@ export default function IntegrationSection() {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold mb-3">
+        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-3">
           Trusted by Our{" "}
           <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
             Leading Clients
           </span>
         </h2>
 
-        <p className="mt-2 mb-10 text-gray-700 text-sm sm:text-base md:text-lg">
+        <p className="mt-2 mb-10 text-gray-700">
           Our solutions empower businesses to achieve growth, efficiency, and
           excellence. We collaborate closely with clients to deliver measurable
           results and lasting impact.
         </p>
 
-        {/* ✅ Icons container - responsive & animated */}
-        <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-8 py-8 relative z-20">
-          {/* Each icon - full width on mobile */}
-          {[dropboxIcon, googleIcon, zeplinIcon, slackIcon, paypalIcon].map((icon, idx) => (
-            <div
-              key={idx}
-              className="flex justify-center items-center w-full sm:w-auto"
-            >
-              <img
-                src={icon}
-                alt={`Client ${idx + 1}`}
-                className={`w-24 sm:w-20 md:w-24 lg:w-32 h-auto ${
-                  idx % 3 === 0
-                    ? "float-slow"
-                    : idx % 3 === 1
-                    ? "float-medium"
-                    : "float-fast"
-                }`}
-              />
-            </div>
-          ))}
+        {/* ✅ Continuous sliding icons */}
+        <div className="relative overflow-hidden w-full">
+          <div className="slider flex items-center gap-10 px-4">
+            {[Icon1, Icon2, Icon3, Icon4, Icon5, Icon1, Icon2, Icon3, Icon4, Icon5].map(
+              (icon, idx) => (
+                <div
+                  key={idx}
+                  className="flex justify-center items-center flex-shrink-0"
+                >
+                  <img
+                    src={icon}
+                    alt={`Client ${idx + 1}`}
+                    className="w-24 sm:w-20 md:w-24 lg:w-28 h-auto object-contain  hover:scale-105 transition-transform duration-300"
+                    style={{ background: "transparent" }}
+                  />
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import atIcon from "../assets/Aticon.png";
 import envelopeIcon from "../assets/envicon.png";
+import envelopeimg from "../assets/Envelope.png";
 import location from "../assets/location.png";
 import message from "../assets/message.png";
 
@@ -29,48 +30,48 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Contact Info Boxes */}
-          <div className="mx-auto max-w-5xl mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 sm:gap-8 px-4 sm:px-6">
-            {/* Email Box */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-[30%] text-center sm:text-left">
+          {/* ===== CONTACT INFO SECTION ===== */}
+          <div className="mx-auto max-w-5xl mt-12 flex flex-col sm:flex-row items-center justify-between bg-white rounded-full shadow-md px-6 py-4">
+            {/* Email */}
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
               <img
-                src={envelopeIcon}
+                src={envelopeimg}
                 alt="Email"
-                className="h-12 w-12 object-contain drop-shadow-md"
+                className="h-10 w-13 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] float-slow zoom"
               />
-              <div>
-                <p className="text-base md:text-lg font-semibold text-[#9355dc] break-all">
-                  binarylogixofficial@gmail.com
-                </p>
-              </div>
+              <p className="text-sm md:text-base font-semibold text-gray-800">
+                binarylogixofficial@gmail.com
+              </p>
             </div>
 
-            {/* Location Box */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-[30%] text-center sm:text-left">
+            {/* Divider */}
+            <div className="hidden sm:block h-6 w-px bg-gray-200"></div>
+
+            {/* Location */}
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
               <img
                 src={location}
                 alt="Location"
-                className="h-12 w-12 object-contain drop-shadow-md"
+                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] float-medium zoom"
               />
-              <div>
-                <p className="text-base md:text-lg font-semibold text-[#9355dc] leading-snug">
-                  11-Himanshu Apartment, Indrapuri, Bhopal 462022
-                </p>
-              </div>
+              <p className="text-sm md:text-base font-semibold text-gray-800">
+                11-Himanshu Apartment, Indrapuri, Bhopal 462022
+              </p>
             </div>
 
-            {/* Phone Box */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-[#f4f7ff] shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-[30%] text-center sm:text-left">
+            {/* Divider */}
+            <div className="hidden sm:block h-6 w-px bg-gray-200"></div>
+
+            {/* Phone */}
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
               <img
                 src={message}
                 alt="Phone"
-                className="h-12 w-12 object-contain drop-shadow-md animate-float"
+                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] float-fast zoom"
               />
-              <div>
-                <p className="text-base md:text-lg font-semibold text-[#9355dc]">
-                  +91 9617189757
-                </p>
-              </div>
+              <p className="text-sm md:text-base font-semibold text-gray-800">
+                +91 9617189757
+              </p>
             </div>
           </div>
         </section>
@@ -158,14 +159,14 @@ export default function ContactPage() {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className=" bg-gradient-to-r from-[#3488fa] to-black/70  text-white font-medium rounded-full py-3 px-8 transition duration-300"
+                  className="bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-medium rounded-full py-3 px-8 transition duration-300"
                 >
                   Send Your Request
                 </button>
               </div>
             </form>
 
-            {/* Inline style for gradient animation */}
+            {/* ✅ Inline Style for Animations */}
             <style>{`
               .bg-gradient-animate {
                 background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
@@ -177,6 +178,24 @@ export default function ContactPage() {
                 0% { background-position: 0% 50%; }
                 50% { background-position: 100% 50%; }
                 100% { background-position: 0% 50%; }
+              }
+
+              /* ✅ Floating Animation */
+              @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+              }
+              .float-slow { animation: float 4s ease-in-out infinite; }
+              .float-medium { animation: float 5s ease-in-out infinite; }
+              .float-fast { animation: float 6s ease-in-out infinite; }
+
+              /* ✅ Zoom Animation */
+              @keyframes zoomInOut {
+                0%, 100% { transform: scale(1.3); }
+                50% { transform: scale(1.50); }
+              }
+              .zoom {
+                animation: zoomInOut 3.5s ease-in-out infinite;
               }
             `}</style>
           </div>

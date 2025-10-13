@@ -61,7 +61,7 @@ export default function FAQSection() {
             OUR SERVICES
           </span> */}
           <h2 className="text-4xl font-extrabold bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
-            Frequently Asked Questions
+                FAQ
           </h2>
 
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
@@ -79,9 +79,9 @@ export default function FAQSection() {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center p-5 text-left hover:bg-gray-50 transition"
+                className="w-full flex justify-between items-center p-3 text-left hover:bg-gray-50 transition"
               >
-                <span className="font-semibold text-gray-800">
+                <span className="font-medium text-gray-800">
                   {faq.title}
                 </span>
                 {activeIndex === index ? (

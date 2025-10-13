@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import project1 from "../assets/project1.jpg";
-import project2 from "../assets/project2.jpg";
-import project3 from "../assets/project3.jpg";
-import project4 from "../assets/project4.jpg";
-import project5 from "../assets/project5.jpg";
-import project6 from "../assets/project6.jpg";
-import project7 from "../assets/project7.jpg";
-import project8 from "../assets/project8.jpg";
-import project9 from "../assets/project9.jpg";
+import project1 from "../assets/pachmariss.png";
+import project2 from "../assets/howtoclean.png";
+import project3 from "../assets/edunaukariss.png";
+import project4 from "../assets/makeahabitss.png";
+import project5 from "../assets/chemistryss.png";
+import project6 from "../assets/fintechimgss.png";
+// import project7 from "../assets/project7.jpg";
+// import project8 from "../assets/project8.jpg";
+// import project9 from "../assets/project9.jpg";
 
 const categories = [
   "All",
@@ -22,77 +22,77 @@ const categories = [
 
 const projects = [
   {
-    title: "Infrastructure Upgrade",
-    category: "IT Consultation",
+    title: "Pachmarhi Ayurveda",
+    category: "Commerce",
     image: project1,
     description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
-    tags: ["Consultation", "Management"],
+      "Pachmarhi Ayurveda is a wellness and e-commerce website offering a catalog of Ayurvedic products, wellness therapies, and natural remedies.",
+    tags: ["Ayurvedic Product", "Management"],
   },
   {
-    title: "Criftocy Landing Page",
-    category: "Website Development, UI/UX Design",
+    title: "How To Clean",
+    category: "Application",
     image: project2,
     description:
-      "Modern landing page with custom UI/UX for better user experience.",
+      "How To Clean is a professional cleaning service website that focuses on offering tips, solutions, and booking options for residential and commercial cleaning..",
     tags: ["Web Development", "UI/UX"],
   },
   {
-    title: "AR/VR War 1986 Game",
-    category: "Game Development",
+    title: "EduNaukri Job-Portal",
+    category: "Jobs",
     image: project3,
     description:
-      "Immersive AR/VR experience based on classic war themes.",
+      " EduNaukri is a comprehensive job portal website designed to connect job seekers with employers. It features a user-friendly interface, advanced search options, and secure login for both candidates and recruiters.",
     tags: ["Game Dev", "AR/VR"],
   },
    {
-    title: "Okpay E-Wallet Optimized",
-    category: "SEO ANALYSIS",
+    title: "Make A Habit",
+    category: "Multi Service Provider",
     image: project4,
     description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
+      "It's an app for connecting customers with local service providers. The application features a clean, modern design that allows users to easily search for and book services such as home cleaning, plumbing, and electrical work.",
     tags: ["Seo Analysis", "Content Strategy"],
   },
    {
-    title: "e-Commerce Dashboard",
-    category: "website design & develoment",
+    title: "Chemistry Classes",
+    category: "Education",
     image: project5,
     description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app..",
+      "Chemistry Classes is an educational website designed to provide students with resources, tutorials, and interactive learning experiences in chemistry.",
     tags: ["WordPress","PHP","HTML/CSS","Figma"],
   },
    {
-    title: "Crypto Blockchain",
-    category: "Data security",
+    title: "Robo Fintech Pvt Ltd",
+    category: "Fintech",
     image: project6,
     description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
+      "Robo Fintech Pvt Ltd is a financial technology website built to represent modern fintech services, investment tools, and consultancy features.",
     tags: ["SecurityManagement","Backup" & "Recovery"],
   },
-   {
-    title: "Car Rental Dashboard",
-    category: "UI/UX Design",
-    image: project7,
-    description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
-    tags: ["HTML/CSS","Figma"],
-  },
-   {
-    title: "Encrypt Blockchain",
-    category: "Data security, it consultation",
-    image: project8,
-    description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
-    tags: ["Data Security","PythonData", "Backup"],
-  },
-   {
-    title: "Robotchat AI Development",
-    category: "machine learning",
-    image: project9,
-    description:
-      "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
-    tags: ["AI","Machine Learning"],
-  },
+  //  {
+  //   title: "Sakshi Hospital",
+  //   category: "Health",
+  //   image: project7,
+  //   description:
+  //     "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+  //   tags: ["HTML/CSS","Figma"],
+  // },
+  //  {
+  //   title: "Encrypt Blockchain",
+  //   category: "Data security, it consultation",
+  //   image: project8,
+  //   description:
+  //     "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
+  //   tags: ["Data Security","PythonData", "Backup"],
+  // },
+  //  {
+  //   title: "Robotchat AI Development",
+  //   category: "machine learning",
+  //   image: project9,
+  //   description:
+  //     "Trust our top minds to eliminate workflow pain points, implement new tech & app.",
+  //   tags: ["AI","Machine Learning"],
+  // },
 ];
 
 export default function ProjectsPage() {
@@ -114,13 +114,13 @@ export default function ProjectsPage() {
         <span className="inline-block bg-[#efe6fb] text-blue-600 px-4 py-1 rounded-sm mt-8 mb-4 text-xs font-semibold tracking-wider">
           portfolio
         </span>
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight">
           Our{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3488fa] to-black/70">
             Projects
           </span>
         </h1>
-        <p className="text-gray-600 mt-2 text-sm md:text-base max-w-2xl mx-auto">
+        <p className="text-gray-600 mt-2  max-w-2xl mx-auto">
           We have an experienced team of production and inspection personnel to ensure quality.
         </p>
       </div>
@@ -168,7 +168,7 @@ export default function ProjectsPage() {
               <p className="mt-2 text-gray-600 text-sm text-left pl-2 mb-4 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2 justify-start mt-4">
+              {/* <div className="flex flex-wrap gap-2 justify-start mt-4">
                 {project.tags.map((tag, i) => (
                   <span
                     key={i}
@@ -177,7 +177,7 @@ export default function ProjectsPage() {
                     {tag}
                   </span>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
@@ -185,7 +185,7 @@ export default function ProjectsPage() {
 
       {/* See More Button */}
       <div className="flex justify-center mt-20 sm:mt-20 mb-12 px-4">
-        <button className="px-6 py-2 bg-[#5842bc] text-white font-semibold rounded-full transition w-auto sm:w-auto">
+        <button className="px-6 py-2 bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-semibold rounded-full transition w-auto sm:w-auto">
           Show More
         </button>
       </div>
@@ -235,7 +235,7 @@ export default function ProjectsPage() {
 
         {/* Text content */}
         <div className="flex flex-col items-center justify-center z-10 relative text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 text-gray-900 leading-snug">
+          <h2 className="text-2xl sm:text-2xl md:text-4xl font-bold mb-4 text-gray-900 leading-snug">
             Access your business potentials <br className="hidden sm:block" />
             today &amp; find opportunity for
             <br className="hidden sm:block" />
@@ -245,10 +245,10 @@ export default function ProjectsPage() {
           </h2>
 
           <div className="mt-6 sm:mt-7 flex flex-wrap justify-center gap-3 sm:gap-4">
-            <button className="px-6 sm:px-7 py-3 bg-[#5842bc] text-white font-bold rounded-full shadow-lg transition">
+            <button className="px-6 sm:px-7 py-3 bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-bold rounded-full shadow-lg transition">
               Start A Project Now
             </button>
-            <button className="px-6 sm:px-7 py-3 border border-[#7b6cff] bg-transparent text-black hover:bg-[#5842bc] hover:text-white font-semibold rounded-full shadow transition">
+            <button className="px-6 sm:px-7 py-3 border border-[#7b6cff] bg-transparent text-black hover:bg-gradient-to-r from-[#3488fa] to-black/70 hover:text-white font-semibold rounded-full shadow transition">
               See Pricing &amp; Plan
             </button>
           </div>

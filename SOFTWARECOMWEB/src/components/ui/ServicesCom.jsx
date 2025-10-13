@@ -97,9 +97,9 @@ const Services = () => {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`min-w-[230px] sm:min-w-[250px] md:min-w-[270px] rounded-2xl shadow-md transition-all duration-500 p-6 flex flex-col items-center text-center bg-[#f8faff] ${
+              className={`min-w-[230px] sm:min-w-[250px] md:min-w-[270px] rounded-2xl  transition-all duration-500 p-6 flex flex-col items-center text-center bg-[#f8faff] ${
                 i === currentIndex
-                  ? "scale-110 shadow-xl bg-white"
+                  ? "scale-110  bg-white"
                   : "scale-95 opacity-80"
               }`}
             >

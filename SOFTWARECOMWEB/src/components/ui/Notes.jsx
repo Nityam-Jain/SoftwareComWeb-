@@ -54,13 +54,13 @@ export default function WhyChooseUsSection() {
           <span className="inline-block text-xs mb-3 px-3 py-1 bg-blue-100 text-blue-700 rounded-full animate-fadeInUp">
             Why Choose Us
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fadeInUp">
+          <h2 className="text-3xl md:text-3xl font-bold mb-4 animate-fadeInUp">
             What Makes Us{" "}
             <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
               Different
             </span>
           </h2>
-          <p className="text-gray-700 text-lg md:text-xl animate-fadeInUp">
+          <p className="text-gray-700  animate-fadeInUp">
             Discover why businesses trust Binarylogix to elevate their brand and drive measurable growth through technology and creativity.
           </p>
         </div>

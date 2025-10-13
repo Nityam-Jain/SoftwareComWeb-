@@ -1,5 +1,5 @@
 import React from "react";
-import sectionImg from "../../assets/ipad_image.png";
+import sectionImg from "../../assets/aboutusimg.png";
 
 export default function CreativeSection() {
   return (
@@ -43,11 +43,11 @@ export default function CreativeSection() {
             ABOUT US
           </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold mb-2 text-gray-900 fade-in-up delay-200">
+          <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-bold mb-2 text-gray-900 fade-in-up delay-200">
             Selecting the Finest IT Service <span className="block md:inline">Provider</span>
           </h2>
 
-          <p className="mt-2 mb-6 text-gray-700 leading-relaxed text-sm sm:text-base md:text-base lg:text-lg fade-in-up delay-400">
+          <p className="mt-2 mb-6 text-gray-700 leading-relaxed  fade-in-up delay-400">
             At Binarylogix, we provide innovative software development and
             digital marketing solutions tailored to your business needs. Our
             expert team uses technology to drive growth, streamline operations,
