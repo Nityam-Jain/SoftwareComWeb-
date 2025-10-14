@@ -109,6 +109,28 @@ const blogListData = [
     ,
 },
 
+ {
+  id: 4,
+  title: "Mastering SEO Strategies for Business Growth",
+  desc: "Discover proven SEO techniques to boost your website visibility, improve Google rankings, and drive more organic traffic to your business effectively.",
+  category: "SEO",
+  date: "8 Days ago",
+  image: Seo
+    ,
+},
+
+ {
+  id: 3,
+  title: "Mastering SEO Strategies for Business Growth",
+  desc: "Discover proven SEO techniques to boost your website visibility, improve Google rankings, and drive more organic traffic to your business effectively.",
+  category: "SEO",
+  date: "8 Days ago",
+  image: Seo
+    ,
+},
+
+
+
 
 ];
 
@@ -123,14 +145,14 @@ const FeaturedPost = ({ posts }) => {
   }, [posts.length]);
 
   return (
-    <section className="container mx-auto mt-10 px-4">
+    <section className="container max-w-6xl mx-auto mt-10 px-4">
       <div className="relative rounded-3xl overflow-hidden shadow-lg">
         <img
           src={posts[current].image}
           alt={posts[current].title}
           className="w-full h-[260px] sm:h-[350px] md:h-[480px] object-cover transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
+        <div className="absolute  max-w-6xl mx-auto inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
           <div className="text-xs sm:text-sm text-gray-300 mb-2 flex items-center gap-2 flex-wrap">
             <span className="uppercase tracking-wide">{posts[current].category}</span>
             <span>•</span>
@@ -188,7 +210,7 @@ const Blog = () => {
       <FeaturedPost posts={posts} />
 
       {/* Blog List + Sidebar */}
-      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 px-4">
+      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 px-17">
         {/* Left Column */}
         <div className="lg:col-span-2 flex flex-col space-y-8">
           {blogListData.map((post) => (
@@ -238,7 +260,7 @@ const Blog = () => {
         </div>
 
         {/* Right Sidebar */}
-        <aside className="space-y-10">
+        <aside className="space-y-10 pr-2">
           {/* Search */}
           <div>
             <h4 className="text-lg font-semibold mb-2">SEARCH</h4>

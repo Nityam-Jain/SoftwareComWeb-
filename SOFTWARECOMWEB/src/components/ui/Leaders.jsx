@@ -48,7 +48,7 @@ const Leaders = () => {
               <h3 className="text-gray-900 font-semibold text-lg">
                 {leader.name}
               </h3>
-              <p className="text-purple-500 text-sm font-medium">
+              <p className="text-blue-500 text-sm font-medium">
                 {leader.role}
               </p>
             </div>

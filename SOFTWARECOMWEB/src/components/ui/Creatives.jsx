@@ -107,9 +107,9 @@ export default function CreativeSection() {
             </li>
           </ul>
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 sm:px-8 py-2 rounded-full shadow-md transition fade-in-up delay-600 text-sm sm:text-base">
+          {/* <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 sm:px-8 py-2 rounded-full shadow-md transition fade-in-up delay-600 text-sm sm:text-base">
             ABOUT US
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

@@ -2,8 +2,10 @@ import React from "react";
 import Icon1 from "../../assets/vardhanicon.jpeg";
 import Icon2 from "../../assets/SHicon.jpeg";
 import Icon3 from "../../assets/ruchiicon.jpeg";
-import Icon4 from "../../assets/robusticon.jpeg";
+// import Icon4 from "../../assets/robusticon.jpeg";
 import Icon5 from "../../assets/howtocleanicon.jpeg";
+import Icon6 from "../../assets/shardamoicon.jpeg";
+import Icon7 from "../../assets/jjinticon.png";
 
 export default function IntegrationSection() {
   return (
@@ -65,7 +67,7 @@ export default function IntegrationSection() {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto text-center px-34 sm:px-6 lg:px-20 relative z-10">
         <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-3">
           Trusted by Our{" "}
           <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
@@ -73,16 +75,17 @@ export default function IntegrationSection() {
           </span>
         </h2>
 
-        <p className="mt-2 mb-10 text-gray-700">
+        <p className="mt-2 mb-10 text-gray-700 flex flex-wrap justify-center items-center text-center leading-relaxed gap-x-2">
           Our solutions empower businesses to achieve growth, efficiency, and
-          excellence. We collaborate closely with clients to deliver measurable
-          results and lasting impact.
+          excellence.
         </p>
+
+
 
         {/* ✅ Continuous sliding icons */}
         <div className="relative overflow-hidden w-full">
-          <div className="slider flex items-center gap-10 px-4">
-            {[Icon1, Icon2, Icon3, Icon4, Icon5, Icon1, Icon2, Icon3, Icon4, Icon5].map(
+          <div className="slider flex items-center gap-36">
+            {[Icon1, Icon2, Icon3, Icon5, Icon6, Icon7, Icon1, Icon2, Icon3, Icon5, Icon6, Icon7].map(
               (icon, idx) => (
                 <div
                   key={idx}
@@ -91,7 +94,7 @@ export default function IntegrationSection() {
                   <img
                     src={icon}
                     alt={`Client ${idx + 1}`}
-                    className="w-24 sm:w-20 md:w-24 lg:w-28 h-auto object-contain  hover:scale-105 transition-transform duration-300"
+                    className="w-32 sm:w-28 md:w-32 lg:w-36 h-auto object-contain hover:scale-110 transition-transform duration-300"
                     style={{ background: "transparent" }}
                   />
                 </div>
@@ -99,6 +102,7 @@ export default function IntegrationSection() {
             )}
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -6,8 +6,26 @@ import logo from "../assets/logo/binarylogixlogo-remove.png";
 export default function Footer() {
   return (
     <footer className="bg-[#f4f6fb] pt-20 pb-8 relative overflow-hidden">
-      {/* Animated Wavy Top Decoration */}
+      {/* 🔹 Animated Wavy Top Decoration (Main) */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+        {/* Duplicate Layer 1 (Slightly Above) */}
+        <div className="absolute top-[20px] left-0 w-full h-[100px] sm:h-[120px] opacity-80">
+          <svg
+            className="absolute bottom-0 left-0 w-[200%] h-[120px] animate-waveMotionSlow"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,0V46.29C47.35,68.53,103.77,81.9,162,85c86,4.74,172-14.4,258-18.36
+              C516,62.92,602,75,688,87.12c96,13.51,192,27.52,288,13.9c66.56-9.51,133.11-30.35,200-38.43V0Z"
+              fill="#ffffff"
+              opacity="0.9"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Main Wave Layer */}
         <div className="relative w-full h-[100px] sm:h-[120px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb]">
           <svg
             className="absolute bottom-0 left-0 w-[200%] h-[120px] animate-waveMotion"
@@ -17,7 +35,7 @@ export default function Footer() {
           >
             <path
               d="M0,0V46.29C47.35,68.53,103.77,81.9,162,85c86,4.74,172-14.4,258-18.36
-            C516,62.92,602,75,688,87.12c96,13.51,192,27.52,288,13.9c66.56-9.51,133.11-30.35,200-38.43V0Z"
+              C516,62.92,602,75,688,87.12c96,13.51,192,27.52,288,13.9c66.56-9.51,133.11-30.35,200-38.43V0Z"
               fill="#ffffff"
               opacity="0.95"
             ></path>
@@ -38,8 +56,16 @@ export default function Footer() {
             50% { transform: translateX(-25%); }
             100% { transform: translateX(0); }
           }
+          @keyframes waveMotionSlow {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-15%); }
+            100% { transform: translateX(0); }
+          }
           .animate-waveMotion {
             animation: waveMotion 10s ease-in-out infinite;
+          }
+          .animate-waveMotionSlow {
+            animation: waveMotionSlow 16s ease-in-out infinite;
           }
         `}</style>
       </div>
@@ -70,7 +96,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Quick Links (Redesigned Like Screenshot) */}
+          {/* Column 2 - Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
               Quick Links
@@ -118,7 +144,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer Bottom Line */}
+        {/* Footer Bottom */}
         <div className="border-t border-gray-300 mt-10 pt-5 text-center text-sm text-gray-600">
           © 2025 BinaryLogix. All Rights Reserved. | Designed by{" "}
           <span className="font-semibold text-[#3487fa]">BinaryLogix</span>

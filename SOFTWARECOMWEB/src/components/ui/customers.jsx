@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import icon1 from "../../assets/customerimg.png";
-import icon2 from "../../assets/customerimg2.png";
-import icon3 from "../../assets/customerimg3.png";
-import icon4 from "../../assets/digimark.png";
+import icon1 from "../../assets/vardhanicon.jpeg";
+import icon2 from "../../assets/howtocleanicon.jpeg";
+import icon3 from "../../assets/pachamariicon.png";
+import icon4 from "../../assets/jjinticon.png";
+import icon5 from "../../assets/shardamoicon.jpeg";
+import icon6 from "../../assets/SSVMicon.jpeg";
 
-const testimonialsData = [
+
+const testimonialsData = [ 
   {
     img: icon1,
     text: "BinaryLogix consistently delivers quality work with great communication, strong technical skills, and on-time project completion."
@@ -16,20 +19,32 @@ const testimonialsData = [
   {
     img: icon2,
     text: "Outstanding service by BinaryLogix — efficient, knowledgeable, and always delivering projects on time with top quality.",
-    name: "FODEN P.",
-    role: "Director, Ecoland Resort",
+    name: "Vedant Bhardwaj",
+    role: "Owner, How to Clean",
   },
   {
     img: icon3,
     text: "Great experience with BinaryLogix. They deliver innovative solutions, on time and with complete professionalism.",
-    name: "KERRY T.",
-    role: "Lead Developer, Teckzone Inc",
+    name: "Aadarsh.",
+    role: "Owner, Pachmarhi Ayurveda",
   },
   {
     img: icon4,
     text: "Highly satisfied with BinaryLogix’s service. They are professional, skilled, and consistently exceed expectations on every project.",
     name: "Jayant Ahirwar.",
     role: "Owner, JJ International Group ",
+  }, 
+  {
+    img: icon5,
+    text: "BinaryLogix delivers excellent service with strong expertise, timely delivery, and great communication. Highly recommended for any tech needs.",
+    name: "Dr. Parul Agrawal",
+    role: "Owner, Sharda Mohan Homoeopathic Clinic ",
+  }, 
+  {
+    img: icon6,
+    text: "Working with Binarylogix was seamless! Their innovative approach and dedication to our project delivered incredible results. A perfect partner for scaling businesses online",
+    name: "Narendra Singh Dangi.",
+    role: "Principle, SSVM ",
   }, 
 ];
 
