@@ -2,12 +2,12 @@ import React, { useRef, useEffect, useState } from "react";
 // import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // ✅ Update the image imports according to your assets folder
-import seoImg from "../../assets/instaimg.png";
+import seoImg from "../../assets/3dseoimg.png";
 import adsImg from "../../assets/websiteicon.png";
-import emailImg from "../../assets/instaimg.png";
+import emailImg from "../../assets/emailmark3Dnew.png";
 import socialImg from "../../assets/contentimg.png";
 import webdevImg from "../../assets/websiteicon.png";
-import tvcImg from "../../assets/instaimg.png";
+import appImg from "../../assets/3dappimgbg.png";
 
 const Services = () => {
   const scrollRef = useRef(null);
@@ -16,33 +16,33 @@ const Services = () => {
   const services = [
     {
       title: "SEO Strategy",
-      desc: "Get the answers that your customers are trying to find and become the industry leader.",
+      desc: "Boost visibility and rank higher with smart SEO tactics.",
       img: seoImg,
     },
     {
       title: "Google/FB Ads",
-      desc: "Get more website traffic and customers with powerful SEO & ad campaigns.",
+      desc: "Drive instant traffic and conversions with targeted ads.",
       img: adsImg,
     },
     {
       title: "Email Marketing",
-      desc: "Your website has to impress your visitors within seconds — make it count.",
+      desc: "Engage users and grow loyalty with personalized emails.",
       img: emailImg,
     },
     {
       title: "Social Media",
-      desc: "Get more website traffic and more customers for your social channels.",
+      desc: "Build your brand and grow faster on every platform.",
       img: socialImg,
     },
     {
       title: "Website Design & Development",
-      desc: "Your website must attract and convert visitors effectively — we ensure it does.",
+      desc: "Create stunning, responsive, and high-converting websites.",
       img: webdevImg,
     },
     {
       title: "App Development",
-      desc: "Build high-performance apps with intuitive design, robust security, and scalable architecture, ensuring your brand stands out.",
-      img: tvcImg,
+      desc: "Develop sleek, secure, and scalable mobile applications.",
+      img: appImg,
     },
   ];
 
@@ -61,7 +61,7 @@ const Services = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % services.length);
-    }, 2000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [services.length]);
 
@@ -74,8 +74,8 @@ const Services = () => {
     <section className="py-16 px-6 bg-white">
       {/* Section Heading */}
       <div className="text-center mb-10">
-        <span className="text-sm text-blue-600 font-semibold uppercase tracking-wide bg-purple-50 px-3 py-1 rounded-full">
-          Software Apps
+        <span className="text-sm text-blue-600 font-semibold  tracking-wide bg-purple-50 px-3 py-1 rounded-full">
+          Services
         </span>
         <h2 className="text-3xl md:text-4xl font-bold mt-4">
           Our Top{" "}
@@ -84,8 +84,9 @@ const Services = () => {
           </span>
         </h2>
         <p className="text-gray-500 mt-3 max-w-xl mx-auto">
-          Notero integrates with popular apps. Helps you connect and collaborate easily.
+          Binarylogix seamlessly connects with your favorite tools for effortless collaboration.
         </p>
+
       </div>
 
       {/* Slider */}
@@ -97,11 +98,10 @@ const Services = () => {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`min-w-[230px] sm:min-w-[250px] md:min-w-[270px] rounded-2xl  transition-all duration-500 p-6 flex flex-col items-center text-center bg-[#f8faff] ${
-                i === currentIndex
-                  ? "scale-110  bg-white"
-                  : "scale-95 opacity-80"
-              }`}
+              className={`min-w-[230px] sm:min-w-[250px] md:min-w-[270px] rounded-2xl  transition-all duration-500 p-6 flex flex-col items-center text-center bg-[#f8faff] ${i === currentIndex
+                ? "scale-110  bg-white"
+                : "scale-95 opacity-80"
+                }`}
             >
               <img
                 src={service.img}

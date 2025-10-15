@@ -104,10 +104,10 @@ export default function Footer() {
             <ul className="grid grid-cols-2 gap-2 text-sm">
               {[
                 { name: "About Us", path: "/about" },
-                { name: "Our Team", path: "/team" },
+                // { name: "Our Team", path: "/team" },
                 { name: "Our Services", path: "/services" },
                 { name: "Portfolio", path: "/portfolio" },
-                { name: "Blog", path: "/blog" },
+                { name: "Blogs", path: "/blogs" },
                 { name: "Contact Us", path: "/contact" },
               ].map((link, i) => (
                 <li key={i}>
@@ -138,7 +138,7 @@ export default function Footer() {
               </li>
               <li>
                 <span className="font-medium text-gray-800">Address:</span>{" "}
-                Surat, Gujarat, India
+                Bhopal, Madhya Pradesh, India
               </li>
             </ul>
           </div>

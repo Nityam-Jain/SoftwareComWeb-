@@ -4,10 +4,10 @@ import secondPageBg from "../../assets/Bannerimg2.png";
 import thirdPageBg from "../../assets/Bannerimg3.png";
 import fourthPageBg from "../../assets/bannerimg4.png";
 
-import avatar1 from "../../assets/popularimg1.png";
-import avatar2 from "../../assets/popularimg2.png";
-import avatar3 from "../../assets/popularimg3.png";
-import avatar4 from "../../assets/popularimg4.png";
+import avatar1 from "../../assets/ruchiicon.jpeg";
+import avatar2 from "../../assets/jjinticon.png";
+import avatar3 from "../../assets/shardamoicon.jpeg";
+import avatar4 from "../../assets/vardhanicon.jpeg";
 
 const slides = [
   {

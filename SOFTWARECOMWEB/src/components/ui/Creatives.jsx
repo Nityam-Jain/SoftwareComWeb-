@@ -1,5 +1,5 @@
 import React from "react";
-import sectionImg from "../../assets/aboutusimg.png";
+import sectionImg from "../../assets/aboutusimg3.png";
 
 export default function CreativeSection() {
   return (
@@ -7,7 +7,7 @@ export default function CreativeSection() {
       <style>
         {`
           @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(30px); }
+            0% { opacity: 0; transform: translateY(30px); } 
             100% { opacity: 1; transform: translateY(0); }
           }
           @keyframes fadeInLeft {
@@ -40,7 +40,7 @@ export default function CreativeSection() {
         {/* Right: Content */}
         <div className="w-full md:w-1/2 flex flex-col items-start md:pl-6 lg:pl-10 fade-in-right delay-200">
           <span className="inline-block text-xs mb-2 px-2 py-1 bg-blue-100 text-blue-700 rounded-md">
-            ABOUT US
+            About us
           </span>
 
           <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-bold mb-2 text-gray-900 fade-in-up delay-200">

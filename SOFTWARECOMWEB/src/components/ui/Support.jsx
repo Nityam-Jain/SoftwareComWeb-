@@ -73,7 +73,7 @@ export default function FAQSection() {
         {/* FAQ List */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div
+            <div 
               key={index}
               className="border border-gray-200 rounded-xl shadow-sm overflow-hidden transition-all duration-300"
             >

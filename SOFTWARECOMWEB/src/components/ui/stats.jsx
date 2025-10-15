@@ -7,7 +7,7 @@ function useCountUp(end, startCounting, duration = 1500) {
   useEffect(() => {
     if (!startCounting) return;
     let start = 0;
-    const increment = end / (duration / 16);
+    const increment = end / (duration / 16); 
     function update() {
       start += increment;
       if (start < end) {
@@ -76,14 +76,14 @@ export default function AnimatedStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-white flex justify-center py-16 md:py-20 overflow-hidden"
+      className="relative  md:px-27  bg-white flex justify-center py-16 md:py-20 overflow-hidden"
     >
       {/* subtle animated gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />
 
-      <div className="relative z-10 flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+      <div className="relative w-full z-10 flex flex-col md:flex-row gap-12 md:gap-60 items-center">
         {statsList.map((stat, idx) => (
-          <div
+          <div 
             key={stat.label}
             className={`flex flex-col items-center text-center transition-all duration-700 ${
               startCounting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"

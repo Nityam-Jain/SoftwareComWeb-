@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import project1 from "../assets/pachmariayurfull.png";
-import project2 from "../assets/howtoclean.png";
-import project3 from "../assets/edunaukariss.png";
-import project4 from "../assets/makeahabitss.png";
-import project5 from "../assets/chemistryss.png";
-import project6 from "../assets/fintechimgss.png";
+import project2 from "../assets/howtocleanfull.png";
+import project3 from "../assets/edunaukarifull.png";
+import project4 from "../assets/makeahabitfull.png";
+import project5 from "../assets/chemistryfullpage.png";
+import project6 from "../assets/sakshifullpage.png";
 // import project7 from "../assets/project7.jpg";
 // import project8 from "../assets/project8.jpg";
 // import project9 from "../assets/project9.jpg";
@@ -62,11 +62,11 @@ const projects = [
     tags: ["WordPress", "PHP", "HTML/CSS", "Figma"],
   },
   {
-    title: "Robo Fintech Pvt Ltd",
-    category: "Fintech",
+    title: "Sakshi Hospital",
+    category: "Health",
     image: project6,
     description:
-      "Robo Fintech Pvt Ltd is a financial technology website built to represent modern fintech services, investment tools, and consultancy features.",
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
     tags: ["SecurityManagement", "Backup" & "Recovery"],
   },
   //  {
@@ -156,7 +156,8 @@ export default function ProjectsPage() {
                   src={project.image}
                   alt={project.title}
                   /* make image taller than container so translate reveals hidden part */
-                  className="w-full h-full min-h-[140%] object-cover transform transition-transform duration-[5s] ease-linear group-hover:-translate-y-[60%]"
+                  className="w-full h-auto min-h-[140%] object-top object-cover transform transition-transform duration-[3.5s] ease-linear group-hover:-translate-y-[40%]"
+
                 />
               </div>
 

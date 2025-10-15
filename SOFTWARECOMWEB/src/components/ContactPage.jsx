@@ -26,196 +26,183 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-base md:text-sm mt-6 text-gray-600">
-              We will contact again after receiving your request within 24h
+              We’ll reach out within 24 hours after receiving your request.
             </p>
           </div>
 
           {/* ===== CONTACT INFO SECTION ===== */}
-          <div className="mx-auto max-w-5xl mt-12 flex flex-col sm:flex-row items-center justify-between bg-white rounded-full shadow-md px-6 py-4">
+          <div className="mx-auto max-w-6xl mt-12 flex flex-col md:flex-wrap md:flex-row items-center justify-center bg-white rounded-2xl shadow-md px-6 py-6 gap-6 md:gap-10 text-center md:text-left">
             {/* Email */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
               <img
                 src={envelopeimg}
                 alt="Email"
-                className="h-10 w-13 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] float-slow zoom"
+                className="h-9 w-9 md:h-10 md:w-10 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)]"
               />
-              <p className="text-sm md:text-base font-semibold text-gray-800">
+              <p className="text-sm md:text-base font-semibold text-gray-800 break-words">
                 binarylogixofficial@gmail.com
               </p>
             </div>
 
             {/* Divider */}
-            <div className="hidden sm:block h-6 w-px bg-gray-200"></div>
+            <div className="hidden md:block h-6 w-px bg-gray-200"></div>
 
             {/* Location */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
               <img
                 src={location}
                 alt="Location"
-                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] float-medium zoom"
+                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)]"
               />
-              <p className="text-sm md:text-base font-semibold text-gray-800">
+              <p className="text-sm md:text-base font-semibold text-gray-800 break-words max-w-[260px] sm:max-w-none">
                 11-Himanshu Apartment, Indrapuri, Bhopal 462022
               </p>
             </div>
 
             {/* Divider */}
-            <div className="hidden sm:block h-6 w-px bg-gray-200"></div>
+            <div className="hidden md:block h-6 w-px bg-gray-200"></div>
 
             {/* Phone */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
               <img
                 src={message}
                 alt="Phone"
-                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] float-fast zoom"
+                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)]"
               />
               <p className="text-sm md:text-base font-semibold text-gray-800">
                 +91 9617189757
               </p>
             </div>
           </div>
-        </section>
 
-        {/* ===== FORM SECTION ===== */}
-        <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
-          {/* Floating @ Icon (bottom left) */}
-          <div className="absolute bottom-5 left-5 md:bottom-10 md:left-40 z-20">
-            <img
-              src={atIcon}
-              alt="At symbol"
-              className="w-20 md:w-28 opacity-95 hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          {/* Floating Envelope (top right) */}
-          <div className="absolute top-6 right-2 md:top-30 md:right-10 z-20 animate-float">
-            <img
-              src={envelopeIcon}
-              alt="Envelope"
-              className="w-24 md:w-66 opacity-100 drop-shadow-lg"
-            />
-          </div>
-
-          {/* Form Container */}
-          <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-5xl w-full p-6 sm:p-8 md:p-12 z-10 border-t-10 border-[#3487fa]">
-            <p className="text-center text-red-500 text-sm mb-6">
-              The field is required mark as{" "}
-              <span className="font-semibold">*</span>
-            </p>
-
-            <form className="flex flex-col items-center space-y-6">
-              {/* Grid Inputs */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[700px]">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="rounded-full border bg-white border-gray-300 px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Email Address *"
-                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                  required
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone Number (optional)"
-                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                />
-                <input
-                  type="text"
-                  placeholder="Your Website (optional)"
-                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                />
-              </div>
-
-              <input
-                type="text"
-                placeholder="Select Service"
-                className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+          {/* ===== FORM SECTION ===== */}
+          <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
+            {/* Floating @ Icon (bottom left) */}
+            <div className="absolute bottom-5 left-5 md:bottom-10 md:left-24 z-20">
+              <img
+                src={atIcon}
+                alt="At symbol"
+                className="w-16 sm:w-20 md:w-28 opacity-90 hover:scale-105 transition-transform duration-500"
               />
+            </div>
 
-              <textarea
-                rows="5"
-                placeholder="How can we help you?"
-                className="rounded-3xl border border-gray-300 px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
-                required
-              ></textarea>
+            {/* Floating Envelope (top right) */}
+            <div className="absolute top-24 right-4 md:top-16 md:right-10 z-20 animate-float">
+              <img
+                src={envelopeIcon}
+                alt="Envelope"
+                className="w-20 sm:w-28 md:w-36 opacity-100 drop-shadow-lg"
+              />
+            </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-600 text-center sm:text-left">
-                <input type="checkbox" className="accent-[#8b5cf6]" />
-                <p>
-                  By submitting, I’m agreed to the{" "}
-                  <a
-                    href="#"
-                    className="underline text-black hover:text-[#8b5cf6]"
+            {/* Form Container */}
+            <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa]">
+              <p className="text-center text-red-500 text-sm mb-6">
+                Fields marked with <span className="font-semibold">*</span> are required.
+              </p>
+
+              <form className="flex flex-col items-center space-y-6">
+                {/* Grid Inputs */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[700px]">
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="rounded-full border bg-white border-gray-300 px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address *"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number (optional)"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Your Website (optional)"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  placeholder="Select Service"
+                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+                />
+
+                <textarea
+                  rows="5"
+                  placeholder="How can we help you?"
+                  className="rounded-3xl border border-gray-300 px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
+                  required
+                ></textarea>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-600 text-center sm:text-left">
+                  <input type="checkbox" className="accent-[#8b5cf6]" />
+                  <p>
+                    By submitting, I agree to the{" "}
+                    <a
+                      href="#"
+                      className="underline text-black hover:text-[#8b5cf6]"
+                    >
+                      Terms & Conditions
+                    </a>
+                  </p>
+                </div>
+
+                <div className="flex justify-center pt-4">
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-medium rounded-full py-3 px-8 transition duration-300 hover:opacity-90"
                   >
-                    Terms & Conditions
-                  </a>
-                </p>
-              </div>
+                    Send Your Request
+                  </button>
+                </div>
+              </form>
 
-              <div className="flex justify-center pt-4">
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-medium rounded-full py-3 px-8 transition duration-300"
-                >
-                  Send Your Request
-                </button>
-              </div>
-            </form>
+              {/* ✅ Animations */}
+              <style>{`
+                .bg-gradient-animate {
+                  background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
+                  background-size: 400% 400%;
+                  animation: gradientShift 15s ease-in-out infinite;
+                }
+                @keyframes gradientShift {
+                  0% { background-position: 0% 50%; }
+                  50% { background-position: 100% 50%; }
+                  100% { background-position: 0% 50%; }
+                }
+                @keyframes float {
+                  0%, 100% { transform: translateY(0px); }
+                  50% { transform: translateY(-10px); }
+                }
+                .animate-float {
+                  animation: float 5s ease-in-out infinite;
+                }
+              `}</style>
+            </div>
+          </section>
 
-            {/* ✅ Inline Style for Animations */}
-            <style>{`
-              .bg-gradient-animate {
-                background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
-                background-size: 400% 400%;
-                animation: gradientShift 15s ease-in-out infinite;
-              }
-
-              @keyframes gradientShift {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-              }
-
-              /* ✅ Floating Animation */
-              @keyframes float {
-                0%, 100% { transform: translateY(0px); }
-                50% { transform: translateY(-10px); }
-              }
-              .float-slow { animation: float 4s ease-in-out infinite; }
-              .float-medium { animation: float 5s ease-in-out infinite; }
-              .float-fast { animation: float 6s ease-in-out infinite; }
-
-              /* ✅ Zoom Animation */
-              @keyframes zoomInOut {
-                0%, 100% { transform: scale(1.3); }
-                50% { transform: scale(1.50); }
-              }
-              .zoom {
-                animation: zoomInOut 3.5s ease-in-out infinite;
-              }
-            `}</style>
-          </div>
-        </section>
-
-        {/* ===== GOOGLE MAP ===== */}
-        <section className="w-full">
-          <div className="w-full h-[280px] sm:h-[350px] md:h-[450px] lg:h-[500px]">
-            <iframe
-              src="https://www.google.com/maps?q=Binarylogix+Technologies+LLP,+Himanshu+Apartment,+Indrapuri+A+Sector,+Bhopal,+Madhya+Pradesh+462041&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Binarylogix Technologies LLP Location"
-              className="sm:scale-90 xs:scale-75 md:scale-95 transition-transform duration-300"
-            />
-          </div>
+          {/* ===== GOOGLE MAP ===== */}
+          <section className="w-full">
+            <div className="w-full h-[280px] sm:h-[350px] md:h-[450px] lg:h-[500px]">
+              <iframe
+                src="https://www.google.com/maps?q=Binarylogix+Technologies+LLP,+Himanshu+Apartment,+Indrapuri,+Bhopal,+Madhya+Pradesh&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Binarylogix Technologies LLP Location"
+                className="transition-transform duration-300"
+              />
+            </div>
+          </section>
         </section>
       </main>
 

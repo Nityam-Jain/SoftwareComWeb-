@@ -12,9 +12,9 @@ function AboutSection() {
     <div className="flex min-h-screen flex-col">
       <Header />
 
-      <Popularclient />
-
       <AboutUS />
+
+      <Popularclient />
 
       <Notes />
 
