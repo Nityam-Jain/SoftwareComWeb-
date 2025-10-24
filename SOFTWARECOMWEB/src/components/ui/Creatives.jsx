@@ -1,6 +1,6 @@
 import React from "react";
 import sectionImg from "../../assets/aboutusimg3.png";
-
+import { ChartColumnDecreasing, ChartPie } from 'lucide-react';
 export default function CreativeSection() {
   return (
     <section className="w-full bg-white py-16 overflow-hidden">
@@ -59,15 +59,7 @@ export default function CreativeSection() {
           <ul className="space-y-5 mb-10 fade-in-up delay-600">
             <li className="flex flex-col sm:flex-row items-start gap-3">
               <span className="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M11 3v10l6-3-6-3z" />
-                </svg>
+                 <ChartColumnDecreasing />
               </span>
               <div className="mt-2 sm:mt-0">
                 <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
@@ -83,16 +75,7 @@ export default function CreativeSection() {
 
             <li className="flex flex-col sm:flex-row items-start gap-3">
               <span className="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 6v6l4 2" />
-                  <circle cx="12" cy="12" r="10" />
-                </svg>
+                < ChartPie />
               </span>
               <div className="mt-2 sm:mt-0">
                 <h4 className="font-semibold text-gray-900 text-sm sm:text-base">

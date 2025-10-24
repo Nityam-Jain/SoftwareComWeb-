@@ -33,11 +33,11 @@ export default function ContactPage() {
           {/* ===== CONTACT INFO SECTION ===== */}
           <div className="mx-auto max-w-6xl mt-12 flex flex-col md:flex-wrap md:flex-row items-center justify-center bg-white rounded-2xl shadow-md px-6 py-6 gap-6 md:gap-10 text-center md:text-left">
             {/* Email */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start ">
               <img
                 src={envelopeimg}
                 alt="Email"
-                className="h-9 w-9 md:h-10 md:w-10 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)]"
+                className="h-9 w-9 md:h-10 md:w-10 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
               <p className="text-sm md:text-base font-semibold text-gray-800 break-words">
                 binarylogixofficial@gmail.com
@@ -52,7 +52,7 @@ export default function ContactPage() {
               <img
                 src={location}
                 alt="Location"
-                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)]"
+                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
               <p className="text-sm md:text-base font-semibold text-gray-800 break-words max-w-[260px] sm:max-w-none">
                 11-Himanshu Apartment, Indrapuri, Bhopal 462022
@@ -67,39 +67,38 @@ export default function ContactPage() {
               <img
                 src={message}
                 alt="Phone"
-                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)]"
+                className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
               <p className="text-sm md:text-base font-semibold text-gray-800">
                 +91 9617189757
               </p>
             </div>
           </div>
-
           {/* ===== FORM SECTION ===== */}
           <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
             {/* Floating @ Icon (bottom left) */}
-            <div className="absolute bottom-5 left-5 md:bottom-10 md:left-24 z-20">
+            <div className="absolute bottom-18 left-4 sm:bottom-12 sm:left-12 md:bottom-16 md:left-4 lg:bottom-12 lg:left-57 z-20 animate-float">
               <img
                 src={atIcon}
                 alt="At symbol"
-                className="w-16 sm:w-20 md:w-28 opacity-90 hover:scale-105 transition-transform duration-500"
+                className="w-14 sm:w-20 md:w-28 lg:w-38 opacity-90 hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             {/* Floating Envelope (top right) */}
-            <div className="absolute top-24 right-4 md:top-16 md:right-10 z-20 animate-float">
+            <div className="absolute top-20 right-4 sm:top-24 sm:right-10 md:top-22 md:right-4 lg:top-35 lg:right-32 z-20 animate-float">
               <img
                 src={envelopeIcon}
                 alt="Envelope"
-                className="w-20 sm:w-28 md:w-36 opacity-100 drop-shadow-lg"
+                className="w-16 sm:w-24 md:w-38 lg:w-66 opacity-100 drop-shadow-lg"
               />
             </div>
 
             {/* Form Container */}
-            <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa]">
-              <p className="text-center text-red-500 text-sm mb-6">
+            <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa] h-[720px] md:h-auto">
+              {/* <p className="text-center text-red-500 text-sm mb-6">
                 Fields marked with <span className="font-semibold">*</span> are required.
-              </p>
+              </p> */}
 
               <form className="flex flex-col items-center space-y-6">
                 {/* Grid Inputs */}
@@ -118,21 +117,31 @@ export default function ContactPage() {
                   />
                   <input
                     type="tel"
-                    placeholder="Phone Number (optional)"
+                    placeholder="Phone Number"
                     className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
                   />
-                  <input
-                    type="text"
-                    placeholder="Your Website (optional)"
+                  <select
                     className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                  />
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select Service
+                    </option>
+                    <option value="seo">SEO Strategy</option>
+                    <option value="google_fb_ads">Google & Facebook Ads</option>
+                    <option value="email_marketing">Email Marketing</option>
+                    <option value="social_media">Social Media</option>
+                    <option value="website_design">Website Design & Development</option>
+                    <option value="app_development">App Development</option>
+                  </select>
+
                 </div>
 
-                <input
+                {/* <input
                   type="text"
                   placeholder="Select Service"
                   className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                />
+                /> */}
 
                 <textarea
                   rows="5"
@@ -141,51 +150,62 @@ export default function ContactPage() {
                   required
                 ></textarea>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-600 text-center sm:text-left">
+                {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-600 text-center sm:text-left">
                   <input type="checkbox" className="accent-[#8b5cf6]" />
                   <p>
                     By submitting, I agree to the{" "}
-                    <a
-                      href="#"
-                      className="underline text-black hover:text-[#8b5cf6]"
-                    >
+                    <a href="#" className="underline text-black hover:text-[#8b5cf6]">
                       Terms & Conditions
                     </a>
                   </p>
-                </div>
+                </div> */}
 
                 <div className="flex justify-center pt-4">
                   <button
                     type="submit"
                     className="bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-medium rounded-full py-3 px-8 transition duration-300 hover:opacity-90"
                   >
-                    Send Your Request
+                    Send Message
                   </button>
                 </div>
               </form>
 
               {/* ✅ Animations */}
               <style>{`
-                .bg-gradient-animate {
-                  background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
-                  background-size: 400% 400%;
-                  animation: gradientShift 15s ease-in-out infinite;
-                }
-                @keyframes gradientShift {
-                  0% { background-position: 0% 50%; }
-                  50% { background-position: 100% 50%; }
-                  100% { background-position: 0% 50%; }
-                }
-                @keyframes float {
-                  0%, 100% { transform: translateY(0px); }
-                  50% { transform: translateY(-10px); }
-                }
-                .animate-float {
-                  animation: float 5s ease-in-out infinite;
-                }
-              `}</style>
+      .bg-gradient-animate {
+        background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease-in-out infinite;
+      }
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+      }
+        @keyframes zoomPulse {
+  0%, 100% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-zoom {
+  animation: zoomPulse 5s ease-in-out infinite;
+}
+
+    `}</style>
             </div>
           </section>
+
 
           {/* ===== GOOGLE MAP ===== */}
           <section className="w-full">

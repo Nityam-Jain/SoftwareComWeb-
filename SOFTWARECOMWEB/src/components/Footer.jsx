@@ -107,7 +107,7 @@ export default function Footer() {
                 // { name: "Our Team", path: "/team" },
                 { name: "Our Services", path: "/services" },
                 { name: "Portfolio", path: "/portfolio" },
-                { name: "Blogs", path: "/blogs" },
+                { name: "Blogs", path: "/blogs" }, 
                 { name: "Contact Us", path: "/contact" },
               ].map((link, i) => (
                 <li key={i}>
@@ -130,15 +130,15 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <span className="font-medium text-gray-800">Email:</span>{" "}
-                info@binarylogix.com
+               binarylogixofficial@gmail.com
               </li>
               <li>
                 <span className="font-medium text-gray-800">Phone:</span>{" "}
-                +91 99999 99999
+                +91 9617189757
               </li>
               <li>
                 <span className="font-medium text-gray-800">Address:</span>{" "}
-                Bhopal, Madhya Pradesh, India
+                11-Himanshu Apartment, Indrapuri, Bhopal 462022
               </li>
             </ul>
           </div>

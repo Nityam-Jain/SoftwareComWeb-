@@ -15,7 +15,7 @@ const Leaders = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-[#f8faff]">
+    <section className="py-16 px-6 bg-white">
       {/* Section Header */}
       <div className="text-center mb-12">
         <span className="text-sm text-blue-500 font-semibold uppercase tracking-wide bg-purple-50 px-3 py-1 rounded-full">

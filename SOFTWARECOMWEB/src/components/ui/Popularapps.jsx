@@ -17,7 +17,7 @@ export default function IntegrationSection() {
         .bg-gradient-animate {
           background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
           background-size: 400% 400%;
-          animation: gradientShift 15s ease-in-out infinite;
+          animation: gradientShift 25s ease-in-out infinite;
         }
 
         @keyframes gradientShift {
@@ -35,7 +35,7 @@ export default function IntegrationSection() {
         .slider {
           display: flex;
           width: max-content;
-          animation: slide 10s linear infinite;
+          animation: slide 35s linear infinite;
         }
 
         .slider:hover {
@@ -124,7 +124,7 @@ export default function IntegrationSection() {
                 <img
                   src={icon}
                   alt={`Client ${idx + 1}`}
-                  className="w-40 sm:w-24 md:w-28 lg:w-36 h-auto object-contain hover:scale-110 transition-transform duration-300"
+                  className="w-40 sm:w-24 md:w-28 lg:w-36 h-auto object-contain hover:scale-110 transition-transform duration-100"
                   style={{ background: "transparent" }}
                 />
               </div>

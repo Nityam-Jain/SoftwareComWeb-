@@ -10,6 +10,8 @@ import Popular from "./ui/Popularapps"
 import MobileSlider from "./ui/mobileslider"
 import Customers from "./ui/customers"
 import Stats from "./ui/stats"
+import ServicesComp from "../components/ui/ServicesCom"
+import ContactComp from "../components/ContactPage" 
 // import Price from "./ui/price"
 import Support from "./ui/Support"
 // import { Button } from "./ui/button";
@@ -39,6 +41,8 @@ function HomePage() {
 
       <Creative />
 
+        <ServicesComp />
+
       <Notes />
 
       {/* <About /> */}
@@ -54,6 +58,8 @@ function HomePage() {
       <Stats />
 
       <Support />
+
+      <ContactComp/>
 
       <Footer />
     </div>

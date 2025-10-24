@@ -7,13 +7,12 @@ import project3 from "../assets/edunaukarifull.png";
 import project4 from "../assets/makeahabitfull.png";
 import project5 from "../assets/chemistryfullpage.png";
 import project6 from "../assets/sakshifullpage.png";
-// import project7 from "../assets/project7.jpg";
-// import project8 from "../assets/project8.jpg";
-// import project9 from "../assets/project9.jpg";
+import project7 from "../assets/mandlamartfull.png";
+import project8 from "../assets/ssvmfullpage.png";
+import project9 from "../assets/fintechfull.png";
 
 const categories = [
   "All",
-  "IT Consultation",
   "Website Development",
   "UI/UX Design",
   "Graphic Design",
@@ -21,9 +20,17 @@ const categories = [
 ];
 
 const projects = [
+   {
+    title: "Make A Habit",
+    category: "Multi Service Provider",
+    image: project4,
+    description:
+      "It's an app for connecting customers with local service providers. The application features a clean, modern design that allows users to easily search for and book services such as home cleaning, plumbing, and electrical work.",
+    tags: ["Seo Analysis", "Content Strategy"],
+  },
   {
     title: "Pachmarhi Ayurveda",
-    category: "Commerce",
+    category: "E-Commerce Website",
     image: project1,
     description:
       "Pachmarhi Ayurveda is a wellness and e-commerce website offering a catalog of Ayurvedic products, wellness therapies, and natural remedies.",
@@ -45,14 +52,7 @@ const projects = [
       " EduNaukri is a comprehensive job portal website designed to connect job seekers with employers. It features a user-friendly interface, advanced search options, and secure login for both candidates and recruiters.",
     tags: ["Game Dev", "AR/VR"],
   },
-  {
-    title: "Make A Habit",
-    category: "Multi Service Provider",
-    image: project4,
-    description:
-      "It's an app for connecting customers with local service providers. The application features a clean, modern design that allows users to easily search for and book services such as home cleaning, plumbing, and electrical work.",
-    tags: ["Seo Analysis", "Content Strategy"],
-  },
+ 
   {
     title: "Chemistry Classes",
     category: "Education",
@@ -65,6 +65,30 @@ const projects = [
     title: "Sakshi Hospital",
     category: "Health",
     image: project6,
+    description:
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+    tags: ["SecurityManagement", "Backup" & "Recovery"],
+  },
+  {
+    title: "Saravati Shishu Vidya Mandir Sironj",
+    category: "School Website",
+    image: project8,
+    description:
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+    tags: ["SecurityManagement", "Backup" & "Recovery"],
+  },
+  {
+    title: "Robo Fintech Pvt Ltd",
+    category: "financial technology website",
+    image: project9,
+    description:
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+    tags: ["SecurityManagement", "Backup" & "Recovery"],
+  },
+   {
+    title: "Mandla Mart",
+    category: "Grocery Website",
+    image: project7,
     description:
       "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
     tags: ["SecurityManagement", "Backup" & "Recovery"],
@@ -151,7 +175,7 @@ export default function ProjectsPage() {
               className="rounded-2xl shadow-sm transition duration-100 overflow-hidden bg-white group"
             >
               {/* 🌀 Scroll-on-hover: parent has `group`, image animates on group-hover */}
-              <div className="overflow-hidden h-48 sm:h-56 md:h-60">
+              <div className="overflow-hidden h-48 sm:h-56 md:h-80">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -172,9 +196,9 @@ export default function ProjectsPage() {
                   {project.category}
                 </a>
 
-                <p className="mt-2 text-gray-600 text-sm text-left pl-2 mb-4 leading-relaxed">
+                {/* <p className="mt-2 text-gray-600 text-sm text-left pl-2 mb-4 leading-relaxed">
                   {project.description}
-                </p>
+                </p> */}
               </div>
             </div>
           ))}
@@ -183,9 +207,9 @@ export default function ProjectsPage() {
 
         {/* See More Button */}
         <div className="flex justify-center mt-20 sm:mt-20 mb-12 px-4">
-          <button className="px-6 py-2 bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-semibold rounded-full transition w-auto sm:w-auto">
+          {/* <button className="px-6 py-2 bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-semibold rounded-full transition w-auto sm:w-auto">
             Show More
-          </button>
+          </button> */}
         </div>
 
         {/* Hero Section with Rotating Globe */}

@@ -6,13 +6,10 @@ import icon4 from "../../assets/jjinticon.png";
 import icon5 from "../../assets/shardamoicon.jpeg";
 import icon6 from "../../assets/SSVMicon.jpeg";
 
-
-const testimonialsData = [ 
+const testimonialsData = [
   {
     img: icon1,
-    text: "BinaryLogix consistently delivers quality work with great communication, strong technical skills, and on-time project completion."
-
-,
+    text: "BinaryLogix consistently delivers quality work with great communication, strong technical skills, and on-time project completion.",
     name: "OSHIN JAIN.",
     role: "Owner, Vardhan Interiors",
   },
@@ -33,19 +30,19 @@ const testimonialsData = [
     text: "Highly satisfied with BinaryLogix’s service. They are professional, skilled, and consistently exceed expectations on every project.",
     name: "Jayant Ahirwar.",
     role: "Owner, JJ International Group ",
-  }, 
+  },
   {
     img: icon5,
     text: "BinaryLogix delivers excellent service with strong expertise, timely delivery, and great communication. Highly recommended for any tech needs.",
     name: "Dr. Parul Agrawal",
     role: "Owner, Sharda Mohan Homoeopathic Clinic ",
-  }, 
+  },
   {
     img: icon6,
     text: "Working with Binarylogix was seamless! Their innovative approach and dedication to our project delivered incredible results. A perfect partner for scaling businesses online",
     name: "Narendra Singh Dangi.",
     role: "Principle, SSVM ",
-  }, 
+  },
 ];
 
 export default function TestimonialsSection() {
@@ -66,37 +63,53 @@ export default function TestimonialsSection() {
   return (
     <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-20 flex flex-col md:flex-row items-stretch justify-between relative overflow-hidden">
       {/* Left section */}
-      <div className="flex-1 flex flex-col justify-center z-10">
-        <span className="inline-block text-xs px-3 py-1 rounded bg-blue-50 text-blue-600 mb-4 sm:mb-6">
+      <div className="flex-1 flex flex-col justify-center z-10 space-y-6">
+        <span className="inline-flex w-fit text-xs px-3 py-1 rounded bg-blue-50 text-blue-600">
           Testimonials
         </span>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
           Loved by{" "}
           <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
             IT Clients
           </span>
         </h2>
 
-        <p className="text-gray-600 text-sm sm:text-base md:text-base max-w-full sm:max-w-md mb-8 sm:mb-12">
+        <p className="text-gray-600 text-sm sm:text-base md:text-base max-w-full sm:max-w-md">
           Binarylogix has empowered businesses globally with cutting-edge software solutions, cloud services, and IT consulting trusted by enterprise-level companies.
         </p>
 
-        {/* Stats */}
-        <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 items-start sm:items-center mb-10">
-          {/* <div className="flex flex-col items-start sm:items-center border-b sm:border-b-0 sm:border-r border-gray-200 pb-4 sm:pb-0 pr-0 sm:pr-12">
-            <img src={icon1} alt="" className="w-6 h-6 mb-1" />
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-900">2,5M+</span>
-            <span className="text-gray-500 text-xs">Downloads & Installations</span>
-          </div> */}
-          {/* <div className="flex flex-col items-start sm:items-center pt-4 sm:pt-0 pl-0 sm:pl-12">
-            <img src={icon2} alt="" className="w-6 h-6 mb-1" />
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-900">4.8/5</span>
-            <span className="text-yellow-400 flex items-center font-medium text-sm mb-0.5">
-              {Array(5).fill(0).map((_, i) => (<span key={i}>★</span>))}
-            </span>
-            <span className="text-gray-500 text-xs">Based on 1,258 reviews</span>
-          </div> */}
+        {/* Stats / Achievements */}
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start sm:items-center mt-4">
+          <div className="flex items-center gap-3">
+            <div className="bg-blue-50 p-2 rounded-full">
+              <img src={icon1} className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-2xl font-bold text-gray-900">50+</span>
+              <p className="text-gray-500 text-sm">Projects Completed</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="bg-green-50 p-2 rounded-full">
+              <img src={icon2} className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-2xl font-bold text-gray-900">30+</span>
+              <p className="text-gray-500 text-sm">Happy Clients</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="bg-purple-50 p-2 rounded-full">
+              <img src={icon3} className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-2xl font-bold text-gray-900">10+</span>
+              <p className="text-gray-500 text-sm">Years in Business</p>
+            </div>
+          </div>
         </div>
       </div>
 
