@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import atIcon from "../assets/Aticon.png";
 import envelopeIcon from "../assets/envicon.png";
 import envelopeimg from "../assets/Envelope.png";
@@ -9,9 +7,7 @@ import message from "../assets/message.png";
 
 export default function ContactPage() {
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
-      <Header />
-
+    <div className="bg-gray-50 flex flex-col">
       <main className="flex-1">
         {/* ===== TOP SECTION ===== */}
         <section className="bg-white rounded-b-3xl shadow-sm pb-8 pt-12 md:pt-20 lg:pt-28">
@@ -74,6 +70,7 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
+
           {/* ===== FORM SECTION ===== */}
           <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
             {/* Floating @ Icon (bottom left) */}
@@ -96,12 +93,7 @@ export default function ContactPage() {
 
             {/* Form Container */}
             <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa] h-[720px] md:h-auto">
-              {/* <p className="text-center text-red-500 text-sm mb-6">
-                Fields marked with <span className="font-semibold">*</span> are required.
-              </p> */}
-
               <form className="flex flex-col items-center space-y-6">
-                {/* Grid Inputs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[700px]">
                   <input
                     type="text"
@@ -134,14 +126,7 @@ export default function ContactPage() {
                     <option value="website_design">Website Design & Development</option>
                     <option value="app_development">App Development</option>
                   </select>
-
                 </div>
-
-                {/* <input
-                  type="text"
-                  placeholder="Select Service"
-                  className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
-                /> */}
 
                 <textarea
                   rows="5"
@@ -149,16 +134,6 @@ export default function ContactPage() {
                   className="rounded-3xl border border-gray-300 px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
                   required
                 ></textarea>
-
-                {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-600 text-center sm:text-left">
-                  <input type="checkbox" className="accent-[#8b5cf6]" />
-                  <p>
-                    By submitting, I agree to the{" "}
-                    <a href="#" className="underline text-black hover:text-[#8b5cf6]">
-                      Terms & Conditions
-                    </a>
-                  </p>
-                </div> */}
 
                 <div className="flex justify-center pt-4">
                   <button
@@ -172,40 +147,33 @@ export default function ContactPage() {
 
               {/* ✅ Animations */}
               <style>{`
-      .bg-gradient-animate {
-        background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease-in-out infinite;
-      }
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
-      .animate-float {
-        animation: float 5s ease-in-out infinite;
-      }
-        @keyframes zoomPulse {
-  0%, 100% {
-    transform: scale(1.2);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-}
-
-.animate-zoom {
-  animation: zoomPulse 5s ease-in-out infinite;
-}
-
-    `}</style>
+                .bg-gradient-animate {
+                  background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);
+                  background-size: 400% 400%;
+                  animation: gradientShift 15s ease-in-out infinite;
+                }
+                @keyframes gradientShift {
+                  0% { background-position: 0% 50%; }
+                  50% { background-position: 100% 50%; }
+                  100% { background-position: 0% 50%; }
+                }
+                @keyframes float {
+                  0%, 100% { transform: translateY(0px); }
+                  50% { transform: translateY(-10px); }
+                }
+                .animate-float {
+                  animation: float 5s ease-in-out infinite;
+                }
+                @keyframes zoomPulse {
+                  0%, 100% { transform: scale(1.2); }
+                  50% { transform: scale(1.08); }
+                }
+                .animate-zoom {
+                  animation: zoomPulse 5s ease-in-out infinite;
+                }
+              `}</style>
             </div>
           </section>
-
 
           {/* ===== GOOGLE MAP ===== */}
           <section className="w-full">
@@ -225,8 +193,6 @@ export default function ContactPage() {
           </section>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

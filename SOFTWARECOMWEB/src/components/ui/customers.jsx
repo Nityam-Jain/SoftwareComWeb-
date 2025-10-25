@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import icon1 from "../../assets/vardhanicon.jpeg";
-import icon2 from "../../assets/howtocleanicon.jpeg";
-import icon3 from "../../assets/pachamariicon.png";
+import icon1 from "../../assets/vardhanicon_img.png";
+import icon2 from "../../assets/howtocleanicon_img.png";
+import icon3 from "../../assets/pachamariicon_img.png";
 import icon4 from "../../assets/jjinticon.png";
-import icon5 from "../../assets/shardamoicon.jpeg";
+import icon5 from "../../assets/mohanicon_img.png";
 import icon6 from "../../assets/SSVMicon.jpeg";
 
 const testimonialsData = [
@@ -71,7 +71,7 @@ export default function TestimonialsSection() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
           Loved by{" "}
           <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
-            IT Clients
+            Clients
           </span>
         </h2>
 
@@ -82,9 +82,9 @@ export default function TestimonialsSection() {
         {/* Stats / Achievements */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start sm:items-center mt-4">
           <div className="flex items-center gap-3">
-            <div className="bg-blue-50 p-2 rounded-full">
+            {/* <div className="bg-blue-50 p-2 rounded-full">
               <img src={icon1} className="w-6 h-6" />
-            </div>
+            </div> */}
             <div>
               <span className="text-2xl font-bold text-gray-900">50+</span>
               <p className="text-gray-500 text-sm">Projects Completed</p>
@@ -92,9 +92,9 @@ export default function TestimonialsSection() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="bg-green-50 p-2 rounded-full">
+            {/* <div className="bg-green-50 p-2 rounded-full">
               <img src={icon2} className="w-6 h-6" />
-            </div>
+            </div> */}
             <div>
               <span className="text-2xl font-bold text-gray-900">30+</span>
               <p className="text-gray-500 text-sm">Happy Clients</p>
@@ -102,9 +102,9 @@ export default function TestimonialsSection() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="bg-purple-50 p-2 rounded-full">
+            {/* <div className="bg-purple-50 p-2 rounded-full">
               <img src={icon3} className="w-6 h-6" />
-            </div>
+            </div> */}
             <div>
               <span className="text-2xl font-bold text-gray-900">10+</span>
               <p className="text-gray-500 text-sm">Years in Business</p>

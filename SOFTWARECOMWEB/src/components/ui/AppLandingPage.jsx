@@ -4,10 +4,10 @@ import secondPageBg from "../../assets/Bannerimg2.png";
 import thirdPageBg from "../../assets/Bannerimg3.png";
 import fourthPageBg from "../../assets/bannerimg4.png";
 
-import avatar1 from "../../assets/ruchiicon.jpeg";
+import avatar1 from "../../assets/ruchiicon_img.png";
 import avatar2 from "../../assets/jjinticon.png";
-import avatar3 from "../../assets/shardamoicon.jpeg";
-import avatar4 from "../../assets/vardhanicon.jpeg";
+import avatar3 from "../../assets/mohanicon_img.png";
+import avatar4 from "../../assets/vardhanicon_img.png";
 
 const slides = [
   {
@@ -81,7 +81,7 @@ export default function HeroCarousel() {
       <div className="absolute inset-0 bg-[#052250]/70" />
 
       {/* Main content */}
-      <div className="relative z-20 w-full max-w-5xl px-4 py-10 md:px-8 md:py-16 lg:py-20">
+      <div className="relative z-20 w-full max-w-6xl px-4 py-10 md:px-8 md:py-16 lg:py-20">
         {slides.map((slide, idx) => (
           <div
             key={idx}

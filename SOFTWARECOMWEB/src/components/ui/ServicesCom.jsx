@@ -60,7 +60,7 @@ const Services = () => {
       </div>
 
       {/* Slider */}
-      <div className="relative">
+      <div className="relative max-w-7xl mx-auto">
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-scroll hide-scrollbar scroll-smooth px-10"

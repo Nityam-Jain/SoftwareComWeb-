@@ -319,7 +319,7 @@ const Blog = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="bg-[#f4f7ff] rounded-2xl p-8 shadow-md w-full max-w-md mx-auto">
+          {/* <div className="bg-[#f4f7ff] rounded-2xl p-8 shadow-md w-full max-w-md mx-auto">
             <h4 className="text-lg font-semibold mb-2 uppercase tracking-wider text-center">
               Newsletter
             </h4>
@@ -342,7 +342,7 @@ const Blog = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
 
 
           {/* Social */}
@@ -406,7 +406,7 @@ const Blog = () => {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-sm bg-gray-100 rounded-md hover:bg-[#6c4bdb] hover:text-white cursor-pointer transition"
+                  className="px-3 py-1 text-sm bg-gray-100 rounded-md hover:bg-blue-600 hover:text-white cursor-pointer transition"
                 >
                   {tag}
                 </span>

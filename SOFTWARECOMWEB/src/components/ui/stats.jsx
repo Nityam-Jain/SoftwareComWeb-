@@ -7,7 +7,7 @@ function useCountUp(end, startCounting, duration = 1500) {
   useEffect(() => {
     if (!startCounting) return;
     let start = 0;
-    const increment = end / (duration / 16); 
+    const increment = end / (duration / 16);
     function update() {
       start += increment;
       if (start < end) {
@@ -76,21 +76,21 @@ export default function AnimatedStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative  md:px-27  bg-white flex justify-center py-16 md:py-20 overflow-hidden"
+      className="relative bg-white flex justify-center py-16 md:py-20 overflow-hidden px-4 sm:px-10 md:px-24"
     >
       {/* subtle animated gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />
 
-      <div className="relative w-full z-10 flex flex-col md:flex-row gap-12 md:gap-60 items-center">
+      <div className="relative w-full z-10 flex flex-wrap md:flex-nowrap flex-col md:flex-row gap-12 md:gap-60 items-center justify-center">
         {statsList.map((stat, idx) => (
-          <div 
+          <div
             key={stat.label}
             className={`flex flex-col items-center text-center transition-all duration-700 ${
               startCounting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: `${idx * 200}ms` }}
           >
-            <div className="bg-blue-100 p-4 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-4 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
               {stat.icon}
             </div>
             <div className="flex items-baseline mt-3 mb-1">

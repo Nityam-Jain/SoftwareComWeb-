@@ -5,13 +5,14 @@ import ServicesComp from "../components/ui/ServicesCom"
 import Notes from "../components/ui/Notes"
 import Testimonials from "../components/ui/customers"
 import Stats from "../components/ui/stats"
+import Servicescard from "../components/servicescard" 
 function ServiceSection() {
   return (
     <div className="flex min-h-screen flex-col">
        <Header />
 
      
-       <ServicesComp />
+       <Servicescard />
         
          <Stats />
 

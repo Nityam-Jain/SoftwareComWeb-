@@ -6,9 +6,25 @@ import logo from "../assets/logo/binarylogixlogo-remove.png";
 export default function Footer() {
   return (
     <footer className="bg-[#f4f6fb] pt-20 pb-8 relative overflow-hidden">
-      {/* 🔹 Animated Wavy Top Decoration (Main) */}
+      {/* 🔹 Animated Wavy Top Decoration */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
-        {/* Duplicate Layer 1 (Slightly Above) */}
+        {/* New Upper Wave Layer */}
+        <div className="absolute top-[10px] left-0 w-full h-[60px] opacity-70">
+          <svg
+            className="absolute bottom-0 left-0 w-[200%] h-[60px] animate-waveMotionUltraSlow"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,0V30c60,20,120,25,200,30,85,5,170-10,255-15,90-5,180,8,270,20,85,10,170,20,255,12,80-6,160-25,220-35V0Z"
+              fill="#ffffff"
+              opacity="0.3"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Duplicate Layer 1 (Slightly Above Original) */}
         <div className="absolute top-[20px] left-0 w-full h-[100px] sm:h-[120px] opacity-80">
           <svg
             className="absolute bottom-0 left-0 w-[200%] h-[120px] animate-waveMotionSlow"
@@ -50,6 +66,7 @@ export default function Footer() {
         {/* Subtle gradient overlay to reduce white gap */}
         <div className="absolute top-0 left-0 w-full h-[50px] bg-gradient-to-b from-white/90 to-transparent"></div>
 
+        {/* Wave Animations */}
         <style>{`
           @keyframes waveMotion {
             0% { transform: translateX(0); }
@@ -61,11 +78,19 @@ export default function Footer() {
             50% { transform: translateX(-15%); }
             100% { transform: translateX(0); }
           }
+          @keyframes waveMotionUltraSlow {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-10%); }
+            100% { transform: translateX(0); }
+          }
           .animate-waveMotion {
             animation: waveMotion 10s ease-in-out infinite;
           }
           .animate-waveMotionSlow {
             animation: waveMotionSlow 16s ease-in-out infinite;
+          }
+          .animate-waveMotionUltraSlow {
+            animation: waveMotionUltraSlow 20s ease-in-out infinite;
           }
         `}</style>
       </div>
@@ -102,9 +127,7 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="grid grid-cols-2 gap-2 text-sm">
-              {[
-                { name: "About Us", path: "/about" },
-                // { name: "Our Team", path: "/team" },
+              {[{ name: "About Us", path: "/about" },
                 { name: "Our Services", path: "/services" },
                 { name: "Portfolio", path: "/portfolio" },
                 { name: "Blogs", path: "/blogs" }, 
@@ -130,7 +153,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <span className="font-medium text-gray-800">Email:</span>{" "}
-               binarylogixofficial@gmail.com
+                binarylogixofficial@gmail.com
               </li>
               <li>
                 <span className="font-medium text-gray-800">Phone:</span>{" "}
