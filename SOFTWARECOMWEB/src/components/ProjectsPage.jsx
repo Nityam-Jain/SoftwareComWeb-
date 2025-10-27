@@ -10,7 +10,9 @@ import project6 from "../assets/sakshifullpage.png";
 import project7 from "../assets/mandlamartfull.png";
 import project8 from "../assets/ssvmfullpage.png";
 import project9 from "../assets/fintechfull.png";
-
+import graphic1 from "../assets/8.jpg"
+import graphic2 from "../assets/9.jpg"
+import graphic3 from "../assets/11.jpg"
 const categories = [
   "All",
   "Website Development",
@@ -89,6 +91,30 @@ const projects = [
     title: "Mandla Mart",
     category: "Grocery Website",
     image: project7,
+    description:
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+    tags: ["SecurityManagement", "Backup" & "Recovery"],
+  },
+   {
+    title: "Mandla Mart",
+    category: "Grocery Website",
+    image: graphic1,
+    description:
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+    tags: ["SecurityManagement", "Backup" & "Recovery"],
+  },
+   {
+    title: "Mandla Mart",
+    category: "Grocery Website",
+    image: graphic2,
+    description:
+      "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
+    tags: ["SecurityManagement", "Backup" & "Recovery"],
+  },
+  {
+    title: "Mandla Mart",
+    category: "Grocery Website",
+    image: graphic3,
     description:
       "Sakshi Hospital’s website is designed to provide patients with easy access to healthcare information, doctor profiles, appointment booking, and facility details.",
     tags: ["SecurityManagement", "Backup" & "Recovery"],

@@ -22,22 +22,19 @@ export default function Header() {
 
   // Handle menu click with shutter effect
   const handleNavClick = (path) => {
-    if (location.pathname === path) return; // avoid double trigger
+    if (location.pathname === path) return;
     setTargetPath(path);
     setTransitionActive(true);
 
-    // FIRST: close shutter (first half)
     setTimeout(() => {
-      navigate(path);   // navigate when screen is fully covered
-    }, 500); // match first half of animation
+      navigate(path);
+    }, 500);
 
-    // SECOND: open shutter (second half)
     setTimeout(() => {
       setTransitionActive(false);
       setMenuOpen(false);
-    }, 1000); // total animation duration
+    }, 1000);
   };
-
 
   return (
     <>
@@ -59,7 +56,7 @@ export default function Header() {
               <img
                 src={logo}
                 alt="Binary Logo"
-                className="w-35 md:w-45 lg:w-35 h-auto object-contain"
+                className="w-35 md:w-125 lg:w-35 h-auto object-contain"
               />
             </Link>
 
@@ -71,7 +68,10 @@ export default function Header() {
                   <button
                     key={path}
                     onClick={() => handleNavClick(path)}
-                    className={`text-sm font-semibold transition ${isActive(path) ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+                    className={`relative text-sm font-semibold transition 
+                      ${isActive(path)
+                        ? "text-blue-600 after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600 after:rounded-full"
+                        : "text-gray-700 hover:text-blue-600"
                       }`}
                   >
                     {name}
@@ -101,7 +101,11 @@ export default function Header() {
                     <button
                       key={path}
                       onClick={() => handleNavClick(path)}
-                      className={`text-sm font-semibold ${isActive(path) ? "text-blue-600" : "text-gray-700 hover:text-blue-600"}`}
+                      className={`relative text-sm font-semibold 
+                        ${isActive(path)
+                          ? "text-blue-600 after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600 after:rounded-full"
+                          : "text-gray-700 hover:text-blue-600"
+                        }`}
                     >
                       {name}
                     </button>
@@ -116,15 +120,14 @@ export default function Header() {
         <style>
           {`
            @keyframes shutter {
-  0%   { transform: scaleY(0); }
-  50%  { transform: scaleY(1); }  /* fully closed here */
-  100% { transform: scaleY(0); }  /* opens to reveal new page */
-}
-.animate-shutter {
-  animation: shutter 3s ease-in-out forwards;
-  transform-origin: center;
-}
-
+              0%   { transform: scaleY(0); }
+              50%  { transform: scaleY(1); }
+              100% { transform: scaleY(0); }
+            }
+            .animate-shutter {
+              animation: shutter 3s ease-in-out forwards;
+              transform-origin: center;
+            }
           `}
         </style>
       </header>

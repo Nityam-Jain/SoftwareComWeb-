@@ -1,5 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Briefcase, Users, ShoppingBag, Smile } from "lucide-react";
+
+// ✅ Import icons from assets folder
+import ProfesIcon from "../../assets/project.gif";
+import repu from "../../assets/best-customer-experience.gif";
+import webIcon from "../../assets/certificate.gif";
+import appdevIcon from "../../assets/responsive.gif";
 
 // Count-up hook
 function useCountUp(end, startCounting, duration = 1500) {
@@ -24,25 +29,25 @@ function useCountUp(end, startCounting, duration = 1500) {
 
 const statsList = [
   {
-    icon: <Briefcase className="w-12 h-12 text-blue-500" />,
+    icon: webIcon,
     label: "Projects Completed",
     target: 120,
     suffix: "+",
   },
   {
-    icon: <Users className="w-12 h-12 text-blue-500" />,
+    icon: ProfesIcon,
     label: "Skilled Professionals",
     target: 25,
     suffix: "+",
   },
   {
-    icon: <ShoppingBag className="w-12 h-12 text-blue-500" />,
+    icon: appdevIcon,
     label: "Websites & Apps Delivered",
     target: 80,
     suffix: "+",
   },
   {
-    icon: <Smile className="w-12 h-12 text-blue-500" />,
+    icon: repu,
     label: "Happy Clients",
     target: 150,
     suffix: "+",
@@ -68,7 +73,7 @@ export default function AnimatedStats() {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
-
+ 
   const counters = statsList.map((stat) =>
     useCountUp(stat.target, startCounting, 1300 + stat.target * 5)
   );
@@ -78,7 +83,6 @@ export default function AnimatedStats() {
       ref={sectionRef}
       className="relative bg-white flex justify-center py-16 md:py-20 overflow-hidden px-4 sm:px-10 md:px-24"
     >
-      {/* subtle animated gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />
 
       <div className="relative w-full z-10 flex flex-wrap md:flex-nowrap flex-col md:flex-row gap-12 md:gap-60 items-center justify-center">
@@ -90,11 +94,11 @@ export default function AnimatedStats() {
             }`}
             style={{ transitionDelay: `${idx * 200}ms` }}
           >
-            <div className="bg-white p-4 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              {stat.icon}
-            </div>
+           
+              <img src={stat.icon} alt={stat.label} className="w-26 h-19 object-contain" />
+           
             <div className="flex items-baseline mt-3 mb-1">
-              <span className="text-3xl md:text-4xl font-bold text-gray-800">
+              <span className="text-3xl md:text-3xl font-bold text-gray-800">
                 {counters[idx]}
               </span>
               <span className="text-2xl font-semibold text-blue-500 ml-1">

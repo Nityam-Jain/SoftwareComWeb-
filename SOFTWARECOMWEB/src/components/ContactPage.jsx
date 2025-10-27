@@ -77,7 +77,7 @@ export default function ContactPage() {
           {/* ===== FORM SECTION ===== */}
           <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
             {/* Floating @ Icon (bottom left) */}
-            <div className="absolute bottom-18 left-4 sm:bottom-12 sm:left-12 md:bottom-16 md:left-4 lg:bottom-12 lg:left-57 z-20 animate-float">
+            <div className="absolute bottom-18 left-4 sm:bottom-12 sm:left-12 md:bottom-8 md:left-4 lg:bottom-12 lg:left-57 z-20 animate-float">
               <img
                 src={atIcon}
                 alt="At symbol"
@@ -86,7 +86,7 @@ export default function ContactPage() {
             </div>
 
             {/* Floating Envelope (top right) */}
-            <div className="absolute top-20 right-4 sm:top-24 sm:right-10 md:top-22 md:right-4 lg:top-35 lg:right-32 z-20 animate-float">
+            <div className="absolute top-20 right-4 sm:top-24 sm:right-10 md:top-12 md:right-0 lg:top-35 lg:right-32 z-20 animate-float">
               <img
                 src={envelopeIcon}
                 alt="Envelope"

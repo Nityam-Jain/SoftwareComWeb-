@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Cpu, Rocket, BarChart3 } from "lucide-react"; // ✅ Add more icons here
+
+// ✅ Import icons from assets folder
+import icon1 from "../../assets/strategy.gif";
+import icon2 from "../../assets/rocket.gif";
+import icon3 from "../../assets/statistics.gif";
 
 // Intersection observer hook
 const useInView = (options) => {
@@ -23,17 +27,17 @@ export default function WhyChooseUsSection() {
 
   const features = [
     {
-      icon: <Cpu className="w-10 h-10 text-blue-600 mb-3" />,
+      icon: icon1,
       title: "Tailored Strategies",
       desc: "We create personalized digital marketing plans that align with your unique business goals and target audience, ensuring maximum impact and relevance.",
     },
     {
-      icon: <Rocket className="w-10 h-10 text-blue-600 mb-3" />,
+      icon: icon2,
       title: "Cutting-Edge Technology",
       desc: "Leveraging the latest tools and trends, our team stays ahead of the curve to deliver innovative solutions that keep your brand competitive in a rapidly evolving digital landscape.",
     },
     {
-      icon: <BarChart3 className="w-10 h-10 text-blue-600 mb-3" />,
+      icon: icon3,
       title: "Results-Driven Approach",
       desc: "Our focus is on achieving measurable outcomes. We use data-driven insights to optimize campaigns and track success, providing you with clear ROI and actionable results.",
     },
@@ -75,10 +79,10 @@ export default function WhyChooseUsSection() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className={`p-6 bg-gradient-to-tr from-white to-blue-50 border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card flex flex-col items-center text-center`}
+              className="p-6 bg-gradient-to-tr from-white to-blue-50 border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card flex flex-col items-center text-center"
               style={{ animationDelay: `${idx * 0.2}s` }}
             >
-              {feature.icon}
+              <img src={feature.icon} alt={feature.title} className="w-15 h-13 mb-3 object-contain" />
               <h3 className="font-semibold text-blue-700 text-lg mb-2">
                 {feature.title}
               </h3>
