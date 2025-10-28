@@ -55,7 +55,7 @@ export default function WhyChooseUsSection() {
 
       <div
         className={`max-w-6xl mx-auto px-4 flex flex-col gap-12 transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          isVisible ? "animate-sectionVisible" : "opacity-0 translate-y-10"
         }`}
       >
         <div className="text-center md:text-left">
@@ -79,8 +79,8 @@ export default function WhyChooseUsSection() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="p-6 bg-gradient-to-tr from-white to-blue-50 border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card flex flex-col items-center text-center"
-              style={{ animationDelay: `${idx * 0.2}s` }}
+              className={`p-6 bg-white border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card`}
+              style={{ animationDelay: `${idx * 0.3}s` }}
             >
               <img src={feature.icon} alt={feature.title} className="w-15 h-13 mb-3 object-contain" />
               <h3 className="font-semibold text-blue-700 text-lg mb-2">
@@ -95,7 +95,12 @@ export default function WhyChooseUsSection() {
       </div>
 
       {/* Keyframe animations */}
-      <style jsx>{`
+      <style>{`
+        .animate-sectionVisible {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition: opacity 1s, transform 1s;
+        }
         .animate-float1 {
           top: 10%;
           left: 5%;
@@ -112,8 +117,7 @@ export default function WhyChooseUsSection() {
           animation: float 10s ease-in-out infinite;
         }
         @keyframes float {
-          0%,
-          100% {
+          0%, 100% {
             transform: translateY(0px);
           }
           50% {
@@ -122,7 +126,7 @@ export default function WhyChooseUsSection() {
         }
         .animate-fadeInUp {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(25px);
           animation: fadeInUp 0.8s forwards;
         }
         @keyframes fadeInUp {
@@ -133,8 +137,14 @@ export default function WhyChooseUsSection() {
         }
         .animate-card {
           opacity: 0;
-          transform: translateY(20px);
-          animation: fadeInUp 0.6s forwards;
+          transform: translateY(25px) scale(0.97);
+          animation: cardIn 0.8s forwards;
+        }
+        @keyframes cardIn {
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
       `}</style>
     </section>

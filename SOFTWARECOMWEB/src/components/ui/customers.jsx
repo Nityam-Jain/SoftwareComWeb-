@@ -61,10 +61,10 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-20 flex flex-col md:flex-row items-stretch justify-between relative overflow-hidden">
+    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-30 flex flex-col md:flex-row items-stretch justify-between relative overflow-hidden">
       {/* Left section */}
       <div className="flex-1 flex flex-col justify-center z-10 space-y-6">
-        <span className="inline-flex w-fit text-xs px-3 py-1 rounded bg-blue-50 text-blue-600">
+        <span className="inline-flex w-fit text-xs px-1 py-1 rounded bg-blue-50 text-blue-600">
           Testimonials
         </span>
 
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
               <img src={icon1} className="w-6 h-6" />
             </div> */}
             <div>
-              <span className="text-2xl font-bold text-gray-900">50+</span>
+              <span className="text-2xl font-bold text-gray-900">120+</span>
               <p className="text-gray-500 text-sm">Projects Completed</p>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
               <img src={icon2} className="w-6 h-6" />
             </div> */}
             <div>
-              <span className="text-2xl font-bold text-gray-900">30+</span>
+              <span className="text-2xl font-bold text-gray-900">150+</span>
               <p className="text-gray-500 text-sm">Happy Clients</p>
             </div>
           </div>

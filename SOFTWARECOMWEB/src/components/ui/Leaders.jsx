@@ -1,16 +1,20 @@
 import React from "react";
 
+// Import images directly from assets folder
+import leader1 from "../../assets/CEO.png";
+import leader2 from "../../assets/Marketer.jpeg";
+
 const Leaders = () => {
   const leaders = [
     {
       name: "Kamal Solanki",
       role: "CEO & Founder",
-      img: "/assets/leader1.jpg", 
+      img: leader1, 
     },
     {
       name: "Jayant Ahirwar",
       role: "Marketing Specialist",
-      img: "/assets/leader2.jpg", 
+      img: leader2, 
     },
   ];
 

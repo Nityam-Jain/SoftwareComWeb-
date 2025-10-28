@@ -8,7 +8,7 @@ import socialImg from "../../assets/contentimg.png";
 import webdevImg from "../../assets/websiteicon.png";
 import appImg from "../../assets/3dappimgbg.png";
 
-const Services = () => {
+const Services = ()=> {
   const scrollRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
