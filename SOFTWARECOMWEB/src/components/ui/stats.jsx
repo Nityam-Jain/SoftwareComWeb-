@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // ✅ Import icons from assets folder
-import ProfesIcon from "../../assets/project.gif";
-import repu from "../../assets/best-customer-experience.gif";
-import webIcon from "../../assets/certificate.gif";
-import appdevIcon from "../../assets/responsive.gif";
+import ProfesIcon from "../../assets/skilledprof.png";
+import repu from "../../assets/projectdeilivered.png";
+import webIcon from "../../assets/projectcompleted.png";
+import appdevIcon from "../../assets/happyclients.png";
 
 // Count-up hook
 function useCountUp(end, startCounting, duration = 1500) {
@@ -41,13 +41,13 @@ const statsList = [
     suffix: "+",
   },
   {
-    icon: appdevIcon,
+    icon: repu,
     label: "Websites & Apps Delivered",
     target: 80,
     suffix: "+",
   },
   {
-    icon: repu,
+    icon: appdevIcon,
     label: "Happy Clients",
     target: 150,
     suffix: "+",
@@ -95,7 +95,7 @@ export default function AnimatedStats() {
             style={{ transitionDelay: `${idx * 200}ms` }}
           >
            
-              <img src={stat.icon} alt={stat.label} className="w-26 h-19 object-contain" />
+              <img src={stat.icon} alt={stat.label} className="w-66 h-46 object-contain" />
            
             <div className="flex items-baseline mt-3 mb-1">
               <span className="text-3xl md:text-3xl font-bold text-gray-800">

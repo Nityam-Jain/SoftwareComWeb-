@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 // import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import seoImg from "../../assets/3dseoimg.png";
-import adsImg from "../../assets/websiteicon.png";
-import emailImg from "../../assets/emailmark3Dnew.png";
-import socialImg from "../../assets/contentimg.png";
-import webdevImg from "../../assets/websiteicon.png";
-import appImg from "../../assets/3dappimgbg.png";
+import seoImg from "../../assets/seonew.png";
+import adsImg from "../../assets/adsnew.png";
+import emailImg from "../../assets/emailmarnew.png";
+import socialImg from "../../assets/sicialmedianew2.png";
+import webdevImg from "../../assets/webdevnew.png";
+import appImg from "../../assets/mobilenew.png";
 
 const Services = ()=> {
   const scrollRef = useRef(null);
@@ -16,7 +16,7 @@ const Services = ()=> {
     { title: "SEO Strategy", desc: "Boost visibility and rank higher with smart SEO tactics.", img: seoImg },
     { title: "Google/FB Ads", desc: "Drive instant traffic and conversions with targeted ads.", img: adsImg },
     { title: "Email Marketing", desc: "Engage users and grow loyalty with personalized emails.", img: emailImg },
-    { title: "Social Media", desc: "Build your brand and grow faster on every platform.", img: socialImg },
+    { title: "Social Media Marketing", desc: "Build your brand and grow faster on every platform.", img: socialImg },
     { title: "Website Design & Development", desc: "Create stunning, responsive websites.", img: webdevImg },
     { title: "App Development", desc: "Develop sleek and scalable mobile applications.", img: appImg },
   ];

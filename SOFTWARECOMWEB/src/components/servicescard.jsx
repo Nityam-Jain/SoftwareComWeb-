@@ -1,12 +1,14 @@
 import React from "react";
 
-import seoImg from "../assets/3dseoimg.png";
-import adsImg from "../assets/websiteicon.png";
-import emailImg from "../assets/emailmark3Dnew.png";
-import socialImg from "../assets/contentimg.png";
-import webdevImg from "../assets/websiteicon.png";
-import appImg from "../assets/3dappimgbg.png";
-import uiuxImg from "../assets/uiux3dimg.png";
+import seoImg from "../assets/seonew.png";
+import adsImg from "../assets/adsnew.png";
+import emailImg from "../assets/emailmarnew.png";
+import socialImg from "../assets/sicialmedianew2.png";
+import webdevImg from "../assets/webdevnew.png";
+import appImg from "../assets/mobilenew.png";
+import uiuxImg from "../assets/uiuxnew1.png";
+import wordpress from "../assets/wordpressnew.png";
+import gd from "../assets/graphicdesignicon.png";
 
 // You can change this padding easily
 const PL_CONTROL = "px-4 sm:px-6 md:px-16 lg:px-30";
@@ -16,13 +18,13 @@ const ServicesGrid = () => {
     { title: "SEO Strategy", desc: "Boost visibility and rank higher with smart SEO tactics.", img: seoImg },
     { title: "Google/FB Ads", desc: "Drive instant traffic and conversions with targeted ads.", img: adsImg },
     { title: "Email Marketing", desc: "Engage users and grow loyalty with personalized emails.", img: emailImg },
-    { title: "Social Media", desc: "Build your brand and grow faster on every platform.", img: socialImg },
+    { title: "Social Media Marketing", desc: "Build your brand and grow faster on every platform.", img: socialImg },
     { title: "Website Design & Development", desc: "Create stunning, responsive websites.", img: webdevImg },
     { title: "App Development", desc: "Develop sleek and scalable mobile applications.", img: appImg },
     // NEW ADDED
     { title: "UI/UX Design", desc: "Design seamless interfaces with user-centered approach.", img: uiuxImg },
-    { title: "Graphic Designing", desc: "Creative visuals for brand identity and promotions.", img: socialImg },
-    { title: "WordPress Development", desc: "Custom and fast WordPress business solutions.", img: webdevImg },
+    { title: "Graphic Designing", desc: "Creative visuals for brand identity and promotions.", img: gd },
+    { title: "WordPress Development", desc: "Custom and fast WordPress business solutions.", img: wordpress },
   ];
 
   return (
@@ -63,8 +65,14 @@ const ServicesGrid = () => {
             <img
               src={service.img}
               alt={service.title}
-              className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 object-contain"
+              className={`mx-auto mb-4 object-contain
+            ${service.title === "Graphic Designing"
+                  ? "w-20 h-28 sm:w-29 sm:h-32"
+                  : "w-16 h-16 sm:w-20 sm:h-20"
+                }
+  `}
             />
+
             <h3 className="font-semibold text-gray-800 mb-2 text-lg sm:text-xl">{service.title}</h3>
             <p className="text-gray-500 text-sm sm:text-base leading-relaxed">{service.desc}</p>
           </div>

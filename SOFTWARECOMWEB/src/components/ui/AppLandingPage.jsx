@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
-import firstPageBg from "../../assets/Banner01.png";
-import secondPageBg from "../../assets/Banner02.png";
+
+// ✅ import your slide components instead of images
+import Banner1 from "../../components/Herobanner1";
+// import Banner2 from "../../components/Herobanner2";
+// example: you can also import Servicescard etc if needed
 
 const slides = [
-  { bg: firstPageBg },
-  { bg: secondPageBg },
+  { Component: Banner1 },
+  // { Component: Banner2 },
 ];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((c) => (c + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrent((c) => (c + 1) % slides.length);
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <section
@@ -28,36 +31,27 @@ export default function HeroCarousel() {
         items-center
         justify-center
         overflow-hidden
-        "
+      "
     >
-      {/* Background Images */}
-      {slides.map((slide, idx) => (
-        <img
+      {/* Background Components instead of images */}
+      {slides.map(({ Component }, idx) => (
+        <div
           key={idx}
-          src={slide.bg}
-          alt=""
           className={`
             absolute inset-0
             w-full h-full
-            object-cover
             transition-opacity duration-1000
             ${current === idx ? "opacity-100 z-10" : "opacity-0 z-0"}
           `}
-          draggable={false}
-          style={{
-            minHeight: "320px",
-            objectPosition: "center",
-            maxHeight: "100vh",
-            width: "100vw",
-            height: "100%",
-          }}
-        />
+        >
+          <Component />
+        </div>
       ))}
 
       {/* Optional overlay */}
       <div className="absolute inset-0 bg-[#052250]/40" />
 
-      {/* Dots — responsive left positioning */}
+      {/* Dots */}
       <div
         className="
           absolute
@@ -74,7 +68,7 @@ export default function HeroCarousel() {
               block
               w-2.5 h-2.5 
               sm:w-3.5 sm:h-3.5 
-              lg:w-4 lg:h-4
+              lg:w-4 lg:h-4                      
               rounded-full border-2
               transition
               ${current === i

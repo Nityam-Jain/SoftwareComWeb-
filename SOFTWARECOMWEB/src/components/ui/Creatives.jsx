@@ -1,5 +1,5 @@
 import React from "react";
-import sectionImg from "../../assets/aboutusimg3.png";
+import sectionImg from "../../assets/bannerimg003.png";
 import { ChartColumnDecreasing, ChartPie } from 'lucide-react';
 export default function CreativeSection() {
   return (
