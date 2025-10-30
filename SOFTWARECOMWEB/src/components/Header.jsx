@@ -38,15 +38,24 @@ export default function Header() {
   return (
     <>
       {/* 🔹 Shutter Animation Overlay */}
+      {/* Shutter Animation Overlay */}
       {transitionActive && (
         <div className="fixed inset-0 backdrop-blur-lg bg-indigo-500/10 z-50 flex justify-center items-center overflow-hidden">
-          <div className="grid grid-cols-5 gap-2">
+          <div
+            className="
+        grid grid-cols-5 gap-2 
+        sm:gap-3 md:gap-4
+      "
+          >
             {[...Array(25)].map((_, i) => (
               <div
                 key={i}
-                className="w-12 h-12 bg-indigo-400 rounded-xl animate-pulseGrid"
+                className="
+            bg-indigo-400 rounded-xl animate-pulseGrid 
+            w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12
+          "
                 style={{
-                  animationDelay: `${((i % 5) + Math.floor(i / 5)) * 0.1}s`,
+                  animationDelay: `${(i % 5 + Math.floor(i / 5)) * 0.1}s`,
                 }}
               ></div>
             ))}
@@ -56,9 +65,8 @@ export default function Header() {
 
       {/* 🔹 Header Section */}
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 backdrop-blur-md ${
-          isScrolled ? "bg-white/90 shadow-md" : "bg-white/70 shadow-sm"
-        }`}
+        className={`sticky top-0 z-40 w-full transition-all duration-300 backdrop-blur-md ${isScrolled ? "bg-white/90 shadow-md" : "bg-white/70 shadow-sm"
+          }`}
       >
         <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-6 sm:px-10">
           {/* 🔹 Logo */}
@@ -81,23 +89,21 @@ export default function Header() {
                   path === "/"
                     ? "Home"
                     : path.replace("/", "").charAt(0).toUpperCase() +
-                      path.replace("/", "").slice(1);
+                    path.replace("/", "").slice(1);
 
                 return (
                   <button
                     key={path}
                     onClick={() => handleNavClick(path)}
-                    className={`relative text-sm font-semibold transition-all duration-300 group ${
-                      isActive(path)
+                    className={`relative text-sm font-semibold transition-all duration-300 group ${isActive(path)
                         ? "text-blue-600"
                         : "text-gray-700 hover:text-blue-600"
-                    }`}
+                      }`}
                   >
                     {name}
                     <span
-                      className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 rounded-full transition-all duration-500 ${
-                        isActive(path) ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+                      className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 rounded-full transition-all duration-500 ${isActive(path) ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
                     ></span>
                   </button>
                 );
@@ -130,16 +136,15 @@ export default function Header() {
                     path === "/"
                       ? "Home"
                       : path.replace("/", "").charAt(0).toUpperCase() +
-                        path.replace("/", "").slice(1);
+                      path.replace("/", "").slice(1);
                   return (
                     <button
                       key={path}
                       onClick={() => handleNavClick(path)}
-                      className={`relative text-sm font-semibold transition-all duration-300 ${
-                        isActive(path)
+                      className={`relative text-sm font-semibold transition-all duration-300 ${isActive(path)
                           ? "text-blue-600"
                           : "text-gray-700 hover:text-blue-600"
-                      }`}
+                        }`}
                     >
                       {name}
                     </button>

@@ -49,7 +49,7 @@ const HeroBanner = () => {
       />
       <img
         src={rocket3}
-        className="absolute bottom-10 right-6 sm:right-10 md:right-16 w-10 sm:w-14 md:w-40 drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)] animate-float-slow"
+        className="absolute bottom-4 right-6 sm:right-10 md:right-16 w-15 sm:w-14 md:w-40 drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)] animate-float-slow"
         alt=""
       />
 
@@ -107,12 +107,12 @@ const HeroBanner = () => {
           />
           <img
             src={mailIcon}
-            className="absolute top-4 sm:top-8 right-6 sm:right-12 w-8 sm:w-12 md:w-26 animate-float-slow"
+            className="absolute -top-6 sm:top-8 right-2 sm:right-12 w-25 sm:w-18 md:w-26 animate-float-slow"
             alt=""
           />
           <img
             src={heartIcon}
-            className="absolute bottom-10 sm:bottom-10 left-10 sm:left-70 w-8 sm:w-10 md:w-40 animate-float-medium z-30"
+            className="absolute bottom-7 sm:bottom-10 left-40 sm:left-70 w-15 sm:w-10 md:w-40 animate-float-medium z-30"
             alt=""
           />
         </div>
