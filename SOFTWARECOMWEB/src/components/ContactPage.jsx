@@ -9,7 +9,7 @@ import message from "../assets/message.png";
 
 export default function ContactPage() {
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
+    <div className="bg-gray-50  flex flex-col">
       <Header />
 
       <main className="flex-1">
