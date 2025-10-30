@@ -20,24 +20,24 @@ export default function Header() {
 
   const isActive = (path) => location.pathname === path;
 
- // Handle menu click with shutter effect + scroll to top
-const handleNavClick = (path) => {
-  if (location.pathname === path) return;
-  setTargetPath(path);
-  setTransitionActive(true);
+  // Handle menu click with shutter effect + scroll to top
+  const handleNavClick = (path) => {
+    if (location.pathname === path) return;
+    setTargetPath(path);
+    setTransitionActive(true);
 
-  // Smoothly scroll to top before navigation
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+    // Smoothly scroll to top before navigation
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
-  setTimeout(() => navigate(path), 500);
-  setTimeout(() => {
-    setTransitionActive(false);
-    setMenuOpen(false);
-  }, 1000);
-};
+    setTimeout(() => navigate(path), 500);
+    setTimeout(() => {
+      setTransitionActive(false);
+      setMenuOpen(false);
+    }, 1000);
+  };
 
 
   return (
@@ -45,12 +45,22 @@ const handleNavClick = (path) => {
       {/* Shutter Animation Overlay */}
       {transitionActive && (
         <div className="fixed inset-0 backdrop-blur-lg bg-indigo-500/10 z-50 flex justify-center items-center overflow-hidden">
-          <div className="grid grid-cols-5 gap-2">
+          <div
+            className="
+          grid grid-cols-5 gap-2 
+          sm:gap-3 md:gap-4
+      "
+          >
             {[...Array(25)].map((_, i) => (
               <div
                 key={i}
-                className="w-12 h-12 bg-indigo-400 rounded-xl animate-pulseGrid"
-                style={{ animationDelay: `${(i % 5 + Math.floor(i / 5)) * 0.1}s` }}
+                className="
+            bg-indigo-400 rounded-xl animate-pulseGrid 
+            w-5 h-5 sm:w-10 sm:h-10 md:w-12 md:h-12
+          "
+                style={{
+                  animationDelay: `${(i % 5 + Math.floor(i / 5)) * 0.1}s`,
+                }}
               ></div>
             ))}
           </div>
@@ -62,8 +72,8 @@ const handleNavClick = (path) => {
 
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 backdrop-blur-md ${isScrolled
-            ? "bg-white/90 shadow-md"
-            : "bg-white/70 shadow-sm"
+          ? "bg-white/90 shadow-md"
+          : "bg-white/70 shadow-sm"
           }`}
       >
         <div className="container mx-auto flex h-16 items-center justify-between md:px-6 px-4">
@@ -100,8 +110,8 @@ const handleNavClick = (path) => {
                   {name}
                   <span
                     className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 rounded-full transition-all duration-500 ${isActive(path)
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                       }`}
                   ></span>
                 </button>
