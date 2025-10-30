@@ -10,12 +10,14 @@ import About from "./components/About"
 import Services from "./components/Services"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import WhatsappIcon from "./components/whats"
 import "./index.css";
 // import ITCompanyPerfected from "./pages/NoteroLanding";
 
 function App() {
   return (
     <Layout>
+      <WhatsappIcon/>
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />

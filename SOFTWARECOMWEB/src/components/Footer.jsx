@@ -86,7 +86,7 @@ export default function Footer() {
               alt="BinaryLogix Logo"
               className="w-28 sm:w-32 h-auto mb-4"
             />
-            <p className="text-sm leading-relaxed mb-5 text-[#2334d1]">
+            <p className="text-sm leading-relaxed mb-5 text-[#3487fa]">
               Empowering your Business with tailored, innovative Solutions
             </p>
             <div className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export default function Footer() {
                 { name: "Portfolio", path: "/portfolio" },
                 { name: "Blogs", path: "/blogs" },
                 { name: "Contact Us", path: "/contact" },
-                { name: "Carriers", path: "/carrier" },
+                { name: "Career", path: "/career" },
               ].map((link, i) => (
                 <li key={i}>
                   <button
@@ -162,7 +162,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-gray-300 mt-10 pt-5 text-center text-sm text-gray-600">
           © 2025 BinaryLogix. All Rights Reserved. | Designed by{" "}
-          <span className="font-semibold text-[#3487fa]">BinaryLogix</span>
+          <span className="font-semibold text-[#3487fa]">BinaryLogix Technologies LLP</span>
         </div>
       </div>
     </footer>
