@@ -157,7 +157,7 @@ export default function ProjectsPage() {
                       alt={project.title}
                       className={`w-full h-full transition-transform duration-[1s] ease-linear 
                 ${isWeb || isUiUx
-                          ? "object-top object-cover group-hover:-translate-y-[40%]"
+                          ? "object-top object-cover group-hover:-translate-y-[100%]"
                           : isGraphic
                             ? "object-cover scale-105 group-hover:scale-110"
                             : "object-cover"

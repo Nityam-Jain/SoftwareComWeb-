@@ -65,7 +65,7 @@ export default function IntegrationSection() {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-20 relative z-10">
+      <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-10 relative z-10">
         <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-3">
           Trusted by Our{" "}
           <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
