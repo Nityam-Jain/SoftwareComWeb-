@@ -95,7 +95,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form Container */}
-            <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa] h-[720px] md:h-auto">
+            <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa] h-[545px] md:h-auto">
               {/* <p className="text-center text-red-500 text-sm mb-6">
                 Fields marked with <span className="font-semibold">*</span> are required.
               </p> */}
