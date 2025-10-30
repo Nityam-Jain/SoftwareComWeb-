@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import heroPerson from "../assets/bannerimg001.png";
 import rocket3 from "../assets/bannerimg002.png";
+import rocket2 from "../assets/bannerimg002.png";
 import mailIcon from "../assets/messageiconnew.png";
 import heartIcon from "../assets/Likeiconnew.png";
 import starsIcon from "../assets/Staricon.png";
@@ -16,8 +17,8 @@ const HeroBanner = () => {
 
   useEffect(() => {
     const currentWord = words[index];
-    const speed = deleting ? 60 : 100;
-
+    const speed = deleting ? 80 : 120; // slower = smoother
+    const fadeStep = deleting ? 0.15 : 0.1; // controls fade smoothness
     const timer = setTimeout(() => {
       setDisplayed(prev =>
         deleting
@@ -38,7 +39,7 @@ const HeroBanner = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden flex items-center py-10 md:py-15 px-6 lg:px-20 bg-cover bg-center bg-no-repeat"
+      className="relative w-full pt-20  overflow-hidden flex items-center py-10 md:py-15 px-6 lg:px-20 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgHero})` }}
     >
 
@@ -49,12 +50,28 @@ const HeroBanner = () => {
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
 
         {/* LEFT TEXT */}
-        <div className="w-full md:w-1/2 px-7 text-center md:text-left md:-mt-10 lg:-mt-4">
+        <div className="w-full md:w-1/2 px-7 text-center md:text-left md:-mt-10 lg:-mt-29">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
             We Build & Scale
             <span> Your Business With <br /></span>
-            <span className="text-[#3488fa]">{displayed}</span>
-            <span className="w-[2px] h-7 bg-blue-600 inline-block animate-pulse ml-1" />
+            {/* Typing text + rocket cursor */}
+            <span
+              className="text-[#3488fa] relative inline-flex items-center whitespace-nowrap transition-all duration-300 ease-in-out"
+              style={{ opacity: deleting ? 0.8 : 1 }}
+            >
+              {displayed}
+              <img
+                src={rocket2}
+                alt="Rocket Cursor"
+                className="w-20 sm:w-24 ml-2 inline-block rotate-45 align-middle transition-transform duration-300 ease-in-out drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)]"
+                style={{
+                  transform: deleting ? "translateY(-3px) scale(0.9)" : "translateY(0px) scale(1)",
+                }}
+              />
+            </span>
+
+
+            {/* <span className="w-[2px] h-7 bg-blue-600 inline-block animate-pulse ml-1" /> */}
           </h1>
 
           <p className="text-gray-600 mt-4 max-w-md mx-auto md:mx-0">
@@ -64,7 +81,7 @@ const HeroBanner = () => {
           {/* ✅ LINK INSTEAD OF navigate */}
           <Link
             to="/Services"
-            className="inline-block mt-6 bg-[#3488fa] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-all"
+            className="inline-block mt-16 bg-[#3488fa] text-white ml-4 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-all"
           >
             View Services
           </Link>
@@ -82,7 +99,7 @@ const HeroBanner = () => {
         </div>
 
       </div>
-       <style jsx>{`
+      <style jsx>{`
         /* === Floating Organic Circles === */
         @keyframes float-circle-1 {
           0%,100% { transform: translate(0,0) scale(1); opacity:0.6; }
@@ -156,7 +173,18 @@ const HeroBanner = () => {
         .animate-float-medium {
           animation: float-medium 3.2s ease-in-out infinite;
         }
+         
+           {/* ✨ Keyframes for Rocket Animation */}
 
+            @keyframes rocketFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(-3px) rotate(-5deg); }
+            50% { transform: translateY(-6px) rotate(0deg); }
+            75% { transform: translateY(-3px) rotate(5deg); }
+          }
+          .animate-rocketFloat {
+            animation: rocketFloat 1.5s ease-in-out infinite;
+          }
       `}</style>
 
     </section>

@@ -11,7 +11,7 @@ import Services from "./components/Services"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./index.css";
-import ITCompanyPerfected from "./pages/NoteroLanding";
+// import ITCompanyPerfected from "./pages/NoteroLanding";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Blogs" element={<Blogs/>} />
-        <Route path="/NoteroLanding" element={<ITCompanyPerfected/>} />
+        {/* <Route path="/NoteroLanding" element={<ITCompanyPerfected/>} /> */}
       </Routes>
       {/* <Footer /> */}
     </Layout>

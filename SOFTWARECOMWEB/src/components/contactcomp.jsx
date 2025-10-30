@@ -73,8 +73,8 @@ export default function ContactPage() {
 
           {/* ===== FORM SECTION ===== */}
           <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
-            {/* Floating @ Icon (bottom left) */}
-            <div className="absolute bottom-18 left-4 sm:bottom-12 sm:left-12 md:bottom-16 md:left-4 lg:bottom-12 lg:left-57 z-20 animate-float">
+            {/* Floating @ Icon (bottom left) - hidden on screens smaller than md */}
+            <div className="hidden md:block absolute bottom-18 left-4 sm:bottom-12 sm:left-12 md:bottom-16 md:left-4 lg:bottom-12 lg:left-57 z-20 animate-float">
               <img
                 src={atIcon}
                 alt="At symbol"
@@ -82,8 +82,8 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Floating Envelope (top right) */}
-            <div className="absolute top-20 right-4 sm:top-24 sm:right-10 md:top-22 md:right-4 lg:top-35 lg:right-32 z-20 animate-float">
+            {/* Floating Envelope (top right) - hidden on screens smaller than md */}
+            <div className="hidden md:block absolute top-20 right-4 sm:top-24 sm:right-10 md:top-22 md:right-4 lg:top-35 lg:right-32 z-20 animate-float">
               <img
                 src={envelopeIcon}
                 alt="Envelope"
@@ -93,7 +93,7 @@ export default function ContactPage() {
 
             {/* Form Container */}
             <div className="relative bg-gradient-animate rounded-[30px] shadow-xl max-w-4xl w-full p-6 sm:p-8 md:p-10 z-10 border-t-8 border-[#3487fa] h-[720px] md:h-auto">
-              <form className="flex flex-col items-center space-y-6">
+              <form className="flex flex-col items-center space-y-4 sm:space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[700px]">
                   <input
                     type="text"
@@ -135,7 +135,8 @@ export default function ContactPage() {
                   required
                 ></textarea>
 
-                <div className="flex justify-center pt-4">
+                <div className="flex justify-center pt-2 pb-1 sm:-pb-14">
+                  {/* Reduced bottom padding on mobile (pb-2) and removed it on larger screens */}
                   <button
                     type="submit"
                     className="bg-gradient-to-r from-[#3488fa] to-black/70 text-white font-medium rounded-full py-3 px-8 transition duration-300 hover:opacity-90"
@@ -143,9 +144,10 @@ export default function ContactPage() {
                     Send Message
                   </button>
                 </div>
+
               </form>
 
-              {/* ✅ Animations */}
+              {/* Animations */}
               <style>{`
                 .bg-gradient-animate {
                   background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);

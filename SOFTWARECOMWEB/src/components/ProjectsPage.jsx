@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -12,9 +12,9 @@ import project7 from "../assets/mandlamartfull.png";
 import project8 from "../assets/ssvmfullpage.png";
 import project9 from "../assets/fintechfull.png";
 
-import design01 from "../assets/ui.png"
-import design02 from "../assets/design02.png"
-import design03 from "../assets/design03.png"
+import design01 from "../assets/ui ux 1.png";
+import design02 from "../assets/ui ux 2.jpg";
+import design03 from "../assets/ui ux 3.jpg";
 
 import graphic1 from "../assets/8.jpg";
 import graphic2 from "../assets/9.jpg";
@@ -26,7 +26,6 @@ import graphic7 from "../assets/10.jpg";
 
 import Logo1 from "../assets/logo01.png";
 import Logo2 from "../assets/logo02.png";
-// import graphic7 from "../assets/10.jpg";
 
 const categories = [
   "All",
@@ -36,10 +35,11 @@ const categories = [
   "Logo",
 ];
 
+// Projects data
 const projects = [
+  // Website/App Development
   { title: "Make A Habit", category: "Website/App Development", image: project4 },
-    { title: "How to clean", category: "Website/App Development", image: project2 },
-
+  { title: "How to clean", category: "Website/App Development", image: project2 },
   { title: "Pachmarhi Ayurveda", category: "Website/App Development", image: project1 },
   { title: "EduNaukri Job-Portal", category: "Website/App Development", image: project3 },
   { title: "Chemistry Classes", category: "Website/App Development", image: project5 },
@@ -48,12 +48,12 @@ const projects = [
   { title: "Robo Fintech Pvt Ltd", category: "Website/App Development", image: project9 },
   { title: "Mandla Mart", category: "Website/App Development", image: project7 },
 
-  //UI UX 
-  // { title: "Design01", category: "UI/UX Design", image: design01},
-  // { title: "Design02", category: "UI/UX Design", image: design02},
-  // { title: "Design03", category: "UI/UX Design", image: design03},
-  
-  //Graphic design
+  // UI/UX Design only
+  { title: "Design01", category: "UI/UX Design", image: design01 },
+  { title: "Design02", category: "UI/UX Design", image: design02 },
+  { title: "Design03", category: "UI/UX Design", image: design03 },
+
+  // Graphic Design (without UI/UX images)
   { title: "Graphic", category: "Graphic Design", image: graphic1 },
   { title: "Graphic", category: "Graphic Design", image: graphic2 },
   { title: "Graphic", category: "Graphic Design", image: graphic3 },
@@ -61,24 +61,17 @@ const projects = [
   { title: "Graphic", category: "Graphic Design", image: graphic5 },
   { title: "Graphic", category: "Graphic Design", image: graphic6 },
   { title: "Graphic", category: "Graphic Design", image: graphic7 },
-  { title: "Graphic", category: "Graphic Design", image: design01 },
-  { title: "Graphic", category: "Graphic Design", image: design02 },
-  { title: "Graphic", category: "Graphic Design", image: design03 },
 
-    //logo
-   { title: "Graphic", category: "logo", image: Logo1 },
-   { title: "Graphic", category: "logo", image: Logo2 },
-  //  { title: "Graphic", category: "logo", image: graphic7 },
-  //  { title: "Graphic", category: "logo", image: graphic7 },
-
-
+  // Logo
+  { title: "Graphic", category: "Logo", image: Logo1 },
+  { title: "Graphic", category: "Logo", image: Logo2 },
 ];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [loading, setLoading] = useState(false);
 
-  // filter logic
+  // Filter projects per category
   const filteredProjects =
     activeCategory === "All"
       ? projects
@@ -86,20 +79,19 @@ export default function ProjectsPage() {
           p.category.toLowerCase().includes(activeCategory.toLowerCase())
         );
 
-  // handle category change with loader
+  // Change category handler
   const handleCategoryClick = (category) => {
     setLoading(true);
     setActiveCategory(category);
     setTimeout(() => {
       setLoading(false);
-    }, 600); // delay look like fetching
+    }, 600); // loading effect
   };
 
   return (
     <div>
       <Header />
       <div className="bg-white w-full overflow-x-hidden">
-
         {/* Header Section */}
         <div className="text-center mb-12 px-4 sm:px-6 md:px-8">
           <span className="inline-block bg-[#efe6fb] text-blue-600 px-4 py-1 rounded-sm mt-8 mb-4 text-xs font-semibold tracking-wider">
@@ -143,6 +135,11 @@ export default function ProjectsPage() {
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 px-4 sm:px-6 mb-12">
             {filteredProjects.map((project, index) => {
               const isWeb = project.category === "Website/App Development";
+              const isUiUx =
+                project.category === "UI/UX Design" ||
+                project.category.toLowerCase() === "ux/ui";
+              const isGraphic = project.category === "Graphic Design";
+
               return (
                 <div
                   key={index}
@@ -152,15 +149,17 @@ export default function ProjectsPage() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`w-full h-auto min-h-[140%] object-top object-cover ${
-                        isWeb
-                          ? "transform transition-transform duration-[3.5s] ease-linear group-hover:-translate-y-[40%]"
-                          : ""
+                      className={`w-full h-auto min-h-[140%] transition-transform duration-[3.5s] ease-linear ${
+                        isWeb || isUiUx
+                          ? "object-top object-cover group-hover:-translate-y-[40%]"
+                          : isGraphic
+                          ? "object-contain"
+                          : "object-cover"
                       }`}
                     />
                   </div>
 
-                  {isWeb && (
+                  {(isWeb || isUiUx) && (
                     <div className="p-4 sm:p-6 text-center">
                       <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 text-left pl-2">
                         {project.title}
@@ -175,9 +174,8 @@ export default function ProjectsPage() {
             })}
           </div>
         )}
-
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

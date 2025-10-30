@@ -2,95 +2,97 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
 import logo from "../assets/logo/binarylogixlogo-remove.png";
-
 export default function Footer() {
   return (
     <footer className="bg-[#f4f6fb] pt-20 pb-8 relative overflow-hidden">
-      {/* 🔹 Animated Wavy Top Decoration */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
-        {/* New Upper Wave Layer */}
-        <div className="absolute top-[10px] left-0 w-full h-[60px] opacity-70">
+      {/* Animated Wavy Top Decoration */}
+      <div className="absolute -top-10 left-0 w-full overflow-hidden leading-[0]">
+        {/* Wave Container */}
+        <div className="relative w-full h-[140px] sm:h-[180px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb] overflow-hidden">
+          {/* Wave 1 (light blue, moves left and a bit up/down) */}
           <svg
-            className="absolute bottom-0 left-0 w-[200%] h-[60px] animate-waveMotionUltraSlow"
+            className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave1 opacity-85"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
           >
             <path
-              d="M0,0V30c60,20,120,25,200,30,85,5,170-10,255-15,90-5,180,8,270,20,85,10,170,20,255,12,80-6,160-25,220-35V0Z"
-              fill="#ffffff"
-              opacity="0.3"
-            ></path>
+              d="M0,0V46.29C47.35,68.53,103.77,81.9,162,85 c86,4.74,172-14.4,258-18.36
+                C516,62.92,602,75,688,87.12
+                c96,13.51,192,27.52,288,13.9
+                c66.56-9.51,133.11-30.35,200-38.43V0Z"
+              fill="#ced3d9"
+              opacity="0.7"
+            />
           </svg>
-        </div>
-
-        {/* Duplicate Layer 1 (Slightly Above Original) */}
-        <div className="absolute top-[20px] left-0 w-full h-[100px] sm:h-[120px] opacity-80">
-          <svg
-            className="absolute bottom-0 left-0 w-[200%] h-[120px] animate-waveMotionSlow"
+          {/* Wave 2 (deep blue, moves right and a bit up/down, delayed) */}
+          {/* <svg
+            className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave2 opacity-80"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
           >
             <path
-              d="M0,0V46.29C47.35,68.53,103.77,81.9,162,85c86,4.74,172-14.4,258-18.36
-              C516,62.92,602,75,688,87.12c96,13.51,192,27.52,288,13.9c66.56-9.51,133.11-30.35,200-38.43V0Z"
-              fill="#ffffff"
+              d="M0,0V36.29C60,60,120,75,200,80 c85,5,170-15,255-20
+                c90-5,180,10,270,25
+                c85,15,170,30,255,15
+                c80-13,160-50,220-70V0Z"
+              fill="#1e3a8a"
               opacity="0.9"
-            ></path>
-          </svg>
-        </div>
-
-        {/* Main Wave Layer */}
-        <div className="relative w-full h-[100px] sm:h-[120px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb]">
+            />
+          </svg> */}
+          {/* Wave 3 (soft, background, moves gently left) */}
           <svg
-            className="absolute bottom-0 left-0 w-[200%] h-[120px] animate-waveMotion"
+            className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave3 opacity-40"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
           >
             <path
-              d="M0,0V46.29C47.35,68.53,103.77,81.9,162,85c86,4.74,172-14.4,258-18.36
-              C516,62.92,602,75,688,87.12c96,13.51,192,27.52,288,13.9c66.56-9.51,133.11-30.35,200-38.43V0Z"
-              fill="#ffffff"
-              opacity="0.95"
-            ></path>
-            <path
-              d="M0,0V30c60,20,120,35,200,40,85,5,170-15,255-20,90-5,180,10,270,25,85,15,170,30,255,15,80-13,160-50,220-70V0Z"
-              fill="#ffffff"
-              opacity="0.6"
-            ></path>
+              d="M0,0V30.29C80,49,160,65,240,66
+                c110,1,220-17,330-22
+                c120-7,240,16,360,34
+                c90,18,180,38,270,20
+                c100-19,200-61,300-85V0Z"
+              fill="#b0bcde"
+              opacity="0.5"
+            />
           </svg>
         </div>
 
-        {/* Subtle gradient overlay to reduce white gap */}
+        {/* Top gradient overlay for soft blend */}
         <div className="absolute top-0 left-0 w-full h-[50px] bg-gradient-to-b from-white/90 to-transparent"></div>
 
-        {/* Wave Animations */}
+        {/* Animations for Cross Flow */}
         <style>{`
-          @keyframes waveMotion {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-25%); }
-            100% { transform: translateX(0); }
+          @keyframes crossWave1 {
+            0% { transform: translateX(0) translateY(0); opacity: 0.7;}
+            25% {transform: translateX(-10%) translateY(12px); opacity: 0.75;}
+            50% {transform: translateX(-30%) translateY(0); opacity: 0.79;}
+            75% {transform: translateX(-10%) translateY(-12px); opacity: 0.73;}
+            100% {transform: translateX(0) translateY(0); opacity: 0.7;}
           }
-          @keyframes waveMotionSlow {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-15%); }
-            100% { transform: translateX(0); }
+          @keyframes crossWave2 {
+            0% { transform: translateX(0) translateY(0); opacity: 0.8;}
+            25% {transform: translateX(10%) translateY(-15px); opacity: 0.85;}
+            50% {transform: translateX(30%) translateY(0); opacity: 0.91;}
+            75% {transform: translateX(10%) translateY(15px); opacity: 0.82;}
+            100% {transform: translateX(0) translateY(0); opacity: 0.8;}
           }
-          @keyframes waveMotionUltraSlow {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-10%); }
-            100% { transform: translateX(0); }
+          @keyframes crossWave3 {
+            0% { transform: translateX(0) translateY(-3px); opacity: 0.4;}
+            50% {transform: translateX(-10%) translateY(7px); opacity: 0.5;}
+            100% {transform: translateX(0) translateY(-3px); opacity: 0.4;}
           }
-          .animate-waveMotion {
-            animation: waveMotion 10s ease-in-out infinite;
+          .animate-crossWave1 {
+            animation: crossWave1 11s cubic-bezier(0.52,0,0.48,1) infinite;
           }
-          .animate-waveMotionSlow {
-            animation: waveMotionSlow 16s ease-in-out infinite;
+          .animate-crossWave2 {
+            animation: crossWave2 14s cubic-bezier(0.45,0,0.55,1) infinite;
+            animation-delay: -3s;
           }
-          .animate-waveMotionUltraSlow {
-            animation: waveMotionUltraSlow 20s ease-in-out infinite;
+          .animate-crossWave3 {
+            animation: crossWave3 19s cubic-bezier(0.6,0,0.4,1) infinite;
           }
         `}</style>
       </div>
@@ -105,7 +107,7 @@ export default function Footer() {
               alt="BinaryLogix Logo"
               className="w-28 sm:w-32 h-auto mb-4"
             />
-            <p className="text-sm leading-relaxed text-gray-600 mb-5">
+            <p className="text-sm leading-relaxed   mb-5 text-[#2334d1]">
               Empowering your Business with tailored, innovative Solutions
             </p>
             <div className="flex items-center gap-3">
@@ -127,11 +129,13 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="grid grid-cols-2 gap-2 text-sm">
-              {[{ name: "About Us", path: "/about" },
+              {[
+                { name: "About Us", path: "/about" },
                 { name: "Our Services", path: "/services" },
                 { name: "Portfolio", path: "/portfolio" },
-                { name: "Blogs", path: "/blogs" }, 
+                { name: "Blogs", path: "/blogs" },
                 { name: "Contact Us", path: "/contact" },
+                { name: "Carriers", path: "/carrier" },
               ].map((link, i) => (
                 <li key={i}>
                   <Link
@@ -153,11 +157,12 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <span className="font-medium text-gray-800">Email:</span>{" "}
-                binarylogixofficial@gmail.com
+                <a href="mailto:binarylogixofficial@gmail.com">
+                  binarylogixofficial@gmail.com
+                </a>
               </li>
               <li>
-                <span className="font-medium text-gray-800">Phone:</span>{" "}
-                +91 9617189757
+                <span className="font-medium text-gray-800">Phone:</span> +91 9617189757
               </li>
               <li>
                 <span className="font-medium text-gray-800">Address:</span>{" "}

@@ -26,10 +26,7 @@ export default function Header() {
     setTargetPath(path);
     setTransitionActive(true);
 
-    setTimeout(() => {
-      navigate(path);
-    }, 500);
-
+    setTimeout(() => navigate(path), 500);
     setTimeout(() => {
       setTransitionActive(false);
       setMenuOpen(false);
@@ -40,37 +37,103 @@ export default function Header() {
     <>
       {/* Shutter Animation Overlay */}
       {transitionActive && (
-        <div className="fixed inset-0 bg-blue-600 z-50 flex justify-center items-center overflow-hidden">
-          <div className="absolute inset-0 bg-blue-600 animate-shutter"></div>
+        <div className="fixed inset-0 backdrop-blur-lg bg-indigo-500/10 z-50 flex justify-center items-center overflow-hidden">
+          <div className="grid grid-cols-5 gap-2">
+            {[...Array(25)].map((_, i) => (
+              <div
+                key={i}
+                className="w-12 h-12 bg-indigo-400 rounded-xl animate-pulseGrid"
+                style={{ animationDelay: `${(i % 5 + Math.floor(i / 5)) * 0.1}s` }}
+              ></div>
+            ))}
+          </div>
         </div>
       )}
 
+
+
+
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${isScrolled ? "rounded-none shadow-md" : "rounded-t-2xl"
+        className={`sticky top-0 z-40 w-full transition-all duration-300 backdrop-blur-md ${isScrolled
+            ? "bg-white/90 shadow-md"
+            : "bg-white/70 shadow-sm"
           }`}
       >
-        <div className="bg-white">
-          <div className="container mx-auto flex h-16 items-center justify-between md:px-6 px-4">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 md:pl-14 md:mr-24 lg:mr-118">
-              <img
-                src={logo}
-                alt="Binary Logo"
-                className="w-35 md:w-125 lg:w-35 h-auto object-contain"
-              />
-            </Link>
+        <div className="container mx-auto flex h-16 items-center justify-between md:px-6 px-4">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 md:pl-14 md:mr-24 animate-floatLogo"
+          >
+            <img
+              src={logo}
+              alt="Binary Logo"
+              className="w-35 md:w-225 lg:w-35 h-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
+            />
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-end gap-12">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-end gap-12">
+            {["/", "/About", "/services", "/portfolio", "/blogs", "/contact"].map((path) => {
+              const name =
+                path === "/"
+                  ? "Home"
+                  : path.replace("/", "").charAt(0).toUpperCase() +
+                  path.replace("/", "").slice(1);
+              return (
+                <button
+                  key={path}
+                  onClick={() => handleNavClick(path)}
+                  className={`relative text-sm font-semibold transition-all duration-300 group
+                    ${isActive(path)
+                      ? "text-blue-600"
+                      : "text-gray-700 hover:text-blue-600"
+                    }`}
+                >
+                  {name}
+                  <span
+                    className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 rounded-full transition-all duration-500 ${isActive(path)
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                      }`}
+                  ></span>
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center gap-4 md:hidden">
+            <button
+              className="rounded-md p-2 hover:bg-blue-50 transition duration-300"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? (
+                <X className="h-5 w-5 text-gray-700" />
+              ) : (
+                <Menu className="h-5 w-5 text-gray-700" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-white shadow-md border-t animate-slideDown">
+            <nav className="flex flex-col items-start gap-3 p-4 leading-8">
               {["/", "/About", "/services", "/portfolio", "/blogs", "/contact"].map((path) => {
-                const name = path === "/" ? "Home" : path.replace("/", "").charAt(0).toUpperCase() + path.replace("/", "").slice(1);
+                const name =
+                  path === "/"
+                    ? "Home"
+                    : path.replace("/", "").charAt(0).toUpperCase() +
+                    path.replace("/", "").slice(1);
                 return (
                   <button
                     key={path}
                     onClick={() => handleNavClick(path)}
-                    className={`relative text-sm font-semibold transition 
+                    className={`relative text-sm font-semibold transition-all duration-300
                       ${isActive(path)
-                        ? "text-blue-600 after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600 after:rounded-full"
+                        ? "text-blue-600"
                         : "text-gray-700 hover:text-blue-600"
                       }`}
                   >
@@ -79,58 +142,43 @@ export default function Header() {
                 );
               })}
             </nav>
-
-            {/* Mobile Menu Button */}
-            <div className="flex items-center gap-4 md:hidden">
-              <button
-                className="rounded-md p-2 hover:bg-gray-100"
-                onClick={() => setMenuOpen(!menuOpen)}
-              >
-                {menuOpen ? <X className="h-5 w-5 text-gray-700" /> : <Menu className="h-5 w-5 text-gray-700" />}
-              </button>
-            </div>
           </div>
-
-          {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="md:hidden bg-white shadow-md border-t">
-              <nav className="flex flex-col items-start gap-3 p-4 leading-8">
-                {["/", "/About", "/services", "/portfolio", "/blogs", "/contact"].map((path) => {
-                  const name = path === "/" ? "Home" : path.replace("/", "").charAt(0).toUpperCase() + path.replace("/", "").slice(1);
-                  return (
-                    <button
-                      key={path}
-                      onClick={() => handleNavClick(path)}
-                      className={`relative text-sm font-semibold 
-                        ${isActive(path)
-                          ? "text-blue-600 after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600 after:rounded-full"
-                          : "text-gray-700 hover:text-blue-600"
-                        }`}
-                    >
-                      {name}
-                    </button>
-                  );
-                })}
-              </nav>
-            </div>
-          )}
-        </div>
-
-        {/* Shutter animation CSS */}
-        <style>
-          {`
-           @keyframes shutter {
-              0%   { transform: scaleY(0); }
-              50%  { transform: scaleY(1); }
-              100% { transform: scaleY(0); }
-            }
-            .animate-shutter {
-              animation: shutter 3s ease-in-out forwards;
-              transform-origin: center;
-            }
-          `}
-        </style>
+        )}
       </header>
+
+      {/* Animations */}
+      <style>
+        {`
+          /* Logo subtle floating effect */
+          @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+          }
+          .animate-floatLogo {
+            animation: floatLogo 4s ease-in-out infinite;
+          }
+
+          /* Shutter animation */
+          @keyframes shutter {
+            0% { transform: scaleY(0); opacity: 0; }
+            50% { transform: scaleY(1); opacity: 1; }
+            100% { transform: scaleY(0); opacity: 0; }
+          }
+          .animate-shutter {
+            animation: shutter 1.2s ease-in-out forwards;
+            transform-origin: center;
+          }
+
+          /* Mobile menu slide down */
+          @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+          }
+          .animate-slideDown {
+            animation: slideDown 0.4s ease forwards;
+          }
+        `}
+      </style>
     </>
   );
 }

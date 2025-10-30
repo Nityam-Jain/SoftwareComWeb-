@@ -65,7 +65,7 @@ export default function CreativeSection() {
                 <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                   Customized Solutions for your Business
                 </h4>
-                <p className="text-gray-600 text-xs sm:text-sm">
+                <p className="text-gray-600 ">
                   Offering tailored solutions designed specifically for your
                   business, ensuring optimal performance, enhanced efficiency,
                   and long-term success.
@@ -81,7 +81,7 @@ export default function CreativeSection() {
                 <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                   Strategic Planning for best Outcomes
                 </h4>
-                <p className="text-gray-600 text-xs sm:text-sm">
+                <p className="text-gray-600 ">
                   Providing strategic planning services to achieve the best
                   outcomes, driving growth, optimizing resources, and ensuring
                   long-term business success.

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // ✅ Import icons from assets folder
-import icon1 from "../../assets/strategy.gif";
-import icon2 from "../../assets/rocket.gif";
-import icon3 from "../../assets/statistics.gif";
+import icon1 from "../../assets/tailoredstarticon.png";
+import icon2 from "../../assets/cuttingedgeicon.png";
+import icon3 from "../../assets/resulticon.png";
 
 // Intersection observer hook
 const useInView = (options) => {
@@ -82,7 +82,7 @@ export default function WhyChooseUsSection() {
               className={`p-6 bg-white border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card`}
               style={{ animationDelay: `${idx * 0.3}s` }}
             >
-              <img src={feature.icon} alt={feature.title} className="w-15 h-13 mb-3 object-contain" />
+              <img src={feature.icon} alt={feature.title} className="w-29 h-25 mb-3 object-contain" />
               <h3 className="font-semibold text-blue-700 text-lg mb-2">
                 {feature.title}
               </h3>

@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react";
 
 // ✅ import your slide components instead of images
 import Banner1 from "../../components/Herobanner1";
-// import Banner2 from "../../components/Herobanner2";
+import Banner2 from "../../components/Herobanner2";
 // example: you can also import Servicescard etc if needed
 
 const slides = [
   { Component: Banner1 },
-  // { Component: Banner2 },
+  { Component: Banner2 },
 ];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((c) => (c + 1) % slides.length);
-  //   }, 4000);
-  //   return () => clearInterval(interval);
-  // }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((c) => (c + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -68,7 +68,7 @@ export default function HeroCarousel() {
               block
               w-2.5 h-2.5 
               sm:w-3.5 sm:h-3.5 
-              lg:w-4 lg:h-4                      
+              lg:w-4 lg:h-4
               rounded-full border-2
               transition
               ${current === i

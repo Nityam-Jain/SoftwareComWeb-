@@ -87,7 +87,7 @@ export default function IntegrationSection() {
                 <img
                   src={icon}
                   alt={`Client ${idx + 1}`}
-                  className="w-40 sm:w-24 md:w-28 lg:w-36 h-auto object-contain hover:scale-110 transition-transform duration-100"
+                  className="w-30 sm:w-14 md:w-28 lg:w-36 h-auto object-contain hover:scale-110 transition-transform duration-100"
                   style={{ background: "transparent" }}
                 />
               </div>
