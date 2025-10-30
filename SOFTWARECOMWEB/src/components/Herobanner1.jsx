@@ -50,7 +50,7 @@ const HeroBanner = () => {
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
 
         {/* LEFT TEXT */}
-        <div className="w-full md:w-1/2 px-7 text-center md:text-left md:-mt-10 lg:-mt-29">
+        <div className="w-full md:w-1/2 px-7 text-left md:text-left md:-mt-10 lg:-mt-29">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
             We Build & Scale
             <span> Your Business With <br /></span>

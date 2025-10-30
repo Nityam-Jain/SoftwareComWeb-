@@ -135,7 +135,7 @@ export default function ContactPage() {
                   required
                 ></textarea>
 
-                <div className="flex justify-center pt-2 pb-1 sm:-pb-14">
+                <div className="flex justify-center pt-2 pb-1 sm:pb-14">
                   {/* Reduced bottom padding on mobile (pb-2) and removed it on larger screens */}
                   <button
                     type="submit"

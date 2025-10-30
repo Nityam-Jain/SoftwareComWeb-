@@ -20,18 +20,25 @@ export default function Header() {
 
   const isActive = (path) => location.pathname === path;
 
-  // Handle menu click with shutter effect
-  const handleNavClick = (path) => {
-    if (location.pathname === path) return;
-    setTargetPath(path);
-    setTransitionActive(true);
+ // Handle menu click with shutter effect + scroll to top
+const handleNavClick = (path) => {
+  if (location.pathname === path) return;
+  setTargetPath(path);
+  setTransitionActive(true);
 
-    setTimeout(() => navigate(path), 500);
-    setTimeout(() => {
-      setTransitionActive(false);
-      setMenuOpen(false);
-    }, 1000);
-  };
+  // Smoothly scroll to top before navigation
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  setTimeout(() => navigate(path), 500);
+  setTimeout(() => {
+    setTransitionActive(false);
+    setMenuOpen(false);
+  }, 1000);
+};
+
 
   return (
     <>
