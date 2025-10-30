@@ -17,10 +17,9 @@ const HeroBanner = () => {
 
   useEffect(() => {
     const currentWord = words[index];
-    const speed = deleting ? 80 : 120; // slower = smoother
-    const fadeStep = deleting ? 0.15 : 0.1; // controls fade smoothness
+    const speed = deleting ? 80 : 120;
     const timer = setTimeout(() => {
-      setDisplayed(prev =>
+      setDisplayed((prev) =>
         deleting
           ? currentWord.substring(0, prev.length - 1)
           : currentWord.substring(0, prev.length + 1)
@@ -30,7 +29,7 @@ const HeroBanner = () => {
         setTimeout(() => setDeleting(true), 1000);
       } else if (deleting && displayed === "") {
         setDeleting(false);
-        setIndex(prev => (prev + 1) % words.length);
+        setIndex((prev) => (prev + 1) % words.length);
       }
     }, speed);
 
@@ -39,22 +38,28 @@ const HeroBanner = () => {
 
   return (
     <section
-      className="relative w-full pt-20  overflow-hidden flex items-center py-10 md:py-15 px-6 lg:px-20 bg-cover bg-center bg-no-repeat"
+      className="relative w-full   overflow-hidden flex items-center justify-center py-10 md:py-16 px-4 sm:px-8 lg:px-10 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgHero})` }}
     >
+      {/* floating icons */}
+      <img
+        src={starsIcon}
+        className="absolute top-2 md:top-8 left-6 sm:left-12 md:left-20 w-6 sm:w-10 lg:w-16 animate-pulse"
+        alt=""
+      />
+      <img
+        src={rocket3}
+        className="absolute bottom-10 right-6 sm:right-10 md:right-16 w-10 sm:w-14 md:w-40 drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)] animate-float-slow"
+        alt=""
+      />
 
-      <img src={starsIcon} className="absolute top-6 -left-3 w-8 md:w-16 animate-pulse" alt="" />
-      <img src={rocket3} className="absolute bottom-15 right-5 md:right-10 w-12 md:w-39 drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)] animate-float-slow" alt="" />
-
-      {/* ✅ TABLET FIX HERE */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
-
-        {/* LEFT TEXT */}
-        <div className="w-full md:w-1/2 px-7 text-left md:text-left md:-mt-10 lg:-mt-29">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
+      {/* main layout */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto gap-10 xl:px-8  ">
+        {/* LEFT TEXT SECTION */}
+        <div className="w-full md:w-1/2 text-left md:text-left space-y-4 md:space-y-6 lg:space-y-8 px-2 sm:px-0">
+          <h1 className="text-2xl sm:text-4xl md:text-4xl xl:text-6xl font-bold leading-snug md:leading-tight">
             We Build & Scale
             <span> Your Business With <br /></span>
-            {/* Typing text + rocket cursor */}
             <span
               className="text-[#3488fa] relative inline-flex items-center whitespace-nowrap transition-all duration-300 ease-in-out"
               style={{ opacity: deleting ? 0.8 : 1 }}
@@ -63,130 +68,82 @@ const HeroBanner = () => {
               <img
                 src={rocket2}
                 alt="Rocket Cursor"
-                className="w-20 sm:w-24 ml-2 inline-block rotate-45 align-middle transition-transform duration-300 ease-in-out drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)]"
+                className="w-8 sm:w-10 md:w-12 lg:w-26 ml-2 inline-block rotate-45 align-middle transition-transform duration-300 ease-in-out drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)]"
                 style={{
-                  transform: deleting ? "translateY(-3px) scale(0.9)" : "translateY(0px) scale(1)",
+                  transform: deleting
+                    ? "translateY(-3px) scale(0.9)"
+                    : "translateY(0px) scale(1)",
                 }}
               />
             </span>
-
-
-            {/* <span className="w-[2px] h-7 bg-blue-600 inline-block animate-pulse ml-1" /> */}
           </h1>
 
-          <p className="text-gray-600 mt-4 max-w-md mx-auto md:mx-0">
-            We help businesses grow online with creative digital marketing & modern web solutions.
+          <p className="text-gray-600   max-w-md mx-auto md:mx-0">
+            We help businesses grow online with creative digital marketing &
+            modern web solutions.
           </p>
 
-          {/* ✅ LINK INSTEAD OF navigate */}
-          <Link
-            to="/Services"
-            className="inline-block mt-16 bg-[#3488fa] text-white ml-4 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-all"
-          >
-            View Services
-          </Link>
+         <Link
+  to="/Services"
+  className="group relative inline-flex items-center justify-center overflow-hidden mt-6 sm:mt-10 md:mt-12 px-6 sm:px-8 py-3 rounded-xl font-semibold text-white transition-all duration-500 bg-gradient-to-r from-[#2a6ff8] via-[#3488fa] to-[#4ba8ff] shadow-lg shadow-blue-400/30 hover:shadow-blue-500/50 hover:scale-105"
+>
+  <span className="relative z-10">View Services</span>
+
+  {/* ✨ Shine Effect */}
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out"></span>
+
+  {/* 💫 Glow Border */}
+  <span className="absolute inset-0 border border-white/20 rounded-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"></span>
+</Link>
+
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="w-full md:w-1/2 relative flex justify-center">
+        {/* RIGHT IMAGE SECTION */}
+        <div className="w-full md:w-1/2 relative flex justify-center items-center mt-6 md:mt-0">
           <img
             src={heroPerson}
             alt="hero"
-            className="w-[260px] md:w-[450px] lg:w-[750px] relative z-10 drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)]"
+            className="w-[220px] sm:w-[320px] md:w-[450px] lg:w-[650px] relative z-10 drop-shadow-[0_50px_40px_rgba(0,0,0,0.55)]"
           />
-          <img src={mailIcon} className="absolute top-5 right-4 w-10 md:w-25 animate-float-slow" alt="" />
-          <img src={heartIcon} className="absolute bottom-16 left-84 w-10 md:w-38 animate-float-medium z-30" alt="" />
+          <img
+            src={mailIcon}
+            className="absolute top-4 sm:top-8 right-6 sm:right-12 w-8 sm:w-12 md:w-26 animate-float-slow"
+            alt=""
+          />
+          <img
+            src={heartIcon}
+            className="absolute bottom-10 sm:bottom-10 left-10 sm:left-70 w-8 sm:w-10 md:w-40 animate-float-medium z-30"
+            alt=""
+          />
         </div>
-
       </div>
+
+      {/* animations */}
       <style jsx>{`
-        /* === Floating Organic Circles === */
-        @keyframes float-circle-1 {
-          0%,100% { transform: translate(0,0) scale(1); opacity:0.6; }
-          50% { transform: translate(-20px, -30px) scale(1.15); opacity:0.9; }
-        }
-        @keyframes float-circle-2 {
-          0%,100% { transform: translate(0,0) scale(1); opacity:0.5; }
-          50% { transform: translate(25px, -10px) scale(1.3); opacity:0.8; }
-        }
-        @keyframes float-circle-3 {
-          0%,100% { transform: translate(0,0) scale(1); opacity:0.5; }
-          50% { transform: translate(-15px, 25px) scale(0.9); opacity:0.7; }
-        }
-
-        .circle-1 {
-          width:140px; height:140px;
-          background:radial-gradient(circle,#3487fa,#003e96);
-          filter:blur(40px);
-          animation: float-circle-1 9s ease-in-out infinite;
-          border-radius:50%;
-        }
-        .circle-2 {
-          width:110px; height:110px;
-          background:radial-gradient(circle,#8a2be2,#4f0092);
-          filter:blur(35px);
-          animation: float-circle-2 11s ease-in-out infinite;
-          border-radius:50%;
-        }
-        .circle-3 {
-          width:90px; height:90px;
-          background:radial-gradient(circle,#ff4d4d,#c40000);
-          filter:blur(30px);
-          animation: float-circle-3 10s ease-in-out infinite;
-          border-radius:50%;
-        }
-
-        /* === Animated Blue Vertical Lines === */
-        @keyframes blueLineMove {
-          0% {
-            transform: translateY(0%);
-            opacity: 0.7;
-          }
-          40% {
-            opacity: 1;
-          }
-          75% {
-            transform: translateY(-40%);
-          }
-          100% {
-            transform: translateY(-100%);
-            opacity: 0.3;
-          }
-        }
-        .animate-blueLineMove {
-          animation: blueLineMove 3.8s cubic-bezier(0.7,0,0.3,1) infinite;
-        }
-
-        /* Optional: If you have float/bounce animations for mail/heart icons */
         @keyframes float-slow {
-          0%,100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
         .animate-float-slow {
           animation: float-slow 4.5s ease-in-out infinite;
         }
 
         @keyframes float-medium {
-          0%,100% { transform: translateY(0); }
-          50% { transform: translateY(-12px); }
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-12px);
+          }
         }
         .animate-float-medium {
           animation: float-medium 3.2s ease-in-out infinite;
         }
-         
-           {/* ✨ Keyframes for Rocket Animation */}
-
-            @keyframes rocketFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            25% { transform: translateY(-3px) rotate(-5deg); }
-            50% { transform: translateY(-6px) rotate(0deg); }
-            75% { transform: translateY(-3px) rotate(5deg); }
-          }
-          .animate-rocketFloat {
-            animation: rocketFloat 1.5s ease-in-out infinite;
-          }
       `}</style>
-
     </section>
   );
 };

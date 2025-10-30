@@ -13,6 +13,7 @@ import Stats from "./ui/stats";
 import ServicesComp from "../components/ui/ServicesCom";
 import ContactComp from "../components/contactcomp";
 import Support from "./ui/Support";
+import HeroBanner from "./Herobanner1";
 
 function  HomePage() {
   // 🌀 Smooth scroll behavior for the entire page
@@ -43,8 +44,12 @@ function  HomePage() {
     <div className="flex min-h-screen flex-col scroll-smooth">
       <Header />
 
-      <div className="fade-in-section">
+      {/* <div className="fade-in-section">
         <AppLanding />
+      </div> */}
+
+       <div className="fade-in-section">
+        <HeroBanner />
       </div>
 
       <div className="fade-in-section">

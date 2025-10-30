@@ -76,8 +76,8 @@ export default function ProjectsPage() {
     activeCategory === "All"
       ? projects
       : projects.filter((p) =>
-          p.category.toLowerCase().includes(activeCategory.toLowerCase())
-        );
+        p.category.toLowerCase().includes(activeCategory.toLowerCase())
+      );
 
   // Change category handler
   const handleCategoryClick = (category) => {
@@ -114,9 +114,8 @@ export default function ProjectsPage() {
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className={`text-sm md:text-base font-semibold px-3 sm:px-4 py-2 transition ${
-                activeCategory === category ? "text-blue-600" : "text-gray-800"
-              }`}
+              className={`text-sm md:text-base font-semibold px-3 sm:px-4 py-2 transition ${activeCategory === category ? "text-blue-600" : "text-gray-800"
+                }`}
             >
               {category}
             </button>
@@ -143,27 +142,39 @@ export default function ProjectsPage() {
               return (
                 <div
                   key={index}
-                  className="rounded-2xl shadow-sm overflow-hidden bg-white group"
+                  className={`rounded-2xl shadow-sm overflow-hidden bg-white group transition-all duration-500 
+            ${isGraphic ? "h-[380px] sm:h-[420px] md:h-[460px]" : "h-auto"}
+          `}
                 >
-                  <div className="overflow-hidden h-48 sm:h-56 md:h-80">
+                  {/* Image Container */}
+                  <div
+                    className={`overflow-hidden 
+              ${isGraphic ? "h-[380px] sm:h-[420px] md:h-[460px]" : "h-48 sm:h-56 md:h-80"}
+            `}
+                  >
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`w-full h-auto min-h-[140%] transition-transform duration-[3.5s] ease-linear ${
-                        isWeb || isUiUx
+                      className={`w-full h-full transition-transform duration-[1s] ease-linear 
+                ${isWeb || isUiUx
                           ? "object-top object-cover group-hover:-translate-y-[40%]"
                           : isGraphic
-                          ? "object-contain"
-                          : "object-cover"
-                      }`}
+                            ? "object-cover scale-105 group-hover:scale-110"
+                            : "object-cover"
+                        }
+              `}
                     />
                   </div>
 
+                  {/* Text Section */}
                   {(isWeb || isUiUx) && (
                     <div className="p-4 sm:p-6 text-center">
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 text-left pl-2">
-                        {project.title}
-                      </h3>
+                      {/* Hide title for UI/UX category */}
+                      {!isUiUx && (
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 text-left pl-2">
+                          {project.title}
+                        </h3>
+                      )}
                       <a className="uppercase text-xs sm:text-sm font-semibold text-[#5b82e2] tracking-wide block text-left pl-2 mb-1">
                         {project.category}
                       </a>
@@ -174,6 +185,7 @@ export default function ProjectsPage() {
             })}
           </div>
         )}
+
       </div>
       <Footer />
     </div>

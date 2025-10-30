@@ -124,9 +124,8 @@ const FeaturedPost = ({ posts }) => {
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                index === current ? "bg-white" : "bg-gray-400"
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === current ? "bg-white" : "bg-gray-400"
+                }`}
             ></button>
           ))}
         </div>
@@ -164,48 +163,49 @@ const Blog = () => {
       <FeaturedPost posts={posts} />
 
       {/* Blog List + Sidebar */}
-      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 px-4 sm:px-6 md:px-10">
+      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 px-4 sm:px-6 md:px-10 pb-16 sm:pb-20">
+
         {/* Left Column */}
-        <div className="lg:col-span-2 flex flex-col space-y-8">
-          {blogListData.map((post) => (
-            <div
-              key={post.id}
-              className="flex flex-col sm:flex-row bg-white rounded-xl p-4 sm:p-5 border border-gray-200 hover:shadow-md transition-all duration-300"
-            >
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full sm:w-48 md:w-60 h-44 object-cover rounded-xl mb-3 sm:mb-0"
-              />
-              <div className="flex flex-col justify-between flex-1 sm:ml-4">
-                <div>
-                  <div className="flex flex-wrap items-center text-xs sm:text-sm text-gray-500 mb-2">
-                    <span className="text-blue-600 font-semibold uppercase tracking-wide">
-                      {post.category}
-                    </span>
-                    <span className="mx-1 text-gray-400">•</span>
-                    <span>{post.date}</span>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 hover:text-blue-600 cursor-pointer">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {post.desc.length > 90
-                      ? `${post.desc.slice(0, 90)} [...]`
-                      : post.desc}
-                  </p>
+        <div className="lg:col-span-2 flex flex-col space-y-8 ml-2 sm:ml-3 md:ml-8">    
+         {blogListData.map((post) => (
+          <div
+            key={post.id}
+            className="flex flex-col sm:flex-row bg-white rounded-xl p-4 sm:p-5 border border-gray-200 hover:shadow-md transition-all duration-300"
+          >
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full sm:w-48 md:w-60 h-44 object-cover rounded-xl mb-3 sm:mb-0"
+            />
+            <div className="flex flex-col justify-between flex-1 sm:ml-4">
+              <div>
+                <div className="flex flex-wrap items-center text-xs sm:text-sm text-gray-500 mb-2">
+                  <span className="text-blue-600 font-semibold uppercase tracking-wide">
+                    {post.category}
+                  </span>
+                  <span className="mx-1 text-gray-400">•</span>
+                  <span>{post.date}</span>
                 </div>
-                <div className="flex items-center text-xs text-gray-500 mt-3 space-x-2 sm:space-x-5">
-                  <div className="flex items-center space-x-1">
-                    <div className="w-5 h-5 flex items-center justify-center bg-[#6c4bdb]/10 text-black rounded-full text-[10px]">
-                      A
-                    </div>
-                    <span> BinaryLogix </span>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 hover:text-blue-600 cursor-pointer">
+                  {post.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {post.desc.length > 90
+                    ? `${post.desc.slice(0, 90)} [...]`
+                    : post.desc}
+                </p>
+              </div>
+              <div className="flex items-center text-xs text-gray-500 mt-3 space-x-2 sm:space-x-5">
+                <div className="flex items-center space-x-1">
+                  <div className="w-5 h-5 flex items-center justify-center bg-[#6c4bdb]/10 text-black rounded-full text-[10px]">
+                    A
                   </div>
+                  <span> BinaryLogix </span>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+        ))}
         </div>
 
         {/* Right Sidebar */}
