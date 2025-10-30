@@ -7,7 +7,7 @@ import Banner2 from "../../components/Herobanner2";
 
 const slides = [
   { Component: Banner1 },
-  { Component: Banner2 },
+  // { Component: Banner2 },
 ];
 
 export default function HeroCarousel() {
