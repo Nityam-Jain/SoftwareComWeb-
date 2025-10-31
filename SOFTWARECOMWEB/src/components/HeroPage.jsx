@@ -14,6 +14,7 @@ import ServicesComp from "../components/ui/ServicesCom";
 import ContactComp from "../components/contactcomp";
 import Support from "./ui/Support";
 import HeroBanner from "./Herobanner1";
+import AboutPageScroll from "./pageAboutcom"
 
 function  HomePage() {
   // 🌀 Smooth scroll behavior for the entire page
@@ -57,7 +58,7 @@ function  HomePage() {
       </div>
 
       <div className="fade-in-section">
-        <Creative />
+        <AboutPageScroll />
       </div>
 
       <div className="fade-in-section">

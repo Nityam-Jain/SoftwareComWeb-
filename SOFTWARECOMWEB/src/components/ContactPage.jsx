@@ -31,9 +31,10 @@ export default function ContactPage() {
           </div>
 
           {/* ===== CONTACT INFO SECTION ===== */}
-          <div className="mx-auto max-w-6xl mt-12 flex flex-col md:flex-wrap md:flex-row items-center justify-center bg-white rounded-2xl shadow-md px-6 py-6 gap-6 md:gap-10 text-center md:text-left">
+          <div className="mx-auto max-w-6xl mt-12 flex flex-col md:flex-wrap md:flex-row items-start md:items-center justify-start md:justify-center bg-white rounded-2xl shadow-md px-6 py-6 gap-6 md:gap-10 text-left">
+
             {/* Email */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start ">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-start md:justify-start">
               <img
                 src={envelopeimg}
                 alt="Email"
@@ -48,7 +49,7 @@ export default function ContactPage() {
             <div className="hidden md:block h-6 w-px bg-gray-200"></div>
 
             {/* Location */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-start md:justify-start">
               <img
                 src={location}
                 alt="Location"
@@ -63,7 +64,7 @@ export default function ContactPage() {
             <div className="hidden md:block h-6 w-px bg-gray-200"></div>
 
             {/* Phone */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-start md:justify-start">
               <img
                 src={message}
                 alt="Phone"
@@ -74,6 +75,9 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
+
+
+
           {/* ===== FORM SECTION ===== */}
           <section className="relative flex justify-center bg-white  px-4 overflow-hidden">
             {/* Floating @ Icon (bottom left) */}

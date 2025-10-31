@@ -43,7 +43,8 @@ const Services = ()=> {
   }, [currentIndex]);
 
   return (
-    <section className="py-16 px-6 bg-white">
+    <div>
+      <section className="py-16 px-6 bg-white">
       <div className="text-center mb-10">
         <span className="text-sm text-blue-600 font-semibold tracking-wide bg-purple-50 px-3 py-1 rounded-full">
           Services
@@ -80,6 +81,8 @@ const Services = ()=> {
         </div>
       </div>
     </section>
+    </div>
+   
   );
 };
 

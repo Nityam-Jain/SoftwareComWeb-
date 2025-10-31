@@ -10,7 +10,7 @@ export default function ContactPage() {
   return (
     <div className="bg-gray-50 flex flex-col">
       <main className="flex-1">
-        {/* ===== TOP SECTION ===== */}   
+        {/* ===== TOP SECTION ===== */}
         <motion.section
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,22 +50,21 @@ export default function ContactPage() {
             </motion.p>
           </div>
 
-          {/* ===== CONTACT INFO SECTION ===== */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-6xl mt-10 sm:mt-12 flex flex-col md:flex-row flex-wrap items-center justify-center bg-white rounded-2xl shadow-md px-5 sm:px-8 py-6 gap-6 md:gap-10 text-center md:text-left"
+            className="mx-auto max-w-6xl mt-10 sm:mt-12 flex flex-col md:flex-row flex-wrap items-center md:items-start justify-end md:justify-center bg-white rounded-2xl shadow-md px-5 sm:px-8 py-6 gap-6 md:gap-10 text-right md:text-left"
           >
             {/* Email */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-start md:justify-start">
               <img
                 src={envelopeimg}
                 alt="Email"
                 className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
-              <p className="text-sm sm:text-base  text-gray-800 break-words">
+              <p className="text-sm sm:text-base text-gray-800 break-words">
                 binarylogixofficial@gmail.com
               </p>
             </div>
@@ -74,14 +73,14 @@ export default function ContactPage() {
             <div className="hidden md:block h-6 w-px bg-gray-200"></div>
 
             {/* Location */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-start md:justify-start">
               <img
                 src={location}
                 alt="Location"
                 className="h-7 w-7 sm:h-8 sm:w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
-              <p className="text-sm sm:text-base  text-gray-800 max-w-[260px] sm:max-w-none">
-                11-Himanshu Apartment, Indrapuri, Bhopal 462022
+              <p className="text-sm sm:text-base text-gray-800 max-w-[260px] sm:max-w-none">
+                11-Himanshu Apartment, <br/> Indrapuri, Bhopal 462022
               </p>
             </div>
 
@@ -89,13 +88,13 @@ export default function ContactPage() {
             <div className="hidden md:block h-6 w-px bg-gray-200"></div>
 
             {/* Phone */}
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-start md:justify-start">
               <img
                 src={message}
                 alt="Phone"
                 className="h-7 w-7 sm:h-8 sm:w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
-              <p className="text-sm sm:text-base  text-gray-800">
+              <p className="text-sm sm:text-base text-gray-800">
                 +91 9617189757
               </p>
             </div>

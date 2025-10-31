@@ -119,7 +119,7 @@ export default function ProjectsPage() {
                 Projects
               </span>
             </h1>
-            <p className="text-gray-200 max-w-2xl mx-auto text-sm sm:text-base">
+            <p className="text-gray-200 max-w-2xl mx-auto sm:text-base">
               We have an experienced team of production and inspection personnel
               to ensure top-notch quality in every project we deliver.
             </p>
