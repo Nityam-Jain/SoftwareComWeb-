@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-// ✅ Import icons from assets folder
+// ✅ Import icons from assets
 import ProfesIcon from "../../assets/skilledprof.png";
 import repu from "../../assets/projectdeilivered.png";
 import webIcon from "../../assets/projectcompleted.png";
 import appdevIcon from "../../assets/happyclients.png";
 
-// Count-up hook
+// ✅ Count-up hook
 function useCountUp(end, startCounting, duration = 1500) {
   const [value, setValue] = useState(0);
   useEffect(() => {
@@ -27,6 +28,7 @@ function useCountUp(end, startCounting, duration = 1500) {
   return value;
 }
 
+// ✅ Stats list
 const statsList = [
   {
     icon: webIcon,
@@ -58,7 +60,7 @@ export default function AnimatedStats() {
   const [startCounting, setStartCounting] = useState(false);
   const sectionRef = useRef(null);
 
-  // Intersection Observer to trigger animation on scroll
+  // ✅ Trigger animation when in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -81,35 +83,59 @@ export default function AnimatedStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white flex justify-center py-10 sm:py-14 md:py-20 overflow-hidden px-2 sm:px-6 md:px-24"
+      className="relative bg-white flex justify-center py-10 sm:py-14 md:py-20 overflow-hidden px-4 sm:px-8 md:px-6"
     >
+      {/* Soft gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />
 
-      <div className="relative w-full z-10 flex flex-wrap md:flex-nowrap flex-col md:flex-row gap-8 sm:gap-12 md:gap-28 items-center justify-center">
+      <div className="relative w-full z-10 flex flex-wrap justify-center items-center gap-10 sm:gap-14 md:gap-29">
         {statsList.map((stat, idx) => (
-          <div
+          <motion.div
             key={stat.label}
-            className={`flex flex-col items-center text-center transition-all duration-700 ${
-              startCounting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-            style={{ transitionDelay: `${idx * 200}ms` }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={
+              startCounting
+                ? { opacity: 1, y: 0, scale: 1 }
+                : { opacity: 0, y: 30, scale: 0.95 }
+            }
+            transition={{
+              duration: 0.6,
+              delay: idx * 0.15,
+              type: "spring",
+              stiffness: 90,
+            }}
+            className="flex flex-col items-center text-center"
           >
-            <img
+            {/* Floating icon */}
+            <motion.img
               src={stat.icon}
               alt={stat.label}
-              className="w-20 h-14 sm:w-28 sm:h-20 md:w-40 md:h-28 object-contain mb-2"
+              className="w-20 h-16 sm:w-28 sm:h-20 md:w-30 md:h-22 object-contain mb-3"
+              animate={{
+                y: [0, -8, 0],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 3 + idx,
+                ease: "easeInOut",
+              }}
             />
 
+            {/* Count-up number */}
             <div className="flex items-baseline -mt-2 mb-1 sm:-mt-4 sm:mb-1">
-              <span className="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-800">
+              <span className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-800">
                 {counters[idx]}
               </span>
-              <span className="text-xl sm:text-2xl font-semibold text-blue-500 ml-1">
+              <span className="text-2xl sm:text-3xl font-semibold text-blue-500 ml-1">
                 {stat.suffix}
               </span>
             </div>
-            <div className="text-gray-600 text-xs sm:text-sm md:text-base font-medium px-1">{stat.label}</div>
-          </div>
+
+            {/* Label */}
+            <div className="text-gray-600 text-sm sm:text-base md:text-lg font-medium px-1">
+              {stat.label}
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>

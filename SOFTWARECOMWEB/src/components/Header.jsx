@@ -37,7 +37,6 @@ export default function Header() {
 
   return (
     <>
-      {/* 🔹 Shutter Animation Overlay */}
       {/* Shutter Animation Overlay */}
       {transitionActive && (
         <div className="fixed inset-0 backdrop-blur-lg bg-indigo-500/10 z-50 flex justify-center items-center overflow-hidden">
@@ -52,7 +51,7 @@ export default function Header() {
                 key={i}
                 className="
             bg-indigo-400 rounded-xl animate-pulseGrid 
-            w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12
+            w-8 h-8 sm:w-10 sm:h-10 md:w-3 md:h-3
           "
                 style={{
                   animationDelay: `${(i % 5 + Math.floor(i / 5)) * 0.1}s`,

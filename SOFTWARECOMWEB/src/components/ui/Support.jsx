@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -27,23 +28,7 @@ const faqs = [
     content:
       "We craft platform-specific content strategies to boost engagement, visibility, and trust. Our campaigns focus on storytelling and brand personality — turning followers into loyal customers across Instagram, LinkedIn, and Facebook.",
   },
-  // {
-  //   title: "What kind of businesses do you work with?",
-  //   content:
-  //     "We collaborate with startups, small businesses, and enterprises across industries — from tech and retail to education and real estate. Whether it’s a single-page website or a full digital transformation, we adapt to your scale and vision.",
-  // },
-  // {
-  //   title: "Do you provide maintenance and post-launch support?",
-  //   content:
-  //     "Yes. Every project comes with reliable maintenance and ongoing support. We monitor performance, fix issues, and provide continuous improvements to keep your digital assets optimized and secure.",
-  // },
-  // {
-  //   title: "Can you handle branding, design, and content creation too?",
-  //   content:
-  //     "Definitely. Our creative team specializes in logo design, UI/UX, video editing, and content production — ensuring your brand looks cohesive and communicates powerfully across all platforms.",
-  // },
 ];
-
 
 export default function FAQSection() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -53,55 +38,75 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-white py-16 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-12">
-          {/* <span className="inline-block text-xs mb-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-md">
-            OUR SERVICES
-          </span> */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <h2 className="text-4xl font-extrabold bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
-                FAQ
+            FAQ
           </h2>
-
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Explore how Binarylogix empowers businesses through technology,
             creativity, and strategy — delivering solutions that drive results.
           </p>
-        </div>
+        </motion.div>
 
         {/* FAQ List */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
+            <motion.div
               key={index}
-              className="border border-gray-200 rounded-xl shadow-sm overflow-hidden transition-all duration-300"
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="border border-gray-200 rounded-xl shadow-sm overflow-hidden"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center p-3 text-left hover:bg-gray-50 transition"
+                className="w-full flex justify-between items-center p-4 text-left hover:bg-gray-50 transition"
               >
-                <span className="font-medium text-gray-800">
-                  {faq.title}
-                </span>
-                {activeIndex === index ? (
-                  <ChevronUp className="text-blue-600" />
-                ) : (
-                  <ChevronDown className="text-gray-500" />
-                )}
+                <span className="font-medium text-gray-800">{faq.title}</span>
+                <motion.div
+                  animate={{
+                    rotate: activeIndex === index ? 180 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {activeIndex === index ? (
+                    <ChevronUp className="text-blue-600" />
+                  ) : (
+                    <ChevronDown className="text-gray-500" />
+                  )}
+                </motion.div>
               </button>
 
-              <div
-                className={`transition-all duration-500 ease-in-out ${activeIndex === index
-                    ? "max-h-40 opacity-100 p-5 pt-0"
-                    : "max-h-0 opacity-0"
-                  }`}
-              >
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {faq.content}
-                </p>
-              </div>
-            </div>
+              <AnimatePresence initial={false}>
+                {activeIndex === index && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    className="px-5 pb-4"
+                  >
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {faq.content}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>

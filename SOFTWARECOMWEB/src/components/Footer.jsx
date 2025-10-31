@@ -86,7 +86,7 @@ export default function Footer() {
               alt="BinaryLogix Logo"
               className="w-28 sm:w-32 h-auto mb-4"
             />
-            <p className="text-sm leading-relaxed mb-5 text-[#3487fa]">
+            <p className="text-sm leading-relaxed mb-5 text-black">
               Empowering your Business with tailored, innovative Solutions
             </p>
             <div className="flex items-center gap-3">
@@ -101,7 +101,7 @@ export default function Footer() {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-[#3487fa]/10 text-[#3487fa] hover:bg-[#3487fa] hover:text-white transition"
+                  className="p-2 rounded-full bg-[#3487fa]/10 text-black hover:bg-[#3487fa] hover:text-white transition"
                 >
                   <Icon size={16} />
                 </a>
