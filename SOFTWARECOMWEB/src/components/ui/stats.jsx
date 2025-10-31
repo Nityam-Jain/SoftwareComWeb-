@@ -83,7 +83,7 @@ export default function AnimatedStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white flex justify-center py-10 sm:py-14 md:py-20 overflow-hidden px-4 sm:px-8 md:px-6"
+      className="relative bg-white flex justify-center py-15 sm:py-14 md:py-20 overflow-hidden px-4 sm:px-8 md:px-6"
     >
       {/* Soft gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />

@@ -31,11 +31,12 @@ const ServicesGrid = () => {
   return (
     <div>
       <section
-        className="relative w-full h-[60vh] flex flex-col items-center justify-center text-center bg-fixed bg-cover bg-center mb-10 text-white bg-black/40 bg-blend-overlay"
+        className="relative w-full h-[60vh] flex flex-col items-center justify-center text-center bg-fixed md:bg-cover bg-center mb-10 text-white bg-black/40 bg-blend-overlay bg-[length:auto_100%] sm:bg-cover"
         style={{
           backgroundImage: `url(${projectBg2})`,
         }}
       >
+
         <div className="px-6 md:px-16 max-w-3xl">
           <span className="inline-block bg-white/20 text-blue-200 px-4 py-1 rounded-full text-xs uppercase tracking-wider mb-4">
             Our Services

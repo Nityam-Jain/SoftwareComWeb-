@@ -39,18 +39,18 @@ export default function Header() {
     <>
       {/* Shutter Animation Overlay */}
       {transitionActive && (
-        <div className="fixed inset-0 backdrop-blur-lg bg-indigo-500/10 z-50 flex justify-center items-center overflow-hidden">
+        <div className="fixed inset-0 backdrop-blur-lg bg-blue-500/10 z-50 flex justify-center items-center overflow-hidden">
           <div
             className="
-        grid grid-cols-5 gap-2 
-        sm:gap-3 md:gap-4
+          grid grid-cols-5 gap-2 
+           sm:gap-3 md:gap-4
       "
           >
             {[...Array(25)].map((_, i) => (
               <div
                 key={i}
                 className="
-            bg-indigo-400 rounded-xl animate-pulseGrid 
+            bg-blue-400 rounded-xl animate-pulseGrid 
             w-3 h-3 sm:w-10 sm:h-10 md:w-3 md:h-3
           "
                 style={{
@@ -95,8 +95,8 @@ export default function Header() {
                     key={path}
                     onClick={() => handleNavClick(path)}
                     className={`relative text-sm font-semibold transition-all duration-300 group ${isActive(path)
-                        ? "text-blue-600"
-                        : "text-gray-700 hover:text-blue-600"
+                      ? "text-blue-600"
+                      : "text-gray-700 hover:text-blue-600"
                       }`}
                   >
                     {name}
@@ -141,8 +141,8 @@ export default function Header() {
                       key={path}
                       onClick={() => handleNavClick(path)}
                       className={`relative text-sm font-semibold transition-all duration-300 ${isActive(path)
-                          ? "text-blue-600"
-                          : "text-gray-700 hover:text-blue-600"
+                        ? "text-blue-600"
+                        : "text-gray-700 hover:text-blue-600"
                         }`}
                     >
                       {name}

@@ -13,28 +13,26 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#f4f6fb] pt-20 pb-8 relative overflow-hidden">
-      {/* Animated Wavy Top Decoration */}
-      <div className="absolute -top-10 left-0 w-full overflow-hidden leading-[0]">
-        <div className="relative w-full h-[140px] sm:h-[180px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb] overflow-hidden">
-          
-           <svg
+    <footer className="bg-[#f4f6fb] pt-20 pb-8 relative border-t rounded-4xl overflow-hidden">
+      {/* 🌊 Animated Wavy Top Decoration (Improved) */}
+      <div className="absolute -top-10 left-0 w-full overflow-hidden  leading-[0]">
+        <div className="relative w-full h-[160px] sm:h-[200px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb] overflow-hidden">
+
+          {/* Back wave (lighter) */}
+          <svg
             className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave3 opacity-40"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
           >
             <path
-              d="M0,0V30.29C80,49,160,65,240,66
-                c110,1,220-17,330-22
-                c120-7,240,16,360,34
-                c90,18,180,38,270,20
-                c100-19,200-61,300-85V0Z"
+              d="M0,40 C150,80 350,0 600,40 C850,80 1050,20 1200,50 L1200,0 L0,0 Z"
               fill="#b0bcde"
               opacity="0.5"
             />
           </svg>
 
+          {/* Front wave (darker) */}
           <svg
             className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave1 opacity-85"
             xmlns="http://www.w3.org/2000/svg"
@@ -42,42 +40,38 @@ export default function Footer() {
             preserveAspectRatio="none"
           >
             <path
-              d="M0,0V46.29C47.35,68.53,103.77,81.9,162,85
-                c86,4.74,172-14.4,258-18.36
-                C516,62.92,602,75,688,87.12
-                c96,13.51,192,27.52,288,13.9
-                c66.56-9.51,133.11-30.35,200-38.43V0Z"
+              d="M0,60 C200,100 400,20 600,60 C800,100 1000,40 1200,70 L1200,0 L0,0 Z"
               fill="#ced3d9"
               opacity="0.7"
             />
           </svg>
-
-         
         </div>
 
-        <div className="absolute top-0 left-0 w-full h-[50px] bg-gradient-to-b from-white/90 to-transparent"></div>
+        {/* Soft white fade on top for smoother blend */}
+        <div className="absolute top-0 left-0 w-full h-[60px] bg-gradient-to-b from-white/90 to-transparent"></div>
 
         <style>{`
-          @keyframes crossWave1 {
-            0% { transform: translateX(0) translateY(0); opacity: 0.7;}
-            25% {transform: translateX(-10%) translateY(12px); opacity: 0.75;}
-            50% {transform: translateX(-30%) translateY(0); opacity: 0.79;}
-            75% {transform: translateX(-10%) translateY(-12px); opacity: 0.73;}
-            100% {transform: translateX(0) translateY(0); opacity: 0.7;}
-          }
-          @keyframes crossWave3 {
-            0% { transform: translateX(0) translateY(-3px); opacity: 0.4;}
-            50% {transform: translateX(-10%) translateY(7px); opacity: 0.5;}
-            100% {transform: translateX(0) translateY(-3px); opacity: 0.4;}
-          }
-          .animate-crossWave1 {
-            animation: crossWave1 11s cubic-bezier(0.52,0,0.48,1) infinite;
-          }
-          .animate-crossWave3 {
-            animation: crossWave3 19s cubic-bezier(0.6,0,0.4,1) infinite;
-          }
-        `}</style>
+    @keyframes crossWave1 {
+      0% { transform: translateX(0) translateY(0); opacity: 0.7;}
+      25% {transform: translateX(-10%) translateY(10px); opacity: 0.75;}
+      50% {transform: translateX(-30%) translateY(0); opacity: 0.79;}
+      75% {transform: translateX(-10%) translateY(-10px); opacity: 0.73;}
+      100% {transform: translateX(0) translateY(0); opacity: 0.7;}
+    }
+    @keyframes crossWave3 {
+      0% { transform: translateX(0) translateY(-3px); opacity: 0.4;}
+      50% {transform: translateX(-10%) translateY(7px); opacity: 0.5;}
+      100% {transform: translateX(0) translateY(-3px); opacity: 0.4;}
+    }
+    .animate-crossWave1 {
+      animation: crossWave1 12s cubic-bezier(0.52,0,0.48,1) infinite;
+    }
+    .animate-crossWave3 {
+      animation: crossWave3 20s cubic-bezier(0.6,0,0.4,1) infinite;
+    }
+  `}</style>
       </div>
+
 
       {/* Footer Content */}
       <div className="relative container mx-auto pt-10 px-4 sm:px-8 md:px-12 lg:px-20">
@@ -94,10 +88,10 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               {[
-                { Icon: Facebook, link: "https://www.facebook.com/share/1EyAb9RB8c/"},
+                { Icon: Facebook, link: "https://www.facebook.com/share/1EyAb9RB8c/" },
                 // { Icon: Twitter, link: "https://twitter.com/yourprofile" },
                 { Icon: Linkedin, link: "https://www.linkedin.com/company/binarylogix-technologies/" },
-                { Icon:  Instagram, link: "https://www.instagram.com/binarylogix_technologies/" },
+                { Icon: Instagram, link: "https://www.instagram.com/binarylogix_technologies/" },
               ].map(({ Icon, link }, i) => (
                 <a
                   key={i}
