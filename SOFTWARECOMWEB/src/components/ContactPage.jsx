@@ -75,7 +75,7 @@ export default function ContactPage() {
             </div>
           </div>
           {/* ===== FORM SECTION ===== */}
-          <section className="relative flex justify-center bg-white py-16 px-4 overflow-hidden">
+          <section className="relative flex justify-center bg-white  px-4 overflow-hidden">
             {/* Floating @ Icon (bottom left) */}
             <div className="absolute bottom-18 left-4 sm:bottom-12 sm:left-12 md:bottom-8 md:left-4 lg:bottom-12 lg:left-57 z-20 animate-float">
               <img
@@ -190,13 +190,13 @@ export default function ContactPage() {
         animation: float 5s ease-in-out infinite;
       }
         @keyframes zoomPulse {
-  0%, 100% {
-    transform: scale(1.2);
+       0%, 100% {
+      transform: scale(1.2);
+      }
+     50% {
+     transform: scale(1.08);
+    }
   }
-  50% {
-    transform: scale(1.08);
-  }
-}
 
 .animate-zoom {
   animation: zoomPulse 5s ease-in-out infinite;
@@ -208,8 +208,8 @@ export default function ContactPage() {
 
 
           {/* ===== GOOGLE MAP ===== */}
-          <section className="w-full">
-            <div className="w-full h-[280px] sm:h-[350px] md:h-[450px] lg:h-[500px]">
+          <section className="w-full !mb-0 !pb-0">
+            <div className="w-full h-[280px] sm:h-[350px] md:h-[450px] lg:h-[540px]">
               <iframe
                 src="https://www.google.com/maps?q=Binarylogix+Technologies+LLP,+Himanshu+Apartment,+Indrapuri,+Bhopal,+Madhya+Pradesh&output=embed"
                 width="100%"

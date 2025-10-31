@@ -51,7 +51,7 @@ export default function Header() {
                 key={i}
                 className="
             bg-indigo-400 rounded-xl animate-pulseGrid 
-            w-8 h-8 sm:w-10 sm:h-10 md:w-3 md:h-3
+            w-3 h-3 sm:w-10 sm:h-10 md:w-3 md:h-3
           "
                 style={{
                   animationDelay: `${(i % 5 + Math.floor(i / 5)) * 0.1}s`,

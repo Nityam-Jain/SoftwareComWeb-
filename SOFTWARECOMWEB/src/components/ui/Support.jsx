@@ -72,7 +72,7 @@ export default function FAQSection() {
                 onClick={() => toggleFAQ(index)}
                 className="w-full flex justify-between items-center p-4 text-left hover:bg-gray-50 transition"
               >
-                <span className="font-medium text-gray-800">{faq.title}</span>
+                <span className=" text-gray-800">{faq.title}</span>
                 <motion.div
                   animate={{
                     rotate: activeIndex === index ? 180 : 0,

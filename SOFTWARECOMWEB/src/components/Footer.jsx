@@ -17,6 +17,24 @@ export default function Footer() {
       {/* Animated Wavy Top Decoration */}
       <div className="absolute -top-10 left-0 w-full overflow-hidden leading-[0]">
         <div className="relative w-full h-[140px] sm:h-[180px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb] overflow-hidden">
+          
+           <svg
+            className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave3 opacity-40"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,0V30.29C80,49,160,65,240,66
+                c110,1,220-17,330-22
+                c120-7,240,16,360,34
+                c90,18,180,38,270,20
+                c100-19,200-61,300-85V0Z"
+              fill="#b0bcde"
+              opacity="0.5"
+            />
+          </svg>
+
           <svg
             className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave1 opacity-85"
             xmlns="http://www.w3.org/2000/svg"
@@ -34,22 +52,7 @@ export default function Footer() {
             />
           </svg>
 
-          <svg
-            className="absolute bottom-0 left-0 w-[200%] h-full animate-crossWave3 opacity-40"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,0V30.29C80,49,160,65,240,66
-                c110,1,220-17,330-22
-                c120-7,240,16,360,34
-                c90,18,180,38,270,20
-                c100-19,200-61,300-85V0Z"
-              fill="#b0bcde"
-              opacity="0.5"
-            />
-          </svg>
+         
         </div>
 
         <div className="absolute top-0 left-0 w-full h-[50px] bg-gradient-to-b from-white/90 to-transparent"></div>

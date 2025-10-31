@@ -79,7 +79,7 @@ export default function WhyChooseUsSection() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className={`p-6 bg-white border border-blue-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card`}
+              className={`p-6 bg-white  rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-card`}
               style={{ animationDelay: `${idx * 0.3}s` }}
             >
               <img src={feature.icon} alt={feature.title} className="w-29 h-25 mb-3 object-contain" />

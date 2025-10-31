@@ -11,7 +11,7 @@ import Icon9 from "../../assets/pachamariicon_img.png";
 
 export default function IntegrationSection() {
   return (
-    <section className="w-full bg-white py-16 relative overflow-hidden">
+    <section className="w-full bg-white py-14 relative overflow-hidden">
       <style>{`
         .bg-gradient-animate {
           background: linear-gradient(135deg, #ffffff, #eaf2ff, #fdfcfb, #dbe8ff);

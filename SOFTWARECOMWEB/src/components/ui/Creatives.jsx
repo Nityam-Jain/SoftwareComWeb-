@@ -4,7 +4,7 @@ import { ChartColumnDecreasing, ChartPie } from "lucide-react";
 
 export default function CreativeSection() {
   return (
-    <section className="w-full bg-white py-16 overflow-hidden">
+    <section className="w-full bg-white py-8 overflow-hidden">
       <style>
         {`
           @keyframes fadeInUp {
