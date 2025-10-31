@@ -38,7 +38,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-white py-16 overflow-hidden">
+    <section className="w-full bg-white py-2 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
         <motion.div

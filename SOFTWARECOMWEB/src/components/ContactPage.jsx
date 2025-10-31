@@ -14,7 +14,7 @@ export default function ContactPage() {
 
       <main className="flex-1">
         {/* ===== TOP SECTION ===== */}
-        <section className="bg-white rounded-b-3xl shadow-sm pb-8 pt-12 md:pt-20 lg:pt-28">
+        <section className="bg-white rounded-b-3xl shadow-sm pb-8 pt-12 md:pt-20 lg:pt-20">
           <div className="max-w-3xl mx-auto text-center space-y-1 px-4">
             <span className="inline-block bg-[#efe6fb] text-[#3488fa] px-4 py-1 rounded-lg mb-3 text-xs font-semibold tracking-wider">
               Contact us
@@ -77,7 +77,7 @@ export default function ContactPage() {
           {/* ===== FORM SECTION ===== */}
           <section className="relative flex justify-center bg-white  px-4 overflow-hidden">
             {/* Floating @ Icon (bottom left) */}
-            <div className="absolute bottom-8 left-4 sm:bottom-12 sm:left-12 md:-bottom-6 md:left-5 lg:bottom-12 lg:left-57 z-20 animate-float">
+            <div className="absolute bottom-8 left-4 sm:bottom-12 sm:left-12 md:-bottom-6 md:left-5 lg:-bottom-10 lg:left-57 z-20 animate-float">
               <img
                 src={atIcon}
                 alt="At symbol"
@@ -86,7 +86,7 @@ export default function ContactPage() {
             </div>
 
             {/* Floating Envelope (top right) */}
-            <div className="absolute top-2 -right-4 sm:top-24 sm:right-10 md:top-2 md:-right-6 lg:top-35 lg:right-32 z-20 animate-float">
+            <div className="absolute top-2 -right-4 sm:top-24 sm:right-10 md:top-2 md:-right-6 lg:top-5 lg:right-32 z-20 animate-float">
               <img
                 src={envelopeIcon}
                 alt="Envelope"
@@ -106,22 +106,22 @@ export default function ContactPage() {
                   <input
                     type="text"
                     placeholder="Name"
-                    className="rounded-full border bg-white border-gray-300 px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#3487fa]"
+                    className="rounded-full border bg-white border-gray-300 px-5 py-3 w-full text-sm focus:outline-none focus:ring-1 focus:ring-[#3487fa]"
                     required
                   />
                   <input
                     type="email"
                     placeholder="Email Address *"
-                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#3487fa]"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-1 focus:ring-[#3487fa]"
                     required
                   />
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#3487fa]"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-1 focus:ring-[#3487fa]"
                   />
                   <select
-                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#3487fa]"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-1 focus:ring-[#3487fa]"
                     defaultValue=""
                   >
                     <option value="" disabled>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                 <textarea
                   rows="5"
                   placeholder="How can we help you?"
-                  className="rounded-3xl border border-gray-300 px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-2 bg-white focus:ring-[#8b5cf6]"
+                  className="rounded-3xl border border-gray-300 px-5 py-3 w-full max-w-[700px] text-sm focus:outline-none focus:ring-1 bg-white  focus:ring-[#3487fa]"
                   required
                 ></textarea>
 

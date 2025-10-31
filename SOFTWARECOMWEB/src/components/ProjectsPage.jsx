@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import projectBg from "../assets/projectbanner.jpg";
 
 // ✅ Import all assets
 import project1 from "../assets/pachmariayurfull.png";
@@ -98,25 +99,36 @@ export default function ProjectsPage() {
       <Header />
       <div className="bg-white w-full overflow-x-hidden">
         {/* Title Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12 px-4 sm:px-6 md:px-8"
+        <section
+          className="relative w-full h-[60vh] flex items-center justify-center text-center bg-fixed bg-cover bg-center mb-10"
+          style={{
+            backgroundImage: `url(${projectBg})`,
+          }}
         >
-          <span className="inline-block bg-[#efe6fb] text-blue-600 px-4 py-1 rounded-sm mt-8 mb-4 text-xs font-semibold tracking-wider">
-            portfolio
-          </span>
-          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight">
-            Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3488fa] to-black/70">
-              Projects
+          {/* 🔹 Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-blue-900/40 to-black/70"></div>
+
+          {/* 🔹 Content */}
+          <div className="relative z-10 text-white px-6">
+            <span className="inline-block bg-white/20 text-blue-200 px-4 py-1 rounded-full text-xs uppercase tracking-wider mb-4">
+              Portfolio
             </span>
-          </h1>
-          <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
-            We have an experienced team of production and inspection personnel to ensure quality.
-          </p>
-        </motion.div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight">
+              Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">
+                Projects
+              </span>
+            </h1>
+            <p className="text-gray-200 max-w-2xl mx-auto text-sm sm:text-base">
+              We have an experienced team of production and inspection personnel
+              to ensure top-notch quality in every project we deliver.
+            </p>
+          </div>
+
+          {/* 🔹 Decorative Blur Circles (optional aesthetic) */}
+          <div className="absolute top-10 left-10 w-40 h-40 bg-blue-400/30 blur-3xl rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-52 h-52 bg-blue-300/30 blur-3xl rounded-full"></div>
+        </section>
 
         {/* Category Filter */}
         <motion.div
