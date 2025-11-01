@@ -46,7 +46,7 @@ export default function ContactPage() {
                 alt="Email"
                 className="h-9 w-9 md:h-10 md:w-10 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
-              <p className="text-sm md:text-base font-semibold text-gray-800 break-words">
+              <p className="text-sm md:text-base  text-gray-800 break-words">
                 binarylogixofficial@gmail.com
               </p>
             </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 alt="Location"
                 className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
-              <p className="text-sm md:text-base font-semibold text-gray-800 break-words max-w-[260px] sm:max-w-none">
+              <p className="text-sm md:text-base  text-gray-800 break-words max-w-[260px] sm:max-w-none">
                 11-Himanshu Apartment, Indrapuri, Bhopal 462022
               </p>
             </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 alt="Phone"
                 className="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(52,135,250,0.3)] animate-zoom"
               />
-              <p className="text-sm md:text-base font-semibold text-gray-800">
+              <p className="text-sm md:text-base  text-gray-800">
                 +91 9617189757
               </p>
             </div>

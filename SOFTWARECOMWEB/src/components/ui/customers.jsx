@@ -97,17 +97,30 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* RIGHT CONTENT - infinite vertical scroll */}
+        {/* RIGHT CONTENT - infinite vertical scroll on web, manual scroll on mobile/tablet */}
         <div className="flex-1 w-full max-w-[500px] relative">
-          <div className="testimonial-container h-[480px] sm:h-[480px] overflow-hidden relative">
-            <div className="animate-scrollUp flex flex-col gap-6">
+          <div
+            className={`
+      testimonial-container 
+      h-[480px] sm:h-[480px] 
+      overflow-hidden md:overflow-hidden 
+      overflow-y-scroll md:overflow-y-hidden 
+      relative
+    `}
+          >
+            <div
+              className={`
+        flex flex-col gap-6 
+        ${window.innerWidth >= 1024 ? "animate-scrollUp" : ""} 
+      `}
+            >
               {displayTestimonials.map((t, index) => (
                 <div
                   key={index}
                   className="flex flex-col sm:flex-row items-center bg-white rounded-2xl shadow-lg px-6 py-5 bg-gradient-to-br from-white/90 to-gray-100/70 text-gray-800 text-left backdrop-blur-lg border border-gray-200/50 w-full"
                 >
                   {/* Avatar/Logo */}
-                  <div className="flex-shrink-0   flex items-center justify-center mb-4 sm:mb-0 sm:mr-6 relative">
+                  <div className="flex-shrink-0 flex items-center justify-center mb-4 sm:mb-0 sm:mr-6 relative">
                     <img
                       src={t.img}
                       alt={`${t.name} logo`}
@@ -146,42 +159,44 @@ export default function TestimonialsSection() {
 
           {/* Animations */}
           <style>{`
-            @keyframes float {
-              0%, 100% { transform: translateY(0); }
-              50% { transform: translateY(-6px); }
-            }
-            .animate-float {
-              animation: float 3s ease-in-out infinite;
-            }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.2); }
+    }
+    .animate-pulse-slow {
+      animation: pulse-slow 5s ease-in-out infinite;
+    }
 
-            @keyframes pulse-slow {
-              0%, 100% { opacity: 0.6; transform: scale(1); }
-              50% { opacity: 0.9; transform: scale(1.2); }
-            }
-            .animate-pulse-slow {
-              animation: pulse-slow 5s ease-in-out infinite;
-            }
+    /* 🔹 Infinite Scroll Animation */
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .animate-scrollUp {
+      animation: scrollUp 15s linear infinite;
+    }
 
-            /* 🔹 Infinite Scroll Animation */
-            @keyframes scrollUp {
-              0% { transform: translateY(0); }
-              100% { transform: translateY(-50%); }
-            }
-            .animate-scrollUp {
-              animation: scrollUp 15s linear infinite;
-            }
-
-            /* 🔹 Responsive Adjustments */
-            @media (max-width: 768px) {
-              .testimonial-container {
-                height: 360px; /* Only 3 visible cards on mobile */
-              }
-              .animate-scrollUp {
-                animation: scrollUp 12s linear infinite;
-              }
-            }
-          `}</style>
+    /* 🔹 Responsive Adjustments */
+    @media (max-width: 768px) {
+      .testimonial-container {
+        height: 360px; /* Allows 3 visible cards */
+        animation: none; /* Disable animation for manual scroll */
+      }
+      .animate-scrollUp {
+        animation: none !important;
+      }
+    }
+  `}</style>
         </div>
+
       </div>
     </section>
   );
