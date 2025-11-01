@@ -7,6 +7,11 @@ import location from "../assets/location.png";
 import message from "../assets/message.png";
 
 export default function ContactPage() {
+   const handlePhoneInput = (e) => {
+    const value = e.target.value.replace(/\D/g, ""); // allow only digits
+    e.target.value = value.slice(0, 10); // max 10 digits
+  };
+
   return (
     <div className="bg-gray-50 flex flex-col">
       <main className="flex-1">
@@ -154,10 +159,15 @@ export default function ContactPage() {
                     className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#3487fa]"
                     required
                   />
+                 {/* ✅ Phone number validation */}
                   <input
                     type="tel"
-                    placeholder="Phone Number"
-                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#3487fa]"
+                    placeholder="Phone Number (10 digits)"
+                    className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm focus:outline-none focus:ring-1 focus:ring-[#3487fa]"
+                    onInput={handlePhoneInput}
+                    pattern="[0-9]{10}"
+                    maxLength="10"
+                    required
                   />
                   <select
                     className="rounded-full border border-gray-300 bg-white px-5 py-3 w-full text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#3487fa]"

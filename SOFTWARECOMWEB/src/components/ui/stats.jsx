@@ -13,7 +13,8 @@ function useCountUp(end, startCounting, duration = 1500) {
   useEffect(() => {
     if (!startCounting) return;
     let start = 0;
-    const increment = end / (duration / 16);
+    const increment = end / (duration / 16); // 60fps
+
     function update() {
       start += increment;
       if (start < end) {
@@ -83,12 +84,12 @@ export default function AnimatedStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white flex justify-center py-15 sm:py-14 md:py-20 overflow-hidden px-4 sm:px-8 md:px-6"
+      className="relative bg-white flex justify-center py-14 sm:py-16 md:py-20 overflow-hidden"
     >
       {/* Soft gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />
 
-      <div className="relative w-full z-10 flex flex-wrap justify-center items-center gap-10 sm:gap-14 md:gap-29">
+      <div className="relative w-full max-w-7xl mx-auto z-10 flex flex-wrap justify-center items-center gap-10 sm:gap-14 md:gap-20 px-6 sm:px-8">
         {statsList.map((stat, idx) => (
           <motion.div
             key={stat.label}
@@ -104,13 +105,13 @@ export default function AnimatedStats() {
               type: "spring",
               stiffness: 90,
             }}
-            className="flex flex-col items-center text-center"
+            className="flex flex-col items-center text-center w-36 sm:w-44 md:w-48"
           >
             {/* Floating icon */}
             <motion.img
               src={stat.icon}
               alt={stat.label}
-              className="w-20 h-16 sm:w-28 sm:h-20 md:w-30 md:h-22 object-contain mb-3"
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain mb-3"
               animate={{
                 y: [0, -8, 0],
               }}
@@ -122,17 +123,17 @@ export default function AnimatedStats() {
             />
 
             {/* Count-up number */}
-            <div className="flex items-baseline -mt-2 mb-1 sm:-mt-4 sm:mb-1">
-              <span className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-800">
+            <div className="flex items-baseline -mt-1 sm:-mt-2 mb-1">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800">
                 {counters[idx]}
               </span>
-              <span className="text-2xl sm:text-3xl font-semibold text-blue-500 ml-1">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-semibold text-blue-500 ml-1">
                 {stat.suffix}
               </span>
             </div>
 
             {/* Label */}
-            <div className="text-gray-600 text-sm sm:text-base md:text-lg font-medium px-1">
+            <div className="text-gray-600 text-xs sm:text-sm md:text-base font-medium px-1">
               {stat.label}
             </div>
           </motion.div>
