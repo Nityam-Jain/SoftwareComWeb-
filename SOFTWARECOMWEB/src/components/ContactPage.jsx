@@ -223,7 +223,7 @@ export default function ContactPage() {
 
 
           {/* ===== GOOGLE MAP ===== */}
-          <section className="w-full !mb-0 !pb-0">
+          <section className="w-full mt-3 md:mt-20 lg:mt-14 !mb-0 !pb-0">
             <div className="w-full h-[280px] sm:h-[350px] md:h-[450px] lg:h-[540px]">
               <iframe
                 src="https://www.google.com/maps?q=Binarylogix+Technologies+LLP,+Himanshu+Apartment,+Indrapuri,+Bhopal,+Madhya+Pradesh&output=embed"
