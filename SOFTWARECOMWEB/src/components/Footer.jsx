@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#f4f6fb] pt-20 pb-8 relative border-t rounded-4xl overflow-hidden">
+    <footer className="bg-[#f4f6fb] pt-20 pb-8 relative  overflow-hidden">
       {/* 🌊 Animated Wavy Top Decoration (Improved) */}
       <div className="absolute -top-10 left-0 w-full overflow-hidden  leading-[0]">
         <div className="relative w-full h-[160px] sm:h-[200px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb] overflow-hidden">
