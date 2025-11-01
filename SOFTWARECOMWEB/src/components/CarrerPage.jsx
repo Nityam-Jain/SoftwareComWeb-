@@ -7,7 +7,7 @@ const jobs = [
   {
     id: 1,
     title: "Frontend Developer",
-    type: "Full-time",
+    type: "Full-time",    
     location: "Remote",
     department: "Development",
     experience: "1-3 years",
@@ -58,7 +58,7 @@ export default function CareerPage() {
         transition={{ duration: 0.8 }}
         className="bg-[#F8FAFF] py-16 px-6 md:px-16 text-center"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+        <h1 className="text-4xl md:text-4xl font-bold mb-6 text-gray-800">
           Build Your Career With Us
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl">
@@ -66,7 +66,7 @@ export default function CareerPage() {
           that shape the digital future.
         </p>
         <motion.img
-          src="https://source.unsplash.com/featured/?office,team"
+          src="https://plus.unsplash.com/premium_photo-1661274209157-118069b926f3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dGVhbSUyMG9mZmljZXxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000"
           alt="Career"
           className="mx-auto mt-10 rounded-xl w-full md:w-2/3 lg:w-1/2 shadow-md"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -140,7 +140,7 @@ export default function CareerPage() {
                   className="mt-auto bg-blue-600 text-white py-2 px-4 rounded-lg w-full hover:bg-blue-700 transition"
                 >
                   Apply Now
-                </motion.button>
+                </motion.button> 
               </motion.div>
             ))
           ) : (

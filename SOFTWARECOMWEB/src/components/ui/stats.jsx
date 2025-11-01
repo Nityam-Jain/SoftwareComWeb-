@@ -89,7 +89,7 @@ export default function AnimatedStats() {
       {/* Soft gradient background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#3488fa]/10 via-[#5a72ea]/10 to-transparent blur-3xl animate-pulse" />
 
-      <div className="relative w-full max-w-7xl mx-auto z-10 flex flex-wrap justify-center items-center gap-10 sm:gap-14 md:gap-20 px-6 sm:px-8">
+      <div className="relative w-full max-w-9xl mx-auto z-10 flex flex-wrap justify-center items-center gap-10 sm:gap-14 md:gap-20 px-6 sm:px-8">
         {statsList.map((stat, idx) => (
           <motion.div
             key={stat.label}
@@ -124,10 +124,10 @@ export default function AnimatedStats() {
 
             {/* Count-up number */}
             <div className="flex items-baseline -mt-1 sm:-mt-2 mb-1">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800">
+              <span className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-800">
                 {counters[idx]}
               </span>
-              <span className="text-2xl sm:text-3xl md:text-4xl font-semibold text-blue-500 ml-1">
+              <span className="text-2xl sm:text-3xl md:text-3xl font-bold text-blue-500 ml-1">
                 {stat.suffix}
               </span>
             </div>

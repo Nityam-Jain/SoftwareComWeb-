@@ -14,6 +14,7 @@ import project6 from "../assets/sakshifullpage.png";
 import project7 from "../assets/mandlamartfull.png";
 import project8 from "../assets/ssvmfullpage.png";
 import project9 from "../assets/fintechfull.png";
+import project10 from "../assets/jjinterfullpage.png";
 
 import design01 from "../assets/ui ux 1.png";
 import design02 from "../assets/ui ux 2.jpg";
@@ -50,6 +51,7 @@ const projects = [
   { title: "Pachmarhi Ayurveda", category: "Website/App Development", image: project1 },
   { title: "EduNaukri Job-Portal", category: "Website/App Development", image: project3 },
   { title: "Chemistry Classes", category: "Website/App Development", image: project5 },
+  { title: "JJ International", category: "Website/App Development", image: project10 },
   { title: "Sakshi Hospital", category: "Website/App Development", image: project6 },
   { title: "Saravati Shishu Vidya Mandir", category: "Website/App Development", image: project8 },
   { title: "Robo Fintech Pvt Ltd", category: "Website/App Development", image: project9 },
