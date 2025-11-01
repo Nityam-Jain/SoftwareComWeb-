@@ -70,9 +70,9 @@ export default function FAQSection() {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center p-4 text-left hover:bg-gray-50 transition"
+                className="w-full flex justify-between items-center p-2 md:p-4 text-left hover:bg-gray-50 transition"
               >
-                <span className=" text-gray-800">{faq.title}</span>
+                <span className="text-gray-800">{faq.title}</span>
                 <motion.div
                   animate={{
                     rotate: activeIndex === index ? 180 : 0,
@@ -98,7 +98,7 @@ export default function FAQSection() {
                       duration: 0.5,
                       ease: [0.4, 0, 0.2, 1],
                     }}
-                    className="px-5 pb-4"
+                    className="px-4 md:px-5 pb-3 md:pb-4"
                   >
                     <p className="text-gray-600 text-sm leading-relaxed">
                       {faq.content}
@@ -109,6 +109,7 @@ export default function FAQSection() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

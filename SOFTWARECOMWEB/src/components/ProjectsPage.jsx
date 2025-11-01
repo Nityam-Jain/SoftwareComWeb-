@@ -206,9 +206,13 @@ export default function ProjectsPage() {
                         transition={{ duration: 6, ease: "linear" }}
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-auto max-h-none object-top"
+                        className={` 
+                       w-full h-auto max-h-none object-top
+                      ${project.category === "Logo" ? "object-contain object-center p-6 sm:p-8" : ""}
+                       `}
                         style={{ transformOrigin: "top", display: "block" }}
                       />
+
 
                     </div>
 
