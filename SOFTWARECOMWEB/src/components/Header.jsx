@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo/binarylogixlogo-remove.png";
 
@@ -125,34 +127,69 @@ export default function Header() {
           </div>
         </div>
 
-        {/* 🔹 Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-white shadow-md border-t animate-slideDown">
-            <nav className="flex flex-col items-start gap-3 p-4 leading-8">
-              {["/", "/About", "/services", "/portfolio", "/blogs", "/contact"].map(
-                (path) => {
-                  const name =
-                    path === "/"
-                      ? "Home"
-                      : path.replace("/", "").charAt(0).toUpperCase() +
-                      path.replace("/", "").slice(1);
-                  return (
-                    <button
-                      key={path}
-                      onClick={() => handleNavClick(path)}
-                      className={`relative text-sm font-semibold transition-all duration-300 ${isActive(path)
-                        ? "text-blue-600"
-                        : "text-gray-700 hover:text-blue-600"
-                        }`}
-                    >
-                      {name}
-                    </button>
-                  );
-                }
-              )}
-            </nav>
-          </div>
-        )}
+       {/* 🔹 Mobile Menu */}
+{menuOpen && (
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.4 }}
+    className="md:hidden bg-white shadow-2xl border-t rounded-b-2xl overflow-hidden"
+  >
+    <motion.nav
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.08, // Staggered animation
+          },
+        },
+      }}
+      className="flex flex-col items-start gap-3 p-5 leading-8"
+    >
+      {["/", "/About", "/services", "/portfolio", "/blogs", "/contact"].map(
+        (path, index) => {
+          const name =
+            path === "/"
+              ? "Home"
+              : path.replace("/", "").charAt(0).toUpperCase() +
+                path.replace("/", "").slice(1);
+
+          return (
+            <motion.button
+              key={path}
+              variants={{
+                hidden: { opacity: 0, x: -10 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+              }}
+              whileHover={{ scale: 1.05 }}
+              className={`relative text-sm font-semibold transition-all duration-300 ${
+                isActive(path)
+                 
+              }`}
+              onClick={() => handleNavClick(path)}
+            >
+              {/* Underline Animation */}
+              <span className="block group">
+                {name}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] transition-all duration-300 ${
+                    isActive(path)
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+              </span>
+            </motion.button>
+          );
+        }
+      )}
+    </motion.nav>
+  </motion.div>
+)}
+
       </header>
 
       {/* 🔹 Animations */}

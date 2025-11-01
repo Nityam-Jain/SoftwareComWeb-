@@ -1,13 +1,14 @@
 import React from "react";
 import sectionImg from "../../assets/bannerimg003.png";
 import { ChartColumnDecreasing, ChartPie } from "lucide-react";
-import projectBg1 from "../../assets/AboutBanner.jpg";
+import projectBg1 from "../../assets/AboutusSS2.png";
 
 export default function CreativeSection() {
   return (
     <div>
       <section
-        className="relative w-full h-[60vh] flex flex-col items-center justify-center text-center bg-fixed md:bg-cover bg-center mb-10 text-white bg-black/40 bg-blend-overlay bg-[length:auto_100%] sm:bg-cover"
+        className="relative w-full h-[60vh] flex flex-col items-center justify-center text-center bg-fixed md:bg-cover bg-center mb-10 text-white bg-black/45 bg-blend-overlay bg-[length:auto_100%] sm:bg-cover scale-105 animate-[zoomIn_20s_ease-in-out_infinite_alternate]
+        "
         style={{
           backgroundImage: `url(${projectBg1})`,
         }}
