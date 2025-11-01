@@ -188,8 +188,12 @@ export default function ProjectsPage() {
                       ease: "easeOut",
                     }}
                     className={`rounded-2xl shadow-sm overflow-hidden bg-white group transition-all duration-500 
-                      ${isGraphic ? "h-[380px] sm:h-[420px] md:h-[460px]" : "h-auto"}
-                    `}
+                      ${project.category === "Logo"
+                        ? "h-[260px] sm:h-[320px] md:h-[380px]" // Increased height for mobile
+                        : isGraphic
+                          ? "h-[380px] sm:h-[420px] md:h-[460px]"
+                          : "h-auto"
+                      }                    `}
                   >
                     {/* Image Container */}
                     <div
