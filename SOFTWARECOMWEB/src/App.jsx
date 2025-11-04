@@ -12,6 +12,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsappIcon from "./components/whats"
 import CarrerPage from "./components/CarrerPage"
+import AdminLogin from "./Admin/Pages/adminLogin"
+import AdminDashboard from "./Admin/Pages/adminDashboard"
 import "./index.css";
 // import ITCompanyPerfected from "./pages/NoteroLanding";
 
@@ -28,7 +30,8 @@ function App() {
         <Route path="/Services" element={<Services />} />
         <Route path="/Blogs" element={<Blogs/>} />
         <Route path="/career" element={<CarrerPage/>} />
-        {/* <Route path="/NoteroLanding" element={<ITCompanyPerfected/>} /> */}
+        <Route path="/AdminLogin" element={<AdminLogin/>} />
+        <Route path="/AdminDashboard" element={<AdminDashboard/>} />
       </Routes>
       {/* <Footer /> */}
     </Layout>

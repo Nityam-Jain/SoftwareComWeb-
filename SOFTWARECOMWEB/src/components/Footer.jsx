@@ -13,10 +13,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#f4f6fb] pt-20 pb-8 relative  overflow-hidden">
+    <footer className=" pt-20 pb-8 relative  ">
       {/* 🌊 Animated Wavy Top Decoration (Improved) */}
-      <div className="absolute -top-10 left-0 w-full overflow-hidden  leading-[0]">
-        <div className="relative w-full h-[160px] sm:h-[200px] bg-gradient-to-b from-[#e9eefc] to-[#f4f6fb] overflow-hidden">
+      <div className="absolute -top-10 z-50 left-0 w-full overflow-hidden  leading-[0] ">
+        <div className="relative w-full h-[160px] z-50 sm:h-[200px] bg-gradient-to-b from-[#027bbc5f] via-[#6591ff2d] to-[#ccd6ef2d] overflow-hidden">
 
           {/* Back wave (lighter) */}
           <svg
@@ -74,7 +74,7 @@ export default function Footer() {
 
 
       {/* Footer Content */}
-      <div className="relative container mx-auto pt-10 px-4 sm:px-8 md:px-12 lg:px-20">
+      <div className=" bg-[#ebeff9] relative  pt-10 px-4 sm:px-8 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-gray-700">
           {/* Column 1 - Logo & Socials */}
           <div>
