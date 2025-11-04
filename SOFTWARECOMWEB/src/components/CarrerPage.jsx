@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import carrerBg3 from "../assets/carrerbanner.png"; 
 
 const jobs = [
   {
     id: 1,
     title: "Frontend Developer",
-    type: "Full-time",    
+    type: "Full-time",
     location: "Remote",
     department: "Development",
     experience: "1-3 years",
@@ -40,7 +41,6 @@ const jobs = [
 
 export default function CareerPage() {
   const [filter, setFilter] = useState("All");
-
   const departments = ["All", "Development", "Design", "Infrastructure"];
 
   const filteredJobs =
@@ -51,29 +51,28 @@ export default function CareerPage() {
       {/* Header */}
       <Header />
 
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="bg-[#F8FAFF] py-16 px-6 md:px-16 text-center"
+      {/* Banner Section */}
+      <section
+        className="relative w-full h-[60vh] flex flex-col items-center justify-center text-center bg-fixed md:bg-cover bg-center mb-16 text-white bg-black/40 bg-blend-overlay bg-[length:auto_100%] sm:bg-cover"
+        style={{ backgroundImage: `url(${carrerBg3})` }}
       >
-        <h1 className="text-4xl md:text-4xl font-bold mb-6 text-gray-800">
-          Build Your Career With Us
-        </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl">
-          Join our fast-growing IT team and be a part of innovative solutions
-          that shape the digital future.
-        </p>
-        <motion.img
-          src="https://plus.unsplash.com/premium_photo-1661274209157-118069b926f3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dGVhbSUyMG9mZmljZXxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000"
-          alt="Career"
-          className="mx-auto mt-10 rounded-xl w-full md:w-2/3 lg:w-1/2 shadow-md"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        />
-      </motion.section>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-transparent text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text bg-gradient-to-r from-blue-400 to-white"
+        >
+          Join Our Team
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-lg max-w-2xl mx-auto"
+        >
+          Build your career with one of the fastest-growing IT companies.
+        </motion.p>
+      </section>
 
       {/* Current Openings Section */}
       <section className="py-16 px-6 md:px-16 bg-white">
@@ -140,7 +139,7 @@ export default function CareerPage() {
                   className="mt-auto bg-blue-600 text-white py-2 px-4 rounded-lg w-full hover:bg-blue-700 transition"
                 >
                   Apply Now
-                </motion.button> 
+                </motion.button>
               </motion.div>
             ))
           ) : (

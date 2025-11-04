@@ -72,7 +72,7 @@ const Services = () => {
         <span className="text-sm sm:text-base text-blue-600 font-semibold tracking-wide bg-blue-50 px-4 py-1.5 rounded-full">
           Services
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 text-gray-900 leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mt-4 text-gray-900 leading-tight">
           Our Top{" "}
           <span className="bg-gradient-to-r from-[#3488fa] to-black/80 bg-clip-text text-transparent">
             Services

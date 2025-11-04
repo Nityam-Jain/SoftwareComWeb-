@@ -38,7 +38,7 @@ export default function CreativeSection() {
                     <img
                         src={sectionImg}
                         alt="Team working together"
-                        className="w-full max-w-[420px] sm:max-w-[450px] md:max-w-[480px] lg:max-w-[550px] xl:max-w-[600px] drop-shadow-xl rounded-xl object-contain"
+                        className="w-full max-w-[420px] sm:max-w-[450px] md:max-w-[880px]  lg:max-w-[550px] xl:max-w-[600px] drop-shadow-xl rounded-xl object-contain"
                     />
                 </div>
 

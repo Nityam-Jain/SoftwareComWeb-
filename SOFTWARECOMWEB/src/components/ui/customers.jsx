@@ -9,9 +9,6 @@ import Icon1 from "../../assets/projectcompleted.png";
 import Icon2 from "../../assets/projectdeilivered.png";
 import Icon3 from "../../assets/happyclientsnew.png";
 
-
-
-
 const testimonials = [
   {
     img: icon1,
@@ -51,36 +48,34 @@ const testimonials = [
   },
 ];
 
-// Duplicate last 3 testimonials for seamless loop
-const displayTestimonials = [...testimonials.slice(-3), ...testimonials.slice(-3)];
+// ✅ Double data for infinite scroll
+const displayTestimonials = [...testimonials, ...testimonials];
 
 export default function TestimonialsSection() {
   return (
     <section className="text-black py-20 px-4 sm:px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between gap-10">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-10">
         {/* LEFT CONTENT */}
-        <div className="flex-1 flex flex-col justify-center z-10 space-y-6 items-start min-w-[300px]">
+        <div className="flex-1 flex flex-col justify-center z-10 space-y-6 items-start">
           <span className="inline-flex w-fit text-xs px-2 py-1 rounded bg-blue-50 text-blue-600">
             Testimonials
           </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-4xl font-extrabold text-gray-900 leading-tight">
             Loved by{" "}
             <span className="bg-gradient-to-r from-[#3488fa] to-black/70 bg-clip-text text-transparent">
               Clients
             </span>
           </h2>
 
-          <p className="text-gray-600 text-sm sm:text-base max-w-full sm:max-w-md">
-            Binarylogix has empowered businesses globally with cutting-edge
-            software solutions, cloud services, and IT consulting trusted by
-            enterprise-level companies.
+          <p className="text-gray-600 sm:text-base max-w-md">
+            Binarylogix has empowered businesses globally with cutting-edge software
+            solutions, cloud services, and IT consulting trusted by enterprise-level companies.
           </p>
 
           {/* Stats / Achievements */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center mt-4">
-            {[
-              { icon: Icon1, label: "Projects Completed", count: "120+" },
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
+            {[{ icon: Icon1, label: "Projects Completed", count: "120+" },
               { icon: Icon2, label: "Happy Clients", count: "150+" },
               { icon: Icon3, label: "Years in Business", count: "10+" },
             ].map(({ icon, label, count }, idx) => (
@@ -97,36 +92,33 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* RIGHT CONTENT - infinite vertical scroll on web, manual scroll on mobile/tablet */}
-        <div className="flex-1 w-full max-w-[500px] relative">
+        {/* RIGHT CONTENT */}
+        <div className="flex-1 w-full max-w-[500px] relative mx-auto">
           <div
             className={`
-      testimonial-container 
-      h-[480px] sm:h-[480px] 
-      overflow-hidden md:overflow-hidden 
-      overflow-y-scroll md:overflow-y-hidden 
-      relative
-    `}
+              testimonial-container 
+              h-[480px] overflow-hidden 
+              relative
+            `}
           >
             <div
               className={`
-        flex flex-col gap-6 
-        ${window.innerWidth >= 1024 ? "animate-scrollUp" : ""} 
-      `}
+                flex flex-col gap-6 
+                animate-scrollUp
+              `}
             >
               {displayTestimonials.map((t, index) => (
                 <div
                   key={index}
-                  className="flex flex-col sm:flex-row items-center bg-white rounded-2xl shadow-lg px-6 py-5 bg-gradient-to-br from-white/90 to-gray-100/70 text-gray-800 text-left backdrop-blur-lg border border-gray-200/50 w-full"
+                  className="flex flex-col sm:flex-row items-center bg-white rounded-2xl shadow-lg px-6 py-5 bg-gradient-to-br from-white/90 to-gray-100/70 text-gray-800 text-left border border-gray-200 w-full"
                 >
                   {/* Avatar/Logo */}
-                  <div className="flex-shrink-0 flex items-center justify-center mb-4 sm:mb-0 sm:mr-6 relative">
+                  <div className="flex-shrink-0 flex items-center justify-center mb-4 sm:mb-0 sm:mr-6">
                     <img
                       src={t.img}
                       alt={`${t.name} logo`}
-                      className="w-12 sm:w-18 h-auto object-cover animate-float"
+                      className="w-12 h-auto object-cover"
                     />
-                    <div className="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full -z-10 animate-pulse-slow"></div>
                   </div>
 
                   {/* Testimonial Content */}
@@ -139,7 +131,6 @@ export default function TestimonialsSection() {
                           height="16"
                           fill="#FFC700"
                           xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
                         >
                           <path d="M8 12.472l-4.326 2.362.828-4.832L.659 6.581l4.862-.707L8 1.273l2.479 4.601 4.862.707-3.843 3.421.828 4.832z" />
                         </svg>
@@ -148,9 +139,9 @@ export default function TestimonialsSection() {
                     <p className="text-gray-900 font-medium leading-snug text-sm sm:text-base mb-1">
                       “{t.text}”
                     </p>
-                    <div className="text-xs sm:text-sm text-gray-700 font-semibold flex flex-wrap items-center">
+                    <span className="text-xs sm:text-sm text-gray-700 font-semibold">
                       {t.name}
-                    </div>
+                    </span>
                   </div>
                 </div>
               ))}
@@ -159,44 +150,26 @@ export default function TestimonialsSection() {
 
           {/* Animations */}
           <style>{`
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    @keyframes pulse-slow {
-      0%, 100% { opacity: 0.6; transform: scale(1); }
-      50% { opacity: 0.9; transform: scale(1.2); }
-    }
-    .animate-pulse-slow {
-      animation: pulse-slow 5s ease-in-out infinite;
-    }
+            @keyframes scrollUp {
+              0% { transform: translateY(0); }
+              100% { transform: translateY(-50%); }
+            }
+            .animate-scrollUp {
+              animation: scrollUp 18s linear infinite;
+            }
 
-    /* 🔹 Infinite Scroll Animation */
-    @keyframes scrollUp {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
-    }
-    .animate-scrollUp {
-      animation: scrollUp 15s linear infinite;
-    }
-
-    /* 🔹 Responsive Adjustments */
-    @media (max-width: 768px) {
-      .testimonial-container {
-        height: 360px; /* Allows 3 visible cards */
-        animation: none; /* Disable animation for manual scroll */
-      }
-      .animate-scrollUp {
-        animation: none !important;
-      }
-    }
-  `}</style>
+            /* Disable infinite animation only on mobile */
+            @media (max-width: 640px) {
+              .animate-scrollUp {
+                animation: none;
+              }
+              .testimonial-container {
+                overflow-y-auto;
+                height: 360px;
+              }
+            }
+          `}</style>
         </div>
-
       </div>
     </section>
   );
