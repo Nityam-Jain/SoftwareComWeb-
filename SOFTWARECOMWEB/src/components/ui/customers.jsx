@@ -76,8 +76,8 @@ export default function TestimonialsSection() {
           {/* Stats / Achievements */}
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
             {[{ icon: Icon1, label: "Projects Completed", count: "120+" },
-              { icon: Icon2, label: "Happy Clients", count: "150+" },
-              { icon: Icon3, label: "Years in Business", count: "10+" },
+            { icon: Icon2, label: "Happy Clients", count: "150+" },
+            { icon: Icon3, label: "Years in Business", count: "10+" },
             ].map(({ icon, label, count }, idx) => (
               <div key={idx} className="flex items-center gap-3">
                 <img src={icon} alt={label} className="w-14 h-14 sm:w-16 sm:h-16" />
@@ -96,16 +96,17 @@ export default function TestimonialsSection() {
         <div className="flex-1 w-full max-w-[500px] relative mx-auto">
           <div
             className={`
-              testimonial-container 
-              h-[480px] overflow-hidden 
-              relative
-            `}
+      testimonial-container 
+      h-[480px] overflow-hidden 
+      relative
+    `}
           >
             <div
               className={`
-                flex flex-col gap-6 
-                animate-scrollUp
-              `}
+        flex flex-col gap-6 
+        animate-scrollUp sm:animate-scrollUp
+        md:animate-scrollUp
+      `}
             >
               {displayTestimonials.map((t, index) => (
                 <div
@@ -150,26 +151,28 @@ export default function TestimonialsSection() {
 
           {/* Animations */}
           <style>{`
-            @keyframes scrollUp {
-              0% { transform: translateY(0); }
-              100% { transform: translateY(-50%); }
-            }
-            .animate-scrollUp {
-              animation: scrollUp 18s linear infinite;
-            }
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .animate-scrollUp {
+      animation: scrollUp 18s linear infinite;
+    }
 
-            /* Disable infinite animation only on mobile */
-            @media (max-width: 640px) {
-              .animate-scrollUp {
-                animation: none;
-              }
-              .testimonial-container {
-                overflow-y-auto;
-                height: 360px;
-              }
-            }
-          `}</style>
+    /* Disable auto-scroll on mobile and enable manual scrolling */
+    @media (max-width: 640px) {
+      .animate-scrollUp {
+        animation: none;
+      }
+      .testimonial-container {
+        overflow-y-auto;
+        height: 380px;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  `}</style>
         </div>
+
       </div>
     </section>
   );
