@@ -97,7 +97,7 @@ export default function TestimonialsSection() {
           <div
             className={`
       testimonial-container 
-      h-[480px] overflow-hidden 
+      h-[480px] overflow-y-scroll overflow-hidden 
       relative
     `}
           >
