@@ -37,6 +37,22 @@ export default function AdminContactTable() {
         }
     };
 
+    // ✅ Toggle Status Handler
+    const handleStatusToggle = async (id) => {
+        try {
+            const updated = await axios.patch(`http://localhost:5001/contact/${id}/status`);
+            setContacts((prevContacts) =>
+                prevContacts.map((contact) =>
+                    contact._id === id ? { ...contact, status: "solved" } : contact
+                )
+            );
+        } catch (error) {
+            console.error("Error updating status:", error);
+            alert("Failed to update status. Try again.");
+        }
+    };
+
+
     // ✅ Modal Logic
     const openModal = (contact) => {
         setSelectedContact(contact);
@@ -98,7 +114,7 @@ export default function AdminContactTable() {
                                 <td className="p-3">{indexOfFirstContact + index + 1}</td>
 
                                 <td
-                                    className="p-3 cursor-pointer hover:text-blue-600 underline"
+                                    className="p-3 cursor-pointer"
                                     onClick={() => openModal(item)}
                                 >
                                     {item.name}
@@ -107,7 +123,7 @@ export default function AdminContactTable() {
                                 <td className="p-3">{item.phone}</td>
 
                                 <td
-                                    className="p-3 cursor-pointer hover:text-blue-600 underline"
+                                    className="p-3 cursor-pointer "
                                     onClick={() => openModal(item)}
                                 >
                                     {item.email}
@@ -122,13 +138,16 @@ export default function AdminContactTable() {
                                 <td className="p-3">
                                     <span
                                         className={`px-3 py-1 text-sm rounded-full ${item.status === "solved"
-                                            ? "bg-green-200 text-green-700"
-                                            : "bg-yellow-200 text-yellow-700"
+                                                ? "bg-green-200 text-green-700 cursor-not-allowed"
+                                                : "bg-yellow-200 text-yellow-700 cursor-pointer hover:bg-yellow-300"
                                             }`}
+                                        onClick={() => item.status !== "solved" && handleStatusToggle(item._id)}
                                     >
                                         {item.status === "solved" ? "Solved" : "Pending"}
                                     </span>
+
                                 </td>
+
 
                                 <td className="p-3">
                                     <button

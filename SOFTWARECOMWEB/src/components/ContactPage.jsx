@@ -120,11 +120,11 @@ export default function ContactPage() {
               />
             </div>
 
-            <div className="absolute top-2 -right-4 sm:top-24 sm:right-10 md:top-2 md:-right-6 lg:top-5 lg:right-32 z-20 animate-float">
+            <div className="absolute top-2 -right-4 sm:top-24 sm:right-10 md:-top-4 md:-right-6 lg:top-5 lg:right-32 z-20 animate-float">
               <img
                 src={envelopeIcon}
                 alt="Envelope"
-                className="h-24 w-25 sm:w-24 md:w-48 md:h-38 lg:w-66 opacity-100 drop-shadow-lg"
+                className="h-24 w-25 sm:w-24 md:w-48 md:h-53 lg:w-66 opacity-100 drop-shadow-lg"
               />
             </div>
 

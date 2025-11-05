@@ -5,13 +5,14 @@ require("dotenv").config();
 
 const contactRoutes = require("./routes/contactRoutes");
 const adminRoute = require("./routes/adminRoutes");
+const jobRoutes = require("./routes/carrerRoutes") 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 // ✅ CORS Middleware - Fixes preflight issues
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5174",
     methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -41,6 +42,7 @@ app.get("/", (req, res) => {
 // ✅ Contact Form Routes
 app.use("/contact", contactRoutes);
 app.use("/admin", adminRoute);
+app.use("/api", jobRoutes);
 
 // ✅ Catch-all Route for 404 (Optional but Clean)
 app.use((req, res) => {

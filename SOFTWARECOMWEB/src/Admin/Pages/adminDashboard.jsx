@@ -1,151 +1,80 @@
-import React, { useState, useEffect } from "react";
-import {
-  LayoutDashboard,
-  Image,
-  MessageCircle,
-  LogOut,
-  Menu,
-  X,
-  ChevronRight,
-  AppWindowMac
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import Query from "./query"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { MessageSquare, Users, Briefcase, Layers } from "lucide-react";
 
-// ✅ Placeholder Components
-function Dashboard() {
-  return <div className="p-4">Welcome to your Admin Dashboard!</div>;
-}
-function BannerManager() {
-  return <div className="p-4">Manage your website's homepage banners here.</div>;
-}
-function QueryManager() {
-  return <Query/>;
-}
-function JobApplications() {
-  return <div className="p-4">Manage your Job Applications here .</div>;
-}
+export default function Dashboard() {
+  const [stats, setStats] = useState({
+    totalQueries: 0,
+    totalClients: 0,
+    totalProjects: 0,
+    totalServices: 0,
+  });
 
-
-export default function AdminPanel() {
-  const navigate = useNavigate();
-  const [activeView, setActiveView] = useState("Dashboard");
-  const [collapsed, setCollapsed] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  // ✅ Check Admin Login
-  useEffect(() => {
-    const token = sessionStorage.getItem("adminToken");
-    // if (!token) navigate("/AdminLogin");
-  }, [navigate]);
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("adminToken");
-    sessionStorage.removeItem("role");
-    // navigate("/AdminLogin");
+  const fetchDashboardData = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/api/admin/stats");
+      setStats(data);
+    } catch (error) {
+      console.error("Error fetching dashboard data:", error);
+    }
   };
 
-  const navItems = [
-    { label: "Dashboard", icon: LayoutDashboard, view: "Dashboard" },
-    { label: "Banner Manager", icon: Image, view: "BannerManager" },
-    { label: "Query", icon: MessageCircle, view: "QueryManager" },
-    { label: "Job Applications", icon: AppWindowMac, view: "JobApplications" },
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const cards = [
+    {
+      title: "Total Queries",
+      value: stats.totalQueries,
+      icon: <MessageSquare className="w-10 h-10 text-blue-600" />,
+      gradient: "from-blue-100 to-blue-50",
+    },
+    {
+      title: "Total Clients",
+      value: stats.totalClients,
+      icon: <Users className="w-10 h-10 text-green-600" />,
+      gradient: "from-green-100 to-green-50",
+    },
+    {
+      title: "Active Projects",
+      value: stats.totalProjects,
+      icon: <Briefcase className="w-10 h-10 text-purple-600" />,
+      gradient: "from-purple-100 to-purple-50",
+    },
+    {
+      title: "Services Offered",
+      value: stats.totalServices,
+      icon: <Layers className="w-10 h-10 text-orange-600" />,
+      gradient: "from-orange-100 to-orange-50",
+    },
   ];
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
-      {/* ✅ Mobile Topbar */}
-      <div className="md:hidden fixed w-full flex justify-between items-center bg-[#3487fa] text-white p-4 z-50">
-        <h2 className="text-xl font-bold">Admin Panel</h2>
-        <button onClick={() => setIsOpen(true)}>
-          <Menu size={28} />
-        </button>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-2xl fontbold mb-6">Admin Dashboard</h1>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className={`p-6 rounded-xl shadow-md bg-gradient-to-br ${card.gradient} flex items-center`}
+          >
+            <div className="mr-4">{card.icon}</div>
+            <div>
+              <h2 className="text-xl font-bold">{card.title}</h2>
+              <p className="text-3xl font-bold mt-1">{card.value}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* ✅ Overlay for mobile */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {/* ✅ Sidebar */}
-      <aside
-        className={`fixed top-0 left-0 z-50 h-screen bg-white border-r border-gray-200 shadow-lg transition-all duration-300 ease-in-out
-        ${collapsed ? "w-16" : "w-64"}
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-        md:translate-x-0`}
-      >
-        <div className="h-full flex flex-col px-3 py-6 relative">
-          {/* Logo Header */}
-          <div className="flex items-center justify-between mb-10 px-3">
-            {!collapsed && (
-              <h2 className="text-2xl font-bold text-[#1B3C53]">Admin Panel</h2>
-            )}
-            <button className="md:hidden text-gray-700" onClick={() => setIsOpen(false)}>
-              <X size={24} />
-            </button>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex flex-col gap-3">
-            {navItems.map((item, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setActiveView(item.view);
-                  setIsOpen(false);
-                }}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all text-left
-                ${
-                  activeView === item.view
-                    ? "bg-[#3487fa] text-black"
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                {!collapsed && <span className="text-sm font-medium">{item.label}</span>}
-              </button>
-            ))}
-          </nav>
-
-          {/* Collapse Button */}
-          <button
-            onClick={() => setCollapsed(!collapsed)}
-            className="absolute -right-3 top-24 hidden md:flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 shadow-sm transition"
-          >
-            <ChevronRight
-              className={`h-4 w-4 transition-transform ${
-                collapsed ? "" : "rotate-180"
-              }`}
-            />
-          </button>
-
-          {/* Logout Button */}
-          <div className="mt-auto px-2">
-            <button
-              onClick={handleLogout}
-              className="w-full flex items-center justify-center md:justify-start gap-2 py-2 rounded-lg text-red-600 hover:bg-red-100 font-semibold transition-colors"
-            >
-              <LogOut className="w-5 h-5" />
-              {!collapsed && <span>Logout</span>}
-            </button>
-          </div>
-        </div>
-      </aside>
-
-      {/* ✅ Main Content */}
-      <main
-        className={`transition-all duration-300 flex-1 p-4 md:p-6 mt-14 md:mt-0 ${
-          collapsed ? "md:ml-16" : "md:ml-64"
-        }`}
-      >
-        {activeView === "Dashboard" && <Dashboard />}
-        {activeView === "BannerManager" && <BannerManager />}
-        {activeView === "QueryManager" && <QueryManager />}
-        {activeView === "JobApplications" && <JobApplications />}
-      </main>
+      {/* Placeholder for Future Charts */}
+      <div className="bg-white p-6 rounded-xl shadow-md">
+        <h2 className="text-xl font-semibold mb-4">Overview / Analytics</h2>
+        <p className="text-gray-500">Charts and advanced analytics can be added here.</p>
+      </div>
     </div>
   );
 }
