@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import Query from "./query";
 import CreateJob from "./AdminCreateJob";
 import Dashboard from "./adminDashboard"
+import Jobapplication from "./jobApplications"
 // import JobApplicationsComponent from "./AdminJobApplications";
 
 // ✅ Placeholder Components
@@ -32,6 +33,7 @@ function QueryManager() {
 function Blogs() {
   return <div className="p-4">Manage your Blogs here.</div>;
 }
+
 
 export default function AdminPanel() {
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ export default function AdminPanel() {
 
   const navItems = [
     { label: "Dashboard", icon: LayoutDashboard, view: "Dashboard" },
-    { label: "Banner Manager", icon: Image, view: "BannerManager" },
+    { label: "Project Manager", icon: Image, view: "Project Manager" },
     { label: "Query", icon: MessageCircle, view: "QueryManager" },
     { label: "Blogs Manager", icon: Dock, view: "Blogs" },
   ];
@@ -151,7 +153,7 @@ export default function AdminPanel() {
                         ? "bg-blue-500 text-white"
                         : "hover:bg-gray-200 text-gray-700"
                     }`}
-                    onClick={() => setActiveView("JobApplications")}
+                    onClick={() => setActiveView("Jobapplication")}
                   >
                     Job Applications
                   </button>
@@ -192,10 +194,10 @@ export default function AdminPanel() {
         }`}
       >
         {activeView === "Dashboard" && <AdminDashboard/>}
-        {activeView === "BannerManager" && <BannerManager />}
+        {activeView === "ProjectManager" && <BannerManager />}
         {activeView === "QueryManager" && <QueryManager />}
         {activeView === "CreateJob" && <CreateJob />}
-        {activeView === "JobApplications" && <JobApplicationsComponent />}
+        {activeView === "Jobapplication" && <Jobapplication />}
         {activeView === "Blogs Manager" && <Blogs />}
       </main>
     </div>

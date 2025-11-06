@@ -1,11 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path =require ("path");
 require("dotenv").config();
 
 const contactRoutes = require("./routes/contactRoutes");
 const adminRoute = require("./routes/adminRoutes");
 const jobRoutes = require("./routes/carrerRoutes") 
+const applicationRoutes = require("./routes/applicationRoutes").default;
+
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -20,6 +23,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 // MongoDB Connection
 mongoose
@@ -43,7 +47,7 @@ app.get("/", (req, res) => {
 app.use("/contact", contactRoutes);
 app.use("/admin", adminRoute);
 app.use("/api", jobRoutes);
-
+app.use("/api", applicationRoutes);
 // ✅ Catch-all Route for 404 (Optional but Clean)
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });

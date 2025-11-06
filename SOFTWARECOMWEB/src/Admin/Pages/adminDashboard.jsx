@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   const fetchDashboardData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/admin/stats");
+      const { data } = await axios.get("http://localhost:5001/api/admin/stats");
       setStats(data);
     } catch (error) {
       console.error("Error fetching dashboard data:", error);

@@ -10,20 +10,21 @@ export default function CareerPage() {
     const [filter, setFilter] = useState("All");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
+    const [resumePreview, setResumePreview] = useState(null);
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         phone: "",
-        experience: "",
         portfolio: "",
-        message: "",
+        linkedin: "",
+        github: "",
         resume: null,
-        jobId: "",
     });
 
-    const departments = ["All", "Development", "Design", "Social Media"];
-
+    const departments = ["All", "Development", "Design", "Marketing"];
+ 
     useEffect(() => {
         const fetchJobs = async () => {
             try {
@@ -42,51 +43,55 @@ export default function CareerPage() {
     const filteredJobs =
         filter === "All" ? jobs : jobs.filter((job) => job.department === filter);
 
-    const openModal = (Job) => {
-        setSelectedJob(Job);
-        setFormData({ ...formData, jobId: Job._id });
+    const handleApplyClick = (job) => {
+        setSelectedJob(job);
+        setShowModal(true);
     };
 
-    const closeModal = () => {
+    const handleCloseModal = () => {
+        setShowModal(false);
         setSelectedJob(null);
         setFormData({
             fullName: "",
             email: "",
             phone: "",
-            experience: "",
             portfolio: "",
-            message: "",
+            linkedin: "",
+            github: "",
             resume: null,
-            jobId: "",
         });
+        setResumePreview(null);
     };
 
-    const handleChange = (e) => {
-        const { name, value, files } = e.target;
-        setFormData({
-            ...formData,
-            [name]: files ? files[0] : value,
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const submissionData = new FormData();
-        Object.entries(formData).forEach(([key, value]) => {
-            submissionData.append(key, value);
-        });
-
-        try {
-            // Replace with correct backend API endpoint
-            await axios.post("http://localhost:5001/api/applications", submissionData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
-            alert("Application submitted successfully!");
-            closeModal();
-        } catch (error) {
-            console.error(error);
-            alert("Failed to submit the application.");
+    const handleFormChange = (e) => {
+        if (e.target.type === "file") {
+            setFormData({ ...formData, resume: e.target.files[0] });
+        } else {
+            setFormData({ ...formData, [e.target.name]: e.target.value });
         }
+    };
+
+    const handleApplySubmit = (e) => {
+        e.preventDefault();
+        const submitData = new FormData();
+        submitData.append("fullName", formData.fullName);
+        submitData.append("email", formData.email);
+        submitData.append("phone", formData.phone);
+        submitData.append("portfolio", formData.portfolio);
+        submitData.append("linkedin", formData.linkedin);
+        submitData.append("github", formData.github);
+        submitData.append("resume", formData.resume);
+        submitData.append("jobTitle", selectedJob.title);
+        submitData.append("department", selectedJob.department);
+        submitData.append("location", selectedJob.location);
+        submitData.append("experience", selectedJob.experience);
+
+        axios
+            .post("http://localhost:5001/api/apply", submitData)
+            .then(() => alert("Application submitted successfully!"))
+            .catch(() => alert("Submission failed"));
+
+        handleCloseModal();
     };
 
     return (
@@ -141,8 +146,8 @@ export default function CareerPage() {
                             key={dept}
                             onClick={() => setFilter(dept)}
                             className={`py-2 px-4 rounded-full border transition ${filter === dept
-                                ? "bg-blue-600 text-white border-blue-600"
-                                : "border-gray-300 text-gray-700 hover:bg-gray-100"
+                                    ? "bg-blue-600 text-white border-blue-600"
+                                    : "border-gray-300 text-gray-700 hover:bg-gray-100"
                                 }`}
                         >
                             {dept}
@@ -166,32 +171,32 @@ export default function CareerPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 blur-xl transition"></div>
-
                                 <h2 className="text-xl font-bold text-gray-800 mb-3">{job.title}</h2>
 
                                 <div className="space-y-2 text-gray-600">
-                                    <p><strong className="text-gray-800">Type:</strong> {job.type}</p>
-                                    <p><strong className="text-gray-800">Location:</strong> {job.location}</p>
-                                    <p><strong className="text-gray-800">Department:</strong> {job.department}</p>
+                                    <p>
+                                        <strong className="text-gray-800">Type:</strong> {job.type}
+                                    </p>
+                                    <p>
+                                        <strong className="text-gray-800">Location:</strong> {job.location}
+                                    </p>
+                                    <p>
+                                        <strong className="text-gray-800">Department:</strong> {job.department}
+                                    </p>
                                     <p>
                                         <strong className="text-gray-800">Experience:</strong>{" "}
-                                        {job.experience} years
+                                        {job.experience} {job.experience && "years"}
                                     </p>
                                 </div>
 
                                 <motion.button
+                                    onClick={() => handleApplyClick(job)}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={(e) => {
-                                        e.stopPropagation(); // ✅ Allows button clicks even inside clickable cards
-                                        openModal(Job);
-                                    }}
                                     className="mt-6 w-full py-2.5 font-medium rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:shadow-md hover:from-blue-600 hover:to-indigo-700 transition"
                                 >
                                     Apply Now
                                 </motion.button>
-
                             </motion.div>
                         ))
                     ) : (
@@ -201,6 +206,175 @@ export default function CareerPage() {
                     )}
                 </div>
             </section>
+
+            {/* Modal Section */}
+            {showModal && selectedJob && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
+                    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl relative max-h-[90vh] overflow-y-auto">
+                        <button
+                            onClick={handleCloseModal}
+                            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl"
+                        >
+                            &times;
+                        </button>
+
+                        <h3 className="text-2xl font-semibold text-center mb-6">
+                            Apply for: <span className="text-blue-600">{selectedJob.title}</span>
+                        </h3>
+
+                        <form onSubmit={handleApplySubmit} className="space-y-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Job Title</label>
+                                    <input
+                                        type="text"
+                                        value={selectedJob.title}
+                                        disabled
+                                        className="w-full border px-4 py-2 rounded-lg bg-gray-100"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Department</label>
+                                    <input
+                                        type="text"
+                                        value={selectedJob.department}
+                                        disabled
+                                        className="w-full border px-4 py-2 rounded-lg bg-gray-100"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Location</label>
+                                    <input
+                                        type="text"
+                                        value={selectedJob.location}
+                                        disabled
+                                        className="w-full border px-4 py-2 rounded-lg bg-gray-100"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Experience</label>
+                                    <input
+                                        type="text"
+                                        value={selectedJob.experience + " years"}
+                                        disabled
+                                        className="w-full border px-4 py-2 rounded-lg bg-gray-100"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Personal Info Section */}
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Full Name</label>
+                                    <input
+                                        type="text"
+                                        name="fullName"
+                                        value={formData.fullName}
+                                        onChange={handleFormChange}
+                                        required
+                                        className="w-full border px-4 py-2 rounded-lg focus:outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Email Address</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleFormChange}
+                                        required
+                                        className="w-full border px-4 py-2 rounded-lg focus:outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Phone Number</label>
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={(e) => {
+                                            const value = e.target.value;
+                                            // Allow only digits and limit to 10 characters
+                                            if (/^\d*$/.test(value) && value.length <= 10) {
+                                                handleFormChange(e);
+                                            }
+                                        }}
+                                        maxLength="10"
+                                        required
+                                        className="w-full border px-4 py-2 rounded-lg focus:outline-none"
+                                        placeholder="Enter 10-digit number"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">Portfolio Link</label>
+                                    <input
+                                        type="url"
+                                        name="portfolio"
+                                        placeholder="https://your-portfolio.com"
+                                        value={formData.portfolio}
+                                        onChange={handleFormChange}
+                                        className="w-full border px-4 py-2 rounded-lg focus:outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">LinkedIn Profile</label>
+                                    <input
+                                        type="url"
+                                        name="linkedin"
+                                        placeholder="https://linkedin.com/in/yourprofile"
+                                        value={formData.linkedin}
+                                        onChange={handleFormChange}
+                                        className="w-full border px-4 py-2 rounded-lg focus:outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-600 font-medium mb-1">GitHub Profile</label>
+                                    <input
+                                        type="url"
+                                        name="github"
+                                        placeholder="https://github.com/yourusername"
+                                        value={formData.github}
+                                        onChange={handleFormChange}
+                                        className="w-full border px-4 py-2 rounded-lg focus:outline-none"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Resume Upload */}
+                            <div>
+                                <label className="block text-gray-600 font-medium mb-1">
+                                    Upload Resume (PDF/DOC)
+                                </label>
+                                <input
+                                    type="file"
+                                    name="resume"
+                                    accept=".pdf,.doc,.docx"
+                                    onChange={(e) => {
+                                        setFormData({ ...formData, resume: e.target.files[0] });
+                                        setResumePreview(e.target.files[0]?.name || null);
+                                    }}
+                                    required
+                                    className="w-full border px-4 py-2 rounded-lg cursor-pointer"
+                                />
+                                {resumePreview && (
+                                    <p className="mt-2 text-sm text-green-600">
+                                        <strong>Selected File:</strong> {resumePreview}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition"
+                            >
+                                Submit Application
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
 
             {/* CTA Section */}
             <motion.section
@@ -226,101 +400,7 @@ export default function CareerPage() {
                 </motion.button>
             </motion.section>
 
-            {/* Footer */}
             <Footer />
-
-            {/* Modal */}
-            {selectedJob && (
-                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.8, opacity: 0 }}
-                        className="bg-white max-w-lg w-full p-6 rounded-2xl shadow-2xl relative"
-                    >
-                        <button
-                            onClick={closeModal}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl"
-                        >
-                            &times;
-                        </button>
-
-                        <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                            Apply for {selectedJob.title}
-                        </h3>
-
-                        <div className="mb-4 p-3 bg-gray-100 rounded-md text-gray-700 text-sm space-y-1">
-                            <p><strong>Department:</strong> {selectedJob.department}</p>
-                            <p><strong>Location:</strong> {selectedJob.location}</p>
-                            <p><strong>Type:</strong> {selectedJob.type}</p>
-                            <p><strong>Experience Required:</strong> {selectedJob.experience} years</p>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <input
-                                type="text"
-                                name="fullName"
-                                placeholder="Full Name"
-                                required
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email Address"
-                                required
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-                            <input
-                                type="tel"
-                                name="phone"
-                                placeholder="Phone Number"
-                                required
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-                            <input
-                                type="number"
-                                name="experience"
-                                placeholder="Years of Experience"
-                                required
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-                            <input
-                                type="text"
-                                name="portfolio"
-                                placeholder="Portfolio URL (optional)"
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-                            <textarea
-                                name="message"
-                                placeholder="Additional Message (optional)"
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-                            <input
-                                type="file"
-                                name="resume"
-                                accept=".pdf,.doc,.docx"
-                                required
-                                className="w-full px-4 py-2 border rounded-lg"
-                                onChange={handleChange}
-                            />
-
-                            <button
-                                type="submit"
-                                className="w-full py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:from-blue-600 hover:to-indigo-700 transition font-medium"
-                            >
-                                Submit Application
-                            </button>
-                        </form>
-                    </motion.div>
-                </div>
-            )}
         </div>
     );
-}
+}   

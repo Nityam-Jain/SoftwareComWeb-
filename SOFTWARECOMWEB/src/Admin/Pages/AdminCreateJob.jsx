@@ -169,81 +169,122 @@ export default function AdminJobManager() {
       </div>
 
       {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black/30 bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
-            <button
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-              onClick={handleModalClose}
-            >
-              <X size={20} />
-            </button>
+    {/* Modal */}
+{isModalOpen && (
+  <div className="fixed inset-0 bg-black/30 bg-opacity-40 flex items-center justify-center z-50">
+    <div className="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+      <button
+        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        onClick={handleModalClose}
+      >
+        <X size={20} />
+      </button>
 
-            <h2 className="text-xl font-bold mb-4 text-gray-800">
-              {editMode ? "Edit Job" : "Create New Job"}
-            </h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-800">
+        {editMode ? "Edit Job" : "Create New Job"}
+      </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="title"
-                value={jobData.title}
-                onChange={handleChange}
-                required
-                placeholder="Job Title"
-                className="w-full border p-2 rounded-lg"
-              />
-              <select
-                name="type"
-                value={jobData.type}
-                onChange={handleChange}
-                required
-                className="w-full border p-2 rounded-lg"
-              >
-                <option value="">Job Type</option>
-                <option value="Full-time">Full-time</option>
-                <option value="Part-time">Part-time</option>
-                <option value="Contract">Contract</option>
-                <option value="Internship">Internship</option>
-              </select>
-              <input
-                type="text"
-                name="location"
-                value={jobData.location}
-                onChange={handleChange}
-                required
-                placeholder="Location"
-                className="w-full border p-2 rounded-lg"
-              />
-              <input
-                type="text"
-                name="department"
-                value={jobData.department}
-                onChange={handleChange}
-                required
-                placeholder="Department (e.g. Development)"
-                className="w-full border p-2 rounded-lg"
-              />
-              <input
-                type="text"
-                name="experience"
-                value={jobData.experience}
-                onChange={handleChange}
-                required
-                placeholder="Experience (e.g. 1-3 years)"
-                className="w-full border p-2 rounded-lg"
-              />
-
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg font-medium"
-              >
-                {editMode ? "Update Job" : "Create Job"}
-              </button>
-            </form>
-          </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Job Title Field */}
+        <div>
+          <label htmlFor="job-title" className="block mb-1 text-sm font-medium text-gray-700">
+            Job Title
+          </label>
+          <input
+            id="job-title"
+            type="text"
+            name="title"
+            value={jobData.title}
+            onChange={handleChange}
+            required
+            placeholder="Job Title"
+            className="w-full border p-2 rounded-lg"
+          />
         </div>
-      )}
+        
+        {/* Job Type Field */}
+        <div>
+          <label htmlFor="job-type" className="block mb-1 text-sm font-medium text-gray-700">
+            Job Type
+          </label>
+          <select
+            id="job-type"
+            name="type"
+            value={jobData.type}
+            onChange={handleChange}
+            required
+            className="w-full border p-2 rounded-lg"
+          >
+            <option value="">Select Job Type</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+
+        {/* Location Field */}
+        <div>
+          <label htmlFor="location" className="block mb-1 text-sm font-medium text-gray-700">
+            Location
+          </label>
+          <input
+            id="location"
+            type="text"
+            name="location"
+            value={jobData.location}
+            onChange={handleChange}
+            required
+            placeholder="Location"
+            className="w-full border p-2 rounded-lg"
+          />
+        </div>
+
+        {/* Department Field */}
+        <div>
+          <label htmlFor="department" className="block mb-1 text-sm font-medium text-gray-700">
+            Department
+          </label>
+          <input
+            id="department"
+            type="text"
+            name="department"
+            value={jobData.department}
+            onChange={handleChange}
+            required
+            placeholder="Department (e.g. Development)"
+            className="w-full border p-2 rounded-lg"
+          />
+        </div>
+        
+        {/* Experience Field */}
+        <div>
+          <label htmlFor="experience" className="block mb-1 text-sm font-medium text-gray-700">
+            Experience
+          </label>
+          <input
+            id="experience"
+            type="text"
+            name="experience"
+            value={jobData.experience}
+            onChange={handleChange}
+            required
+            placeholder="Experience (e.g. 1-3 years)"
+            className="w-full border p-2 rounded-lg"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg font-medium"
+        >
+          {editMode ? "Update Job" : "Create Job"}
+        </button>
+      </form>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
