@@ -8,6 +8,7 @@ const contactRoutes = require("./routes/contactRoutes");
 const adminRoute = require("./routes/adminRoutes");
 const jobRoutes = require("./routes/carrerRoutes") 
 const applicationRoutes = require("./routes/applicationRoutes").default;
+const blogRoutes = require("./routes/blogRoutes").default
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 5001;
 // ✅ CORS Middleware - Fixes preflight issues
 app.use(
   cors({
-    origin: "http://localhost:5174",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -48,6 +49,8 @@ app.use("/contact", contactRoutes);
 app.use("/admin", adminRoute);
 app.use("/api", jobRoutes);
 app.use("/api", applicationRoutes);
+// Routes
+app.use("/api/blogs", blogRoutes);
 // ✅ Catch-all Route for 404 (Optional but Clean)
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });

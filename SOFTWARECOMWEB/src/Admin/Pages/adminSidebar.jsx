@@ -18,6 +18,7 @@ import Query from "./query";
 import CreateJob from "./AdminCreateJob";
 import Dashboard from "./adminDashboard"
 import Jobapplication from "./jobApplications"
+import BlogsManager from "./adminBlogs"
 // import JobApplicationsComponent from "./AdminJobApplications";
 
 // ✅ Placeholder Components
@@ -30,8 +31,8 @@ function BannerManager() {
 function QueryManager() {
   return <Query />;
 }
-function Blogs() {
-  return <div className="p-4">Manage your Blogs here.</div>;
+function BlogsMan() {
+  return <BlogsManager/>;
 }
 
 
@@ -56,9 +57,9 @@ export default function AdminPanel() {
 
   const navItems = [
     { label: "Dashboard", icon: LayoutDashboard, view: "Dashboard" },
-    { label: "Project Manager", icon: Image, view: "Project Manager" },
+    { label: "Project Management", icon: Image, view: "Project Manager" },
     { label: "Query", icon: MessageCircle, view: "QueryManager" },
-    { label: "Blogs Manager", icon: Dock, view: "Blogs" },
+    { label: "Blogs Manager", icon: Dock, view: "BlogsMan" },
   ];
 
   return (
@@ -198,7 +199,7 @@ export default function AdminPanel() {
         {activeView === "QueryManager" && <QueryManager />}
         {activeView === "CreateJob" && <CreateJob />}
         {activeView === "Jobapplication" && <Jobapplication />}
-        {activeView === "Blogs Manager" && <Blogs />}
+        {activeView === "BlogsMan" && <BlogsMan/>}
       </main>
     </div>
   );
