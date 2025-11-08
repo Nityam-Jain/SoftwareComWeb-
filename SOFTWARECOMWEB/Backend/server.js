@@ -9,7 +9,7 @@ const adminRoute = require("./routes/adminRoutes");
 const jobRoutes = require("./routes/carrerRoutes") 
 const applicationRoutes = require("./routes/applicationRoutes").default;
 const blogRoutes = require("./routes/blogRoutes").default
-
+const projectRoutes = require("./routes/projectRoutes").default 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -51,6 +51,8 @@ app.use("/api", jobRoutes);
 app.use("/api", applicationRoutes);
 // Routes
 app.use("/api/blogs", blogRoutes);
+// Routes
+app.use("/api/projects", projectRoutes);
 // ✅ Catch-all Route for 404 (Optional but Clean)
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });

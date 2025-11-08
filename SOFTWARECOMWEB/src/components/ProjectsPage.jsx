@@ -1,39 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import projectBg from "../assets/projectbanner.jpg";
-
-// ✅ Import all assets
-import project1 from "../assets/pachmariayurfull.png";
-import project2 from "../assets/howtocleanfull.png";
-import project3 from "../assets/edunaukarifull.png";
-import project4 from "../assets/makeahabitfull.png";
-import project5 from "../assets/chemistryfullpage.png";
-import project6 from "../assets/sakshifullpage.png";
-import project7 from "../assets/mandlamartfull.png";
-import project8 from "../assets/ssvmfullpage.png";
-import project9 from "../assets/fintechfull.png";
-import project10 from "../assets/jjinterfullpage.png";
-
-import design01 from "../assets/ui ux 1.png";
-import design02 from "../assets/ui ux 2.jpg";
-import design03 from "../assets/ui ux 3.jpg";
-
-import graphic1 from "../assets/8.jpg";
-import graphic2 from "../assets/9.jpg";
-import graphic3 from "../assets/11.jpg";
-import graphic4 from "../assets/1.jpg";
-import graphic5 from "../assets/4.jpg";
-import graphic6 from "../assets/12.jpg";
-import graphic7 from "../assets/10.jpg";
-
-import Logo1 from "../assets/logo01.png";
-import Logo2 from "../assets/logo02.png";
-import Logo3 from "../assets/logo004.png";
-import Logo4 from "../assets/logo005.png";
-import Logo5 from "../assets/logo006.png";
-import Logo6 from "../assets/logo007.png";
 
 // ✅ Categories
 const categories = [
@@ -44,43 +14,33 @@ const categories = [
   "Logo",
 ];
 
-// ✅ Projects
-const projects = [
-  { title: "Make A Habit", category: "Website/App Development", image: project4 },
-  { title: "How to clean", category: "Website/App Development", image: project2 },
-  { title: "Pachmarhi Ayurveda", category: "Website/App Development", image: project1 },
-  { title: "EduNaukri Job-Portal", category: "Website/App Development", image: project3 },
-  { title: "Chemistry Classes", category: "Website/App Development", image: project5 },
-  { title: "JJ International", category: "Website/App Development", image: project10 },
-  { title: "Sakshi Hospital", category: "Website/App Development", image: project6 },
-  { title: "Saravati Shishu Vidya Mandir", category: "Website/App Development", image: project8 },
-  { title: "Robo Fintech Pvt Ltd", category: "Website/App Development", image: project9 },
-  { title: "Mandla Mart", category: "Website/App Development", image: project7 },
-
-  { title: "Design01", category: "UI/UX Design", image: design01 },
-  { title: "Design02", category: "UI/UX Design", image: design02 },
-  { title: "Design03", category: "UI/UX Design", image: design03 },
-
-  { title: "Graphic", category: "Graphic Design", image: graphic1 },
-  { title: "Graphic", category: "Graphic Design", image: graphic2 },
-  { title: "Graphic", category: "Graphic Design", image: graphic3 },
-  { title: "Graphic", category: "Graphic Design", image: graphic4 },
-  { title: "Graphic", category: "Graphic Design", image: graphic5 },
-  { title: "Graphic", category: "Graphic Design", image: graphic6 },
-  { title: "Graphic", category: "Graphic Design", image: graphic7 },
-
-  { title: "Graphic", category: "Logo", image: Logo1 },
-  { title: "Graphic", category: "Logo", image: Logo2 },
-  { title: "Graphic", category: "Logo", image: Logo3 },
-  { title: "Graphic", category: "Logo", image: Logo4 },
-  { title: "Graphic", category: "Logo", image: Logo5 },
-  { title: "Graphic", category: "Logo", image: Logo6 },
-];
-
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [loading, setLoading] = useState(false);
+  const [projects, setProjects] = useState([]);
 
+  // ✅ Fetch projects from backend
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await axios.get("http://localhost:5001/api/projects");
+        // ✅ Map only required fields (title, category, image)
+        const fetched = res.data.map((p) => ({
+          title: p.title,
+          category: p.category,
+          image: p.image?.startsWith("http")
+            ? p.image
+            : `http://localhost:5001/${p.image.replace(/\\/g, "/")}`,
+        }));
+        setProjects(fetched);
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  // ✅ Category filter
   const filteredProjects =
     activeCategory === "All"
       ? projects
@@ -107,10 +67,7 @@ export default function ProjectsPage() {
             backgroundImage: `url(${projectBg})`,
           }}
         >
-          {/* 🔹 Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-blue-900/40 to-black/70"></div>
-
-          {/* 🔹 Content */}
           <div className="relative z-10 text-white px-6">
             <span className="inline-block bg-white/20 text-blue-200 px-4 py-1 rounded-full text-xs uppercase tracking-wider mb-4">
               Portfolio
@@ -127,7 +84,6 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* 🔹 Decorative Blur Circles (optional aesthetic) */}
           <div className="absolute top-10 left-10 w-40 h-40 bg-blue-400/30 blur-3xl rounded-full"></div>
           <div className="absolute bottom-10 right-10 w-52 h-52 bg-blue-300/30 blur-3xl rounded-full"></div>
         </section>
@@ -145,7 +101,9 @@ export default function ProjectsPage() {
               whileTap={{ scale: 0.95 }}
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className={`text-sm md:text-base font-semibold px-3 sm:px-4 py-2 transition ${activeCategory === category ? "text-blue-600" : "text-gray-800"
+              className={`text-sm md:text-base font-semibold px-3 sm:px-4 py-2 transition ${activeCategory === category
+                  ? "text-blue-600"
+                  : "text-gray-800"
                 }`}
             >
               {category}
@@ -191,16 +149,19 @@ export default function ProjectsPage() {
                     }}
                     className={`rounded-2xl shadow-sm overflow-hidden bg-white group transition-all duration-500 
                       ${project.category === "Logo"
-                        ? "h-[260px] sm:h-[320px] md:h-[380px]" // Increased height for mobile
+                        ? "h-[260px] sm:h-[320px] md:h-[380px]"
                         : isGraphic
                           ? "h-[380px] sm:h-[420px] md:h-[460px]"
                           : "h-auto"
-                      }                    `}
+                      }`}
                   >
                     {/* Image Container */}
                     <div
                       className={`overflow-hidden 
-                        ${isGraphic ? "h-[380px] sm:h-[420px] md:h-[460px]" : "h-48 sm:h-56 md:h-80"}
+                        ${isGraphic
+                          ? "h-[380px] sm:h-[420px] md:h-[460px]"
+                          : "h-48 sm:h-56 md:h-80"
+                        }
                       `}
                     >
                       <motion.img
@@ -213,13 +174,14 @@ export default function ProjectsPage() {
                         src={project.image}
                         alt={project.title}
                         className={` 
-                       w-full h-auto max-h-none object-top
-                      ${project.category === "Logo" ? "object-contain object-center p-6 sm:p-8" : ""}
-                       `}
+                          w-full h-auto max-h-none object-top
+                          ${project.category === "Logo"
+                            ? "object-contain object-center p-6 sm:p-8"
+                            : ""
+                          }
+                        `}
                         style={{ transformOrigin: "top", display: "block" }}
                       />
-
-
                     </div>
 
                     {/* Text Section */}
