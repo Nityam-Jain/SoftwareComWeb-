@@ -7,30 +7,42 @@ const blogSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+
     desc: {
       type: String,
       required: true,
     },
+
     category: {
       type: String,
       required: true,
       trim: true,
     },
+
+    readTime: {
+      type: String,   
+      required: true, 
+      trim: true
+    },
+
     date: {
       type: String,
       default: () => new Date().toLocaleDateString(),
     },
+
     image: {
-      type: String, // URL or file path
+      type: String,
       required: true,
     },
+
     author: {
       type: String,
       default: "BinaryLogix",
     },
+
     featured: {
       type: Boolean,
-      default: false, // true for featured posts (carousel)
+      default: false,
     },
   },
   { timestamps: true }

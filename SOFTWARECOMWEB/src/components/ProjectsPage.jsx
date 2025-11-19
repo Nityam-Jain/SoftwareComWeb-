@@ -1,3 +1,6 @@
+// New dynamic project page handling 
+// -------------------------------------------------------
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,7 +33,8 @@ export default function ProjectsPage() {
           category: p.category,
           image: p.image?.startsWith("http")
             ? p.image
-            : `http://localhost:5001/${p.image.replace(/\\/g, "/")}`,
+            : `http://localhost:5001/${p.image.replace(/^\/?/, "").replace(/\\/g, "/")}`,
+
         }));
         setProjects(fetched);
       } catch (err) {
@@ -102,8 +106,8 @@ export default function ProjectsPage() {
               key={category}
               onClick={() => handleCategoryClick(category)}
               className={`text-sm md:text-base font-semibold px-3 sm:px-4 py-2 transition ${activeCategory === category
-                  ? "text-blue-600"
-                  : "text-gray-800"
+                ? "text-blue-600"
+                : "text-gray-800"
                 }`}
             >
               {category}
@@ -166,22 +170,27 @@ export default function ProjectsPage() {
                     >
                       <motion.img
                         whileHover={
-                          isWeb || isUiUx
-                            ? { y: "-100%" }
-                            : { scale: 1.1 }
+                          project.category === "Website/App Development"
+                            ? { y: "-100%" } // 🧠 full scroll effect only for web dev category
+                            : {}
                         }
-                        transition={{ duration: 6, ease: "linear" }}
+                        transition={
+                          project.category === "Website/App Development"
+                            ? { duration: 6, ease: "linear" }
+                            : {}
+                        }
                         src={project.image}
                         alt={project.title}
                         className={` 
-                          w-full h-auto max-h-none object-top
-                          ${project.category === "Logo"
+                         w-full h-auto max-h-none object-top
+                        ${project.category === "Logo"
                             ? "object-contain object-center p-6 sm:p-8"
-                            : ""
+                            : "object-cover"
                           }
-                        `}
+    `}
                         style={{ transformOrigin: "top", display: "block" }}
                       />
+
                     </div>
 
                     {/* Text Section */}

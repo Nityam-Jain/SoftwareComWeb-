@@ -1,130 +1,70 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Digimark from "../assets/digimark.png";
-import Website from "../assets/websiteimg.png";
-import Seo from "../assets/seoimg.png";
-import seoImg from "../assets/seoimg.png";
-import marketingImg from "../assets/digimark.png";
-import webdesignImg from "../assets/websiteimg.png";
-import {
-  Search,
-  Mail,
-  Facebook,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Globe,
-} from "lucide-react";
-
-const socialIcons = [
-  { name: "Twitter (X)", icon: <Twitter size={18} /> },
-  { name: "Instagram", icon: <Instagram size={18} /> },
-  { name: "Facebook", icon: <Facebook size={18} /> },
-  { name: "Pinterest", icon: <Globe size={18} /> },
-  { name: "Google", icon: <Globe size={18} /> },
-  { name: "LinkedIn", icon: <Linkedin size={18} /> },
-];
-
-const posts = [
-  {
-    id: 1,
-    title: "Boost Your Online Presence with Smart SEO Strategies",
-    desc: "Learn how advanced SEO practices can help your business rank higher on Google, attract quality traffic, and build long-term online visibility.",
-    category: "SEO",
-    date: "3 Days ago",
-    image: seoImg,
-  },
-  {
-    id: 2,
-    title: "Effective Digital Marketing Techniques for Business Growth",
-    desc: "Explore data-driven digital marketing methods that enhance brand awareness, boost conversions, and strengthen your customer engagement.",
-    category: "MARKETING",
-    date: "7 Days ago",
-    image: marketingImg,
-  },
-  {
-    id: 3,
-    title: "Modern Web Designing Trends for 2025",
-    desc: "Discover the latest web design principles and UI/UX trends that make your website visually stunning, fast, and user-friendly.",
-    category: "WEB DESIGNING",
-    date: "10 Days ago",
-    image: webdesignImg,
-  },
-];
-
-const blogListData = [
-  {
-    id: 1,
-    title: "What is Digital Marketing ?",
-    desc: "In today’s interconnected world, businesses are constantly looking for innovative ways to reach their audiences. Digital marketing has emerged as a powerful and essential strategy…",
-    category: "Marketing",
-    date: "1 Day ago",
-    image: Digimark,
-  },
-  {
-    id: 2,
-    title: "Importance of a Website in a Business",
-    desc: "A website is often the first interaction a customer has with your business. A professional, well-designed website creates a positive first impression,…",
-    category: "Development",
-    date: "5 Days ago",
-    image: Website,
-  },
-  {
-    id: 3,
-    title: "Mastering SEO Strategies for Business Growth",
-    desc: "Discover proven SEO techniques to boost your website visibility, improve Google rankings, and drive more organic traffic to your business effectively.",
-    category: "SEO",
-    date: "8 Days ago",
-    image: Seo,
-  },
-  {
-    id: 4,
-    title: "Building a Brand Online Through SEO",
-    desc: "Learn how businesses use SEO to improve brand credibility, drive conversions, and reach wider audiences effectively.",
-    category: "SEO",
-    date: "10 Days ago",
-    image: Seo,
-  },
-];
+import { Search, User, Calendar, Tag, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const FeaturedPost = ({ posts }) => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
+    if (!posts.length) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % posts.length);
     }, 4000);
     return () => clearInterval(interval);
   }, [posts.length]);
 
+  if (!posts.length) return null;
+
   return (
     <section className="container max-w-6xl mx-auto mt-10 px-4">
-      <div className="relative rounded-3xl overflow-hidden shadow-lg">
+      <div className="relative rounded-3xl overflow-hidden shadow-lg cursor-pointer">
         <img
-          src={posts[current].image}
+          src={`http://localhost:5001${posts[current].image}`}
           alt={posts[current].title}
-          className="w-full h-[220px] sm:h-[350px] md:h-[480px] object-cover transition-all duration-700"
+          className="w-full h-[220px] sm:h-[350px] md:h-[480px] object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
-          <div className="text-xs sm:text-sm text-gray-300 mb-2 flex items-center gap-2 flex-wrap">
-            <span className="uppercase tracking-wide">{posts[current].category}</span>
-            <span>•</span>
-            <span>Posted on {posts[current].date}</span>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-6">
+
+          <div className="text-xs text-gray-300 mb-2 flex items-center gap-4 flex-wrap">
+            <span className="flex items-center gap-1 uppercase tracking-wide">
+              <Tag size={14} /> {posts[current].category}
+            </span>
+
+            <span className="flex items-center gap-1">
+              <Calendar size={14} />
+              {new Date(posts[current].createdAt).toLocaleDateString()}
+            </span>
+
+            <span className="flex items-center gap-1">
+              <Clock size={14} />
+              {posts[current].readTime}
+            </span>
+
+            <span className="flex items-center gap-1">
+              <User size={14} />
+              {posts[current].author}
+            </span>
           </div>
-          <h2 className="text-lg sm:text-2xl md:text-4xl font-bold text-white mb-2 leading-snug">
+
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">
             {posts[current].title}
           </h2>
-          <p className="text-gray-200 text-xs sm:text-sm md:text-base max-w-2xl">
-            {posts[current].desc}
+
+          <p className="text-gray-200 text-sm md:text-base">
+            {posts[current].desc?.slice(0, 140)}...
           </p>
         </div>
+
         <div className="absolute bottom-4 right-4 flex gap-2">
           {posts.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === current ? "bg-white" : "bg-gray-400"
+              className={`w-2.5 h-2.5 rounded-full ${index === current ? "bg-white" : "bg-gray-400"
                 }`}
             ></button>
           ))}
@@ -135,13 +75,40 @@ const FeaturedPost = ({ posts }) => {
 };
 
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      const res = await axios.get("http://localhost:5001/api/blogs");
+      setBlogs(res.data.blogs || []);
+    } catch (error) {
+      console.log("❌ Error fetching blogs", error);
+    }
+  };
+
+  // 🔍 FILTERED BLOGS (TITLE + CATEGORY + DESCRIPTION)
+  const filteredBlogs = blogs.filter((blog) => {
+    const q = searchQuery.toLowerCase();
+    return (
+      blog.title.toLowerCase().includes(q) ||
+      blog.category.toLowerCase().includes(q) ||
+      blog.desc.toLowerCase().includes(q)
+    );
+  });
+
   const categories = [
-    { name: "ALL", count: 265 },
-    { name: "SEO", count: 38 },
-    { name: "MARKETING", count: 16 },
-    { name: "WEB DESIGNING", count: 85 },
-    { name: "APP DEVELOPMENT", count: 21 },
-    { name: "GRAPHIC DESIGNING", count: 874 },
+    { name: "ALL", count: blogs.length },
+    { name: "SEO", count: blogs.filter((b) => b.category === "SEO").length },
+    { name: "MARKETING", count: blogs.filter((b) => b.category === "Marketing").length },
+    { name: "WEB DESIGNING", count: blogs.filter((b) => b.category === "Web Designing").length },
+    { name: "APP DEVELOPMENT", count: blogs.filter((b) => b.category === "App Development").length },
+    { name: "GRAPHIC DESIGNING", count: blogs.filter((b) => b.category === "Graphic Designing").length },
   ];
 
   return (
@@ -149,98 +116,144 @@ const Blog = () => {
       <Header />
 
       <section className="container mx-auto mt-8 text-center px-4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+        <h1 className="text-3xl font-bold text-gray-800">
           Our{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3488fa] to-black/70">
             Journal
           </span>
         </h1>
-        <p className="text-gray-500 text-sm sm:text-base mt-2">
+        <p className="text-gray-500 mt-2">
           Get the latest articles from our journal, writing, discuss and share
         </p>
       </section>
 
-      <FeaturedPost posts={posts} />
+      <FeaturedPost posts={blogs} />
 
       {/* Blog List + Sidebar */}
-      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 px-4 sm:px-6 md:px-10 pb-16 sm:pb-20">
+      <section className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 mt-12 px-6 pb-20">
 
-        {/* Left Column */}
-        <div className="lg:col-span-2 flex flex-col space-y-8 ml-2 sm:ml-3 md:ml-8">    
-         {blogListData.map((post) => (
-          <div
-            key={post.id}
-            className="flex flex-col sm:flex-row bg-white rounded-xl p-4 sm:p-5 border border-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full sm:w-48 md:w-60 h-44 object-cover rounded-xl mb-3 sm:mb-0"
-            />
-            <div className="flex flex-col justify-between flex-1 sm:ml-4">
-              <div>
-                <div className="flex flex-wrap items-center text-xs sm:text-sm text-gray-500 mb-2">
-                  <span className="text-blue-600 font-semibold uppercase tracking-wide">
-                    {post.category}
-                  </span>
-                  <span className="mx-1 text-gray-400">•</span>
-                  <span>{post.date}</span>
-                </div>
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 hover:text-blue-600 cursor-pointer">
-                  {post.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {post.desc.length > 90
-                    ? `${post.desc.slice(0, 90)} [...]`
-                    : post.desc}
-                </p>
-              </div>
-              <div className="flex items-center text-xs text-gray-500 mt-3 space-x-2 sm:space-x-5">
-                <div className="flex items-center space-x-1">
-                  <div className="w-5 h-5 flex items-center justify-center bg-[#6c4bdb]/10 text-black rounded-full text-[10px]">
-                    A
+        {/* LEFT SIDE → BLOGS */}
+        <div className="lg:col-span-2 flex flex-col space-y-8">
+          {(filteredBlogs.length === 0 && searchQuery.trim() !== "") && (
+            <p className="text-gray-500 text-sm">No matching blogs found.</p>
+          )}
+
+          {filteredBlogs.map((post) => (
+            <div
+              key={post._id}
+              onClick={() => navigate(`/blog/${post._id}`)}
+              className="flex flex-col sm:flex-row bg-white rounded-xl p-5 border border-gray-200 hover:shadow-md duration-300 cursor-pointer"
+            >
+              <img
+                src={`http://localhost:5001${post.image}`}
+                className="w-full sm:w-56 h-44 object-cover rounded-xl"
+                alt={post.title}
+              />
+
+              <div className="flex flex-col justify-between flex-1 sm:ml-4">
+
+                <div>
+                  <div className="flex items-center text-xs text-gray-500 mb-2 gap-4">
+
+                    <span className="flex items-center gap-1 text-blue-600 font-semibold uppercase">
+                      <Tag size={14} />
+                      {post.category}
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                      <Calendar size={14} />
+                      {new Date(post.createdAt).toLocaleDateString()}
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                      <Clock size={14} />
+                      {post.readTime}
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                      <User size={14} />
+                      {post.author}
+                    </span>
                   </div>
-                  <span> BinaryLogix </span>
+
+                  <h3 className="text-lg font-semibold text-gray-800 hover:text-blue-600">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-gray-500 text-sm mt-1">
+                    {post.desc?.slice(0, 110)}...
+                  </p>
                 </div>
+
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
 
-        {/* Right Sidebar */}
-        <aside className="space-y-10 px-2 sm:px-4">
-          {/* Search */}
-          <div>
-            <h4 className="text-lg font-semibold mb-2">SEARCH</h4>
-            <div className="relative w-full">
-              <input
-                className="w-full px-3 py-2 pr-10 rounded-2xl border border-gray-300 focus:outline-none"
-                placeholder="Type and hit enter"
-              />
-              <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-black" size={20} />
-            </div>
+        {/* RIGHT SIDE → SIDEBAR */}
+        <aside className="space-y-10">
+
+          <div className="relative">
+            <input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for blogs..."
+              className="w-full px-4 py-3 pr-10 border rounded-2xl shadow-sm focus:ring-2 focus:ring-blue-400"
+            />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2" size={20} />
+
+            {/* SEARCH RESULT DROPDOWN */}
+            {searchQuery.trim() !== "" && filteredBlogs.length > 0 && (
+              <div className="absolute z-50 mt-2 w-full bg-white rounded-xl shadow-xl max-h-80 overflow-y-auto border">
+                {filteredBlogs.map((item) => (
+                  <div
+                    key={item._id}
+                    onClick={() => navigate(`/blog/${item._id}`)}
+                    className="flex gap-3 p-3 hover:bg-gray-100 cursor-pointer border-b"
+                  >
+                    <img
+                      src={`http://localhost:5001${item.image}`}
+                      className="w-14 h-14 object-cover rounded-md shadow-sm"
+                      alt={item.title}
+                    />
+
+                    <div>
+                      <h4 className="font-semibold text-gray-800 text-sm">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-gray-500">{item.category}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* NO RESULTS */}
+            {searchQuery.trim() !== "" && filteredBlogs.length === 0 && (
+              <div className="absolute z-50 mt-2 w-full bg-white rounded-xl shadow-xl p-4 text-gray-500 text-sm border">
+                No matching blogs found.
+              </div>
+            )}
           </div>
 
-          {/* Categories */}
+
+          {/* CATEGORIES */}
           <div>
-            <h4 className="text-lg font-semibold mb-3 uppercase tracking-wider">
-              Categories
-            </h4>
+            <h4 className="text-lg font-semibold mb-3 uppercase">Categories</h4>
             <ul className="border-t border-gray-200">
-              {categories.map((cat) => (
+              {categories.map((c) => (
                 <li
-                  key={cat.name}
-                  className="flex justify-between text-sm border-b border-gray-200 py-2"
+                  key={c.name}
+                  className="flex justify-between text-sm border-b py-2 cursor-pointer hover:text-blue-600"
+                  onClick={() => setSearchQuery(c.name !== "ALL" ? c.name : "")}
                 >
-                  <span className="text-gray-700 hover:text-[#9355dc] cursor-pointer">
-                    {cat.name}
-                  </span>
-                  <span className="text-gray-500">{cat.count}</span>
+                  <span>{c.name}</span>
+                  <span>{c.count}</span>
                 </li>
               ))}
             </ul>
           </div>
+
         </aside>
       </section>
 

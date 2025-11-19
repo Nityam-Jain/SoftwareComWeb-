@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Plus, Trash2, Edit3, Eye, Calendar, User, Tag } from "lucide-react";
+import { PlusCircle, Trash2, Edit3, Eye, Calendar, User, Tag, Clock } from "lucide-react";
 import Swal from "sweetalert2";
 
 const AdminBlogManager = () => {
@@ -55,45 +55,40 @@ const AdminBlogManager = () => {
   // ✅ Handle Create or Update Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const data = new FormData();
-    for (const key in formData) {
-      if (formData[key]) data.append(key, formData[key]);
-    }
+    Object.entries(formData).forEach(([key, value]) => {
+      if (key !== "imagePreview" && value) {
+        data.append(key, value);
+      }
+    });
 
     try {
-      if (editingBlog) {
-        // UPDATE BLOG
-        const res = await axios.put(
-          `http://localhost:5001/api/blogs/${editingBlog._id}`,
-          data,
-          { headers: { "Content-Type": "multipart/form-data" } }
-        );
-        if (res.data.success) {
-          Swal.fire("Updated!", "Blog updated successfully!", "success");
-          fetchBlogs(); // Refresh list
-        }
-      } else {
-        // CREATE BLOG
-        const res = await axios.post("http://localhost:5001/api/blogs", data, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        if (res.data.success) {
-          Swal.fire("Success", "Blog created successfully!", "success");
-          fetchBlogs(); // Refresh list
-        }
-      }
+      const url = editingBlog
+        ? `http://localhost:5001/api/blogs/${editingBlog._id}`
+        : `http://localhost:5001/api/blogs`;
 
+      const method = editingBlog ? axios.put : axios.post;
+
+      const res = await method(url, data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      Swal.fire(
+        editingBlog ? "Updated!" : "Success",
+        `Blog ${editingBlog ? "updated" : "created"} successfully!`,
+        "success"
+      );
+
+      fetchBlogs();
       setShowModal(false);
       setEditingBlog(null);
       resetForm();
     } catch (err) {
-      Swal.fire(
-        "Error",
-        err.response?.data?.message || "Something went wrong",
-        "error"
-      );
+      Swal.fire("Error", err.response?.data?.message || "Something went wrong", "error");
     }
   };
+
 
   // ✅ Reset form
   const resetForm = () => {
@@ -108,9 +103,10 @@ const AdminBlogManager = () => {
     });
   };
 
-  // ✅ Edit blog
+  //edit modal 
   const handleEdit = (blog) => {
     setEditingBlog(blog);
+
     setFormData({
       title: blog.title || "",
       desc: blog.desc || "",
@@ -120,8 +116,10 @@ const AdminBlogManager = () => {
       image: null,
       imagePreview: blog.image ? `http://localhost:5001${blog.image}` : "",
     });
+
     setShowModal(true);
   };
+
 
   // ✅ Delete blog
   const handleDelete = async (id) => {
@@ -156,16 +154,17 @@ const AdminBlogManager = () => {
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Blog Management</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Your Blogs</h2>
         <button
           onClick={() => {
             resetForm();
             setEditingBlog(null);
             setShowModal(true);
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow hover:opacity-90 transition"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow hover:opacity-90 transition flex items-center gap-2"
         >
-          + Blog
+          <PlusCircle size={20} strokeWidth={2} />
+          Blog
         </button>
       </div>
 
@@ -201,6 +200,10 @@ const AdminBlogManager = () => {
                   </span>
                   <span className="flex items-center gap-1">
                     <Tag size={14} /> {blog.category}
+                  </span>
+                  {/* Read Time */}
+                  <span className="flex items-center gap-1">
+                    <Clock size={14} /> {blog.readTime}
                   </span>
                 </div>
               </div>
@@ -396,6 +399,12 @@ const AdminBlogManager = () => {
               <span className="flex items-center gap-1 inline-flex">
                 <Tag size={14} /> {viewBlog.category}
               </span>
+
+              <span className="flex items-center gap-1">
+                <Clock size={14} />
+                {viewBlog.readTime}
+              </span>
+
             </div>
             <p className="text-gray-800 leading-relaxed">{viewBlog.desc}</p>
           </div>

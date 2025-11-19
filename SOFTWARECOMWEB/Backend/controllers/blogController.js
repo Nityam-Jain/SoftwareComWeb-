@@ -7,6 +7,7 @@ export const createBlog = async (req, res) => {
       title: req.body.title,
       desc: req.body.desc,
       category: req.body.category,
+      readTime: req.body.readTime,
       author: req.body.author || "BinaryLogix",
       featured: req.body.featured === "true",
       image: req.file ? `/uploads/${req.file.filename}` : null, // ✅ handle file path

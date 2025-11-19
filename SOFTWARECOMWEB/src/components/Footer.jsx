@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram,  } from "lucide-react";
 import logo from "../assets/logo/binarylogixlogo-remove.png";
 
 export default function Footer() {
@@ -92,6 +92,7 @@ export default function Footer() {
                 // { Icon: Twitter, link: "https://twitter.com/yourprofile" },
                 { Icon: Linkedin, link: "https://www.linkedin.com/company/binarylogix-technologies/" },
                 { Icon: Instagram, link: "https://www.instagram.com/binarylogix_technologies/" },
+                
               ].map(({ Icon, link }, i) => (
                 <a
                   key={i}

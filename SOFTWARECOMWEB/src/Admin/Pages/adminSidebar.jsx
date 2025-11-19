@@ -11,7 +11,8 @@ import {
   Menu,
   X,
   MapPin,
-  FolderDot
+  FolderDot,
+  Handshake
 } from "lucide-react";
 import Logo from "../../assets/BLogix1logo2.png"
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ import CreateJob from "./AdminCreateJob";
 import Jobapplication from "./jobApplications";
 import BlogsManager from "./adminBlogs";
 import ProjectManager from "./AdminProjects"
+// import Partner from "./PartnerFormCom"
 export default function AdminPanel() {
   const navigate = useNavigate();
 
@@ -142,6 +144,9 @@ export default function AdminPanel() {
                 />
                 {!collapsed && <span>Blogs Manager</span>}
               </button>
+
+               
+
 
               {/* Projects Manager */}
               <button
@@ -289,6 +294,7 @@ export default function AdminPanel() {
         <main className="flex-1 p-4 sm:p-6 bg-gray-50 overflow-y-auto">
           {activeView === "Dashboard" && <Dashboard />}
           {activeView === "BlogsMan" && <BlogsManager />}
+          {/* {activeView === "PartnerWith" && <Partner />} */}
           {activeView === "ProjMan" && <ProjectManager />}
           {activeView === "QueryManager" && <Query />}
           {activeView === "CreateJob" && <CreateJob />}

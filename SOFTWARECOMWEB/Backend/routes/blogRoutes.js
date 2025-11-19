@@ -12,7 +12,7 @@ const router = express.Router();
 
 // Admin or CMS endpoints
 router.post("/", upload.single("image"), createBlog);
-router.put("/:id", updateBlog);
+router.put("/:id", upload.single("image"), updateBlog);
 router.delete("/:id", deleteBlog);
 
 // Public routes
