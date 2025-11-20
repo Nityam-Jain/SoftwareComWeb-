@@ -14,7 +14,7 @@ export default function AdminProjects() {
   });
   const [loading, setLoading] = useState(false);
 
-  const API_URL = "http://localhost:5001/api/projects"; // ✅ Change if deployed
+  const API_URL = "/api/projects"; // ✅ Change if deployed
 
   // ✅ Fetch all projects
   const fetchProjects = async () => {
@@ -113,7 +113,7 @@ export default function AdminProjects() {
                 src={
                   project.image?.startsWith("http")
                     ? project.image
-                    : `http://localhost:5001${project.image}`
+                    : `${project.image}`
                 }
                 alt={project.title}
                 className="w-full h-48 object-cover"

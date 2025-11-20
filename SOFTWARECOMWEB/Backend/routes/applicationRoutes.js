@@ -1,18 +1,18 @@
-import express from "express";
-import multer from "multer";
-import path from "path";
-import { submitApplication, getAllApplications} from "../controllers/applicationController.js";
+const express = require("express");
+const multer = require("multer");
+const path = require("path");
+const { submitApplication, getAllApplications } = require("../controllers/applicationController");
 
 const router = express.Router();
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Folder where resumes will be saved
+    cb(null, "uploads/"); 
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique file name
-  },
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
 });
 
 const upload = multer({ storage });
@@ -20,7 +20,7 @@ const upload = multer({ storage });
 // POST route for submitting job applications
 router.post("/apply", upload.single("resume"), submitApplication);
 
-// ✅ GET route for fetching all applications (Admin Panel)
+// GET route for fetching all applications
 router.get("/applications", getAllApplications);
 
-export default router;
+module.exports = router;

@@ -33,12 +33,23 @@ exports.saveContact = async (req, res) => {
 // ✅ Fetch all contacts
 exports.getAllContacts = async (req, res) => {
   try {
+    // console.log("📥 GET /getAllContacts API HIT");
+
     const contacts = await Contact.find().sort({ createdAt: -1 });
+
+    // console.log("📤 Contacts fetched from DB:", contacts);
+
     res.status(200).json(contacts);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching contacts", error });
+    console.error("❌ Error fetching contacts:", error);
+
+    res.status(500).json({ 
+      message: "Error fetching contacts", 
+      error 
+    });
   }
 };
+
 
 // DELETE /contact/:id
 exports.deleteContact = async (req, res) => {

@@ -23,7 +23,7 @@ const AdminBlogManager = () => {
   // ✅ Fetch all blogs
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/blogs");
+      const res = await axios.get("/api/blogs/getAllBlogs");
       if (res.data.success) setBlogs(res.data.blogs);
     } catch (err) {
       console.error(err);
@@ -65,8 +65,8 @@ const AdminBlogManager = () => {
 
     try {
       const url = editingBlog
-        ? `http://localhost:5001/api/blogs/${editingBlog._id}`
-        : `http://localhost:5001/api/blogs`;
+        ? `/api/blogs/${editingBlog._id}`
+        : `/api/blogs`;
 
       const method = editingBlog ? axios.put : axios.post;
 
@@ -114,7 +114,7 @@ const AdminBlogManager = () => {
       category: blog.category || "Other",
       readTime: blog.readTime || "5 min read",
       image: null,
-      imagePreview: blog.image ? `http://localhost:5001${blog.image}` : "",
+      imagePreview: blog.image ? `${blog.image}` : "",
     });
 
     setShowModal(true);
@@ -134,7 +134,7 @@ const AdminBlogManager = () => {
     if (!confirm.isConfirmed) return;
 
     try {
-      const res = await axios.delete(`http://localhost:5001/api/blogs/${id}`);
+      const res = await axios.delete(`/api/blogs/${id}`);
       if (res.data.success) {
         Swal.fire("Deleted!", "Blog removed successfully", "success");
         fetchBlogs();
@@ -176,7 +176,7 @@ const AdminBlogManager = () => {
             className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-gray-200"
           >
             <img
-              src={`http://localhost:5001${blog.image}`}
+              src={`${blog.image}`}
               alt={blog.title}
               className="h-40 w-full object-cover"
             />
@@ -384,7 +384,7 @@ const AdminBlogManager = () => {
             </button>
             <h2 className="text-2xl font-bold mb-4">{viewBlog.title}</h2>
             <img
-              src={`http://localhost:5001${viewBlog.image}`}
+              src={`${viewBlog.image}`}
               alt={viewBlog.title}
               className="w-full h-60 object-cover rounded-lg mb-4"
             />

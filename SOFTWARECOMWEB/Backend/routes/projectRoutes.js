@@ -1,20 +1,21 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   getProjects,
   getProjectById,
   createProject,
   updateProject,
   deleteProject,
-} from "../controllers/projectController.js";
-import upload from "../middleware/upload.js"; 
+} = require("../controllers/projectController");
+
+const upload = require("../middleware/upload");
 
 const router = express.Router();
 
-// ✅ Routes
+// Routes
 router.get("/", getProjects);
 router.get("/:id", getProjectById);
 router.post("/", upload.single("image"), createProject);
 router.put("/:id", upload.single("image"), updateProject);
 router.delete("/:id", deleteProject);
 
-export default router;
+module.exports = router;

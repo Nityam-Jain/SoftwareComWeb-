@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 import AppLanding from "./ui/AppLandingPage";
@@ -14,9 +15,18 @@ import ServicesComp from "../components/ui/ServicesCom";
 import ContactComp from "../components/contactcomp";
 import Support from "./ui/Support";
 import HeroBanner from "./Herobanner1";
-import AboutPageScroll from "./pageAboutcom"
+import AboutPageScroll from "./pageAboutcom";
 
-function  HomePage() {
+function HomePage() {
+
+  // ✅ Track visitor when homepage loads
+  useEffect(() => {
+    axios
+      .get("/api/visitor/track")
+      .then((res) => console.log("Visitor tracked:", res.data))
+      .catch((err) => console.log("Visitor track error:", err));
+  }, []);
+
   // 🌀 Smooth scroll behavior for the entire page
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
@@ -25,7 +35,7 @@ function  HomePage() {
     };
   }, []);
 
-  // ✨ Optional: simple fade-in animation on scroll (optional)
+  // ✨ Optional: fade-in animation on scroll
   useEffect(() => {
     const handleScroll = () => {
       const elements = document.querySelectorAll(".fade-in-section");
@@ -45,11 +55,7 @@ function  HomePage() {
     <div className="flex min-h-screen flex-col scroll-smooth">
       <Header />
 
-      {/* <div className="fade-in-section">
-        <AppLanding />
-      </div> */}
-
-       <div className="fade-in-section">
+      <div className="fade-in-section">
         <HeroBanner />
       </div>
 
@@ -87,25 +93,19 @@ function  HomePage() {
 
       <Footer />
 
-      {/* Smooth scroll + fade-in styles */}
       <style jsx>{`
         html {
           scroll-behavior: smooth;
         }
-
-        /* Fade-in animation on scroll */
         .fade-in-section {
           opacity: 0;
           transform: translateY(40px);
           transition: opacity 1s ease-out, transform 1s ease-out;
         }
-
         .fade-in-section.visible {
           opacity: 1;
           transform: translateY(0);
         }
-
-        /* Optional: a slight ease for natural scroll motion */
         body {
           scroll-behavior: smooth;
           transition: all 0.3s ease-in-out;

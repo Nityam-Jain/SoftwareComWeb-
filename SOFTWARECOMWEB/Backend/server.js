@@ -7,22 +7,24 @@ require("dotenv").config();
 const contactRoutes = require("./routes/contactRoutes");
 const adminRoute = require("./routes/adminRoutes");
 const jobRoutes = require("./routes/carrerRoutes") 
-const applicationRoutes = require("./routes/applicationRoutes").default;
-const blogRoutes = require("./routes/blogRoutes").default
-const projectRoutes = require("./routes/projectRoutes").default 
+const visitorRoutes = require("./routes/visitorRoutes");
+const applicationRoutes = require("./routes/applicationRoutes")
+const blogRoutes = require("./routes/blogRoutes")
+const projectRoutes = require("./routes/projectRoutes")
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// ✅ CORS Middleware - Fixes preflight issues
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+// // ✅ CORS Middleware - Fixes preflight issues
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
 
+app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
@@ -45,10 +47,11 @@ app.get("/", (req, res) => {
 });
 
 // ✅ Contact Form Routes
-app.use("/contact", contactRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/admin", adminRoute);
 app.use("/api", jobRoutes);
 app.use("/api", applicationRoutes);
+app.use("/api/visitor", visitorRoutes);
 // Routes
 app.use("/api/blogs", blogRoutes);
 // Routes

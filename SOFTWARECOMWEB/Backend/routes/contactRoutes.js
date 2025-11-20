@@ -7,7 +7,7 @@ const { saveContact,getAllContacts, deleteContact, updateStatus } = require("../
 router.post("/", saveContact);
 
 //get all data  
-router.get("/", getAllContacts);
+router.get("/getAllContacts", getAllContacts);
 
 // DELETE Route to delete a specific contact
 router.delete("/:id", deleteContact);

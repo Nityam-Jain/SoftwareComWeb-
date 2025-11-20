@@ -12,8 +12,8 @@ export default function AdminContactTable() {
     // ✅ Fetch Contact Data
     const fetchContacts = async () => {
         try {
-            const res = await axios.get("http://localhost:5001/contact");
-            setContacts(res.data);
+            const res = await axios.get("/api/contact/getAllContacts");
+            setContacts(res.data || []);
         } catch (err) {
             console.error("Error fetching contacts:", err);
         }
@@ -27,7 +27,7 @@ export default function AdminContactTable() {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this query?")) {
             try {
-                await axios.delete(`http://localhost:5001/contact/${id}`);
+                await axios.delete(`/api/contact/${id}`);
                 alert("Query deleted successfully!");
                 fetchContacts(); // 🔄 Refresh data
             } catch (error) {
@@ -40,7 +40,7 @@ export default function AdminContactTable() {
     // ✅ Toggle Status Handler
     const handleStatusToggle = async (id) => {
         try {
-            const updated = await axios.patch(`http://localhost:5001/contact/${id}/status`);
+            const updated = await axios.patch(`/api/contact/${id}/status`);
             setContacts((prevContacts) =>
                 prevContacts.map((contact) =>
                     contact._id === id ? { ...contact, status: "solved" } : contact
@@ -138,8 +138,8 @@ export default function AdminContactTable() {
                                 <td className="p-3">
                                     <span
                                         className={`px-3 py-1 text-sm rounded-full ${item.status === "solved"
-                                                ? "bg-green-200 text-green-700 cursor-not-allowed"
-                                                : "bg-yellow-200 text-yellow-700 cursor-pointer hover:bg-yellow-300"
+                                            ? "bg-green-200 text-green-700 cursor-not-allowed"
+                                            : "bg-yellow-200 text-yellow-700 cursor-pointer hover:bg-yellow-300"
                                             }`}
                                         onClick={() => item.status !== "solved" && handleStatusToggle(item._id)}
                                     >
